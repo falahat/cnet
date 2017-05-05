@@ -3,5 +3,5 @@ project(CNet)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp Net.cpp Net.h Layer.cpp Layer.h AFActivationFunction.cpp AFActivationFunction.h)
+set(SOURCE_FILES src/main.cpp src/Net.cpp src/Net.h src/Layer.cpp src/Layer.h src/AFActivationFunction.cpp src/AFActivationFunction.h src/AFMatrix.cpp src/AFMatrix.h)
 add_executable(CNet ${SOURCE_FILES})
