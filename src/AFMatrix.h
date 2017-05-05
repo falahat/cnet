@@ -17,12 +17,13 @@ public:
      * This is the values of the matrix stored in one long array regardless of the matrix's actual shape.
      * The values are stored in row-by-row
      *
+     * @todo Is vals dynamically allocated or what??
      * | a  b |\n
      * | c  d | = [a b c d e f]\n
      * | e  f |\n
      *
      */
-    T* vals;
+    array<T, ROWS*COLS> *vals;
 
 
     AFMatrix() {
@@ -47,12 +48,12 @@ public:
      * @todo Make this effecient and non-copying
      * @param copyFrom
      */
-    AFMatrix(array<T, ROWS*COLS> copyFrom) {
+    AFMatrix(array<T, ROWS*COLS> *copyFrom) {
         this->copyValues(this, copyFrom); // Copies the values from `copyFrom` to itself
     }
 
     ~AFMatrix() {
-        delete [] this->vals;
+        delete this->vals;
     }
 
     /**
@@ -61,6 +62,9 @@ public:
      * @param out The matrix to write the output values
      */
     void innerProduct(AFMatrix* other, AFMatrix* out) {
+        for (int i = 0; i < other->numCols; ++i) {
+            
+        }
     }
 
     /**
@@ -69,7 +73,7 @@ public:
      * @param other The other array to inner product with.
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
-    void innerProduct(array<T, ROWS*COLS> other,  AFMatrix* out) {
+    void innerProduct(array<T, ROWS*COLS> *other,  AFMatrix *out) {
     }
 
     /**
@@ -78,7 +82,7 @@ public:
      * @param other The other vector to inner product with.
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
-    void innerProduct(array<T, ROWS*COLS> other,  array<T, ROWS*COLS> out) {
+    void innerProduct(array<T, ROWS*COLS> *other,  array<T, ROWS*COLS> *out) {
     }
 
     /**
@@ -121,7 +125,7 @@ public:
      * @param other - The matrix to subtract from `this`.
      * @param out - The matrix to write the result to
      */
-    void subtract(AFMatrix* other, AFMatrix out) {
+    void subtract(AFMatrix* other, AFMatrix* out) {
 
     }
 
@@ -130,8 +134,10 @@ public:
      * into it.
      * @return The new dynamically allocated vector (we call `reserve()` on it though).
      */
-    array<T, ROWS*COLS> toArray() {
-
+    array<T, ROWS*COLS> *toArray() {
+        array<T, ROWS*COLS> *ans = new array<T, ROWS*COLS>();
+        ans = this->vals;
+        return ans;
     }
 
     /**
@@ -139,8 +145,8 @@ public:
      * @param dst
      * @param src
      */
-    void copyValues(AFMatrix<T, ROWS, COLS> *dst, AFMatrix<T, ROWS, COLS> src) {
-
+    void copyValues(AFMatrix<T, ROWS, COLS> *dst, AFMatrix<T, ROWS, COLS> *src) {
+        copyValues(dst->vals, src->vals);
     }
 
     /**
@@ -149,8 +155,8 @@ public:
      * @param dst
      * @param src
      */
-    void copyValues(AFMatrix<T, ROWS, COLS> *dst, array<T, ROWS*COLS> src) {
-
+    void copyValues(AFMatrix<T, ROWS, COLS> *dst, array<T, ROWS*COLS> *src) {
+        copyValues(this->vals, src);
     }
 
     /**
@@ -159,9 +165,11 @@ public:
      * @param dst
      * @param src
      */
-    template <size_t N>
-    void copyValues(array<T, N> dst, array<T, N> src) {
-
+    template <typename T1, size_t N>
+    void copyValues(array<T1, N> *dst, array<T1, N> *src) {
+        for (int i = 0; i < N; ++i) {
+            dst[i] = src[i];
+        }
     }
 };
 
@@ -174,8 +182,27 @@ template <typename T, size_t N>
  * @return The dot product (inner product) of two vectors.
  * @pre vec1 and vec2 have the same length.
  */
-T innerProduct(array<T, N> vec1, array<T, N> vec2) {
+T innerProduct(array<T, N> *vec1, array<T, N> *vec2) {
+    return innerProduct(vec1, vec2, 0, N, 0, N);
+}
 
+template <typename T, size_t N>
+/**
+ * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
+ * @param vec1 - Left vector
+ * @param vec2 - Right vector
+ * @return The dot product (inner product) of two vectors.
+ * @pre vec1 and vec2 have the same length.
+ */
+T innerProduct(array<T, N> *vec1, array<T, N> *vec2, int start1, int end1, int start2, int end2) {
+    // TODO: Add bound checking?
+    T ans;
+    for (int i = start1; i < end1; ++i) {
+        for (int j = start2; j < end2; ++j) {
+            ans += vec1[i] * vec2[j];
+        }
+    }
+    return ans;
 }
 
 #endif //CNET_AFMATRIX_H
