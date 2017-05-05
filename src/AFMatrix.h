@@ -57,14 +57,31 @@ public:
     }
 
     /**
+     * @param row
+     * @param col
+     * @return the index `i` such that `this->vals[i] = (row, col)`.
+     */
+    inline T getIndex(int row, int col) {
+        return col * this->numCols + row;
+    }
+
+    /**
+     * @param row
+     * @param col
+     * @return the index `i` such that `this->vals[i] = (row, col)`.
+     */
+    inline T getValue(int row, int col) {
+        return this->vals[this->getIndex(row, col)];
+    }
+
+    /**
      *
      * @param other The other matrix to multiply this against
      * @param out The matrix to write the output values
      */
-    void innerProduct(AFMatrix* other, AFMatrix* out) {
-        for (int i = 0; i < other->numCols; ++i) {
-            
-        }
+    template <size_t OTHER_COLS>
+    void innerProduct(AFMatrix<T, COLS, OTHER_COLS> *other, AFMatrix<T, ROWS, OTHER_COLS> *out) {
+
     }
 
     /**
@@ -73,7 +90,7 @@ public:
      * @param other The other array to inner product with.
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
-    void innerProduct(array<T, ROWS*COLS> *other,  AFMatrix *out) {
+    void innerProduct(array<T, ROWS> *other,  AFMatrix<T, COLS, 1> *out) {
     }
 
     /**
@@ -82,7 +99,7 @@ public:
      * @param other The other vector to inner product with.
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
-    void innerProduct(array<T, ROWS*COLS> *other,  array<T, ROWS*COLS> *out) {
+    void innerProduct(array<T, ROWS> *other,  array<T, COLS> *out) {
     }
 
     /**
@@ -108,16 +125,25 @@ public:
      * @param out
      */
     void scale(double factor, AFMatrix* out) {
-
+        for (int col = 0; col < COLS; ++col) {
+            for (int row = 0; row < ROWS; ++row) {
+                out->vals[out->getIndex(row, col)] = factor * this->getValue(row, col);
+            }
+        }
     }
 
     /**
      * Adds two matrices and writes result into `out`
      * @param other - The matrix to add to `this`.
      * @param out - The matrix to write the result to
+     * @warning requires
      */
     void add(AFMatrix* other, AFMatrix* out) {
-
+        for (int col = 0; col < COLS; ++col) {
+            for (int row = 0; row < ROWS; ++row) {
+                out->vals[out->getIndex(row, col)] = this->getValue(row, col) + other->getValue(row, col);
+            }
+        }
     }
 
     /**
@@ -126,7 +152,11 @@ public:
      * @param out - The matrix to write the result to
      */
     void subtract(AFMatrix* other, AFMatrix* out) {
-
+        for (int col = 0; col < COLS; ++col) {
+            for (int row = 0; row < ROWS; ++row) {
+                out->vals[out->getIndex(row, col)] = this->getValue(row, col) - other->getValue(row, col);
+            }
+        }
     }
 
     /**
@@ -182,8 +212,8 @@ template <typename T, size_t N>
  * @return The dot product (inner product) of two vectors.
  * @pre vec1 and vec2 have the same length.
  */
-T innerProduct(array<T, N> *vec1, array<T, N> *vec2) {
-    return innerProduct(vec1, vec2, 0, N, 0, N);
+inline T vectorInnerProduct(array<T, N> *vec1, array<T, N> *vec2) {
+    return vectorInnerProduct(vec1, vec2, 0, N, 0, N);
 }
 
 template <typename T, size_t N>
@@ -194,12 +224,12 @@ template <typename T, size_t N>
  * @return The dot product (inner product) of two vectors.
  * @pre vec1 and vec2 have the same length.
  */
-T innerProduct(array<T, N> *vec1, array<T, N> *vec2, int start1, int end1, int start2, int end2) {
+T vectorInnerProduct(array<T, N> *vec1, array<T, N> *vec2, int start1, int end1, int start2, int end2) {
     // TODO: Add bound checking?
     T ans;
     for (int i = start1; i < end1; ++i) {
         for (int j = start2; j < end2; ++j) {
-            ans += vec1[i] * vec2[j];
+            ans += (*vec1)[i] * (*vec2)[j];
         }
     }
     return ans;

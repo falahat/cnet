@@ -8,10 +8,12 @@
 #include "AFMatrix.h"
 #include <iostream>
 
-
+template <size_t LEN_IN, size_t LEN_OUT>
 class Layer {
+/**
+ * Hello!
+ */
 public:
-
     /// The size of the vector that this layer takes as input
     int lenIn;
 
@@ -19,13 +21,13 @@ public:
     int lenOut;
 
     /// The intermediate gradients of the loss, `deltas[i] = d(Error)/d(sum_i)`
-    double* deltas;
+    array<double, LEN_OUT> *deltas;
 
     /// The weights which are multiplied against the input values. This has `lenOut` rows and `lenIn` cols.
-    AFMatrix<double>* weights;
+    AFMatrix<double, LEN_OUT, LEN_IN> *weights;
 
     /// The weight gradients. `weightGradient[i,j] = d(Error)/d(weights[i,j])`. Same shape as `weights`.
-    AFMatrix<double>* weightGradient;
+    AFMatrix<double, LEN_OUT, LEN_IN> *weightGradient;
 
     /// The activation function `g` such that `outputValues = g(weights * InputVals). Note that g takes a vector.
     AFActivationFunction activationFunction;
@@ -42,13 +44,13 @@ public:
         this->lenOut = lenOut;
         this->activationFunction = activationFn;
 
-        if (!(this->deltas = new double[lenOut] )) {// TODO: Correct syntax?
+        if (!(this->deltas = new array<double, LEN_OUT> )) {// TODO: Correct syntax?
             std::cout << "Not enough memory for deltas" << std::endl;
         };
-        if (!(this->weights = new AFMatrix<double>(lenOut, lenIn))) {// TODO: Correct syntax?
+        if (!(this->weights = new AFMatrix<double, LEN_OUT, LEN_IN>())) {// TODO: Correct syntax?
             std::cout << "Not enough memory for weights" << std::endl;
         };
-        if (!(this->weightGradient = new AFMatrix<double>(lenOut, lenIn))) {// TODO: Correct syntax?
+        if (!(this->weightGradient = new AFMatrix<double, LEN_OUT, LEN_IN>()) ) {// TODO: Correct syntax?
             std::cerr << "Not enough memory for weight gradient" << std::endl;
         };
 
@@ -61,7 +63,6 @@ public:
         delete [] this->deltas;
     }
 
-
     void randomizeWeights() {
         for (int i = 0; i < lenIn*lenOut; ++i)
         {
@@ -69,20 +70,17 @@ public:
         }
     }
 
-    double* forwardPass(double* inputVals) {
-        return 0;
+    void forwardPass(array<double, LEN_IN> inputVals, array<double, LEN_OUT> outputVals) {
     }
 
-    double* backpropagate(double* inputVals) {
-        return 0;
+    void backpropagate(array<double, LEN_IN> inputVals, array<double, LEN_OUT> newDeltas) {
     }
 
-    double* backpropagateBase(double* inputVals) {
-        return 0;
+    void backpropagateBase(array<double, LEN_IN> inputVals, array<double, LEN_OUT> newDeltas) {
     }
 
     void updateWeights() {
-        
+
     }
 
 
