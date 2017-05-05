@@ -5,7 +5,7 @@
 #ifndef CNET_NET_H
 #define CNET_NET_H
 
-
+template <class T>
 class Net {
 
 };
