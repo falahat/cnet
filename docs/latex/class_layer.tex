@@ -1,0 +1,185 @@
+\hypertarget{class_layer}{}\section{Layer$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$ Class Template Reference}
+\label{class_layer}\index{Layer$<$ L\+E\+N\+\_\+\+I\+N, L\+E\+N\+\_\+\+O\+U\+T $>$@{Layer$<$ L\+E\+N\+\_\+\+I\+N, L\+E\+N\+\_\+\+O\+U\+T $>$}}
+
+
+{\ttfamily \#include $<$Layer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_layer_a16f07312c7711257ffdefe9d3d51f8b2}{Layer} (int \hyperlink{class_layer_a844e22c542ae02cb475cabb8353300a8}{len\+In}, int \hyperlink{class_layer_ae10a61035ba7a18f9f2a6d1d3ebf9811}{len\+Out}, \hyperlink{class_a_f_activation_function}{A\+F\+Activation\+Function} activation\+Fn)
+\item 
+\hyperlink{class_layer_a3ed1ecdffa6a2bb492aa282f029e85ae}{$\sim$\+Layer} ()
+\item 
+void \hyperlink{class_layer_aee349ae2e2c54fa8079cc564e84cb938}{randomize\+Weights} ()
+\item 
+void \hyperlink{class_layer_adb74d1888a61fe0a0e13cebe9b300bb2}{forward\+Pass} (array$<$ double, L\+E\+N\+\_\+\+IN $>$ input\+Vals, array$<$ double, L\+E\+N\+\_\+\+O\+UT $>$ output\+Vals)
+\item 
+void \hyperlink{class_layer_a7f77b112096ae4aeeddc218f8c6aa707}{backpropagate} (array$<$ double, L\+E\+N\+\_\+\+IN $>$ input\+Vals, array$<$ double, L\+E\+N\+\_\+\+O\+UT $>$ new\+Deltas)
+\item 
+void \hyperlink{class_layer_a9eab88a84b81d25ba8327e94d5a61bd9}{backpropagate\+Base} (array$<$ double, L\+E\+N\+\_\+\+IN $>$ input\+Vals, array$<$ double, L\+E\+N\+\_\+\+O\+UT $>$ new\+Deltas)
+\item 
+void \hyperlink{class_layer_aa490ca327cae4e71d017d444c2c87468}{update\+Weights} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_layer_a844e22c542ae02cb475cabb8353300a8}{len\+In}
+\begin{DoxyCompactList}\small\item\em The size of the vector that this layer takes as input. \end{DoxyCompactList}\item 
+int \hyperlink{class_layer_ae10a61035ba7a18f9f2a6d1d3ebf9811}{len\+Out}
+\begin{DoxyCompactList}\small\item\em The size of the vector that this layer outputs. \end{DoxyCompactList}\item 
+array$<$ double, L\+E\+N\+\_\+\+O\+UT $>$ $\ast$ \hyperlink{class_layer_aeefbb274f205f4960c4a1a3ed5f5d807}{deltas}
+\begin{DoxyCompactList}\small\item\em The intermediate gradients of the loss, {\ttfamily deltas\mbox{[}i\mbox{]} = d(\+Error)/d(sum\+\_\+i)} \end{DoxyCompactList}\item 
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ double, L\+E\+N\+\_\+\+O\+UT, L\+E\+N\+\_\+\+IN $>$ $\ast$ \hyperlink{class_layer_aa362ee5edaf5b0fe8d5d7c4674ded7a1}{weights}
+\begin{DoxyCompactList}\small\item\em The weights which are multiplied against the input values. This has {\ttfamily len\+Out} rows and {\ttfamily len\+In} cols. \end{DoxyCompactList}\item 
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ double, L\+E\+N\+\_\+\+O\+UT, L\+E\+N\+\_\+\+IN $>$ $\ast$ \hyperlink{class_layer_ab4afc6b6fdda2b5fd21621f40be776fd}{weight\+Gradient}
+\begin{DoxyCompactList}\small\item\em The weight gradients. {\ttfamily weight\+Gradient\mbox{[}i,j\mbox{]} = d(\+Error)/d(weights\mbox{[}i,j\mbox{]})}. Same shape as {\ttfamily weights}. \end{DoxyCompactList}\item 
+\hyperlink{class_a_f_activation_function}{A\+F\+Activation\+Function} \hyperlink{class_layer_a53bead8fe194586f9ab2f69b11de3d87}{activation\+Function}
+\begin{DoxyCompactList}\small\item\em The activation function {\ttfamily g} such that `output\+Values = g(weights $\ast$ Input\+Vals). Note that g takes a vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$\newline
+class Layer$<$ L\+E\+N\+\_\+\+I\+N, L\+E\+N\+\_\+\+O\+U\+T $>$}
+
+\begin{DoxyAuthor}{Author}
+Aryan Falahatpisheh 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_layer_a16f07312c7711257ffdefe9d3d51f8b2}\label{class_layer_a16f07312c7711257ffdefe9d3d51f8b2}} 
+\index{Layer@{Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{Layer()}{Layer()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+\hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::\hyperlink{class_layer}{Layer} (\begin{DoxyParamCaption}\item[{int}]{len\+In,  }\item[{int}]{len\+Out,  }\item[{\hyperlink{class_a_f_activation_function}{A\+F\+Activation\+Function}}]{activation\+Fn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em len\+In} & The input length of this layer \\
+\hline
+{\em len\+Out} & The output size of this layer \\
+\hline
+{\em activation\+Fn} & Pass an \hyperlink{class_a_f_activation_function}{A\+F\+Activation\+Function} by value so this layer knows how to calculate output values. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_layer_a3ed1ecdffa6a2bb492aa282f029e85ae}\label{class_layer_a3ed1ecdffa6a2bb492aa282f029e85ae}} 
+\index{Layer@{Layer}!````~Layer@{$\sim$\+Layer}}
+\index{````~Layer@{$\sim$\+Layer}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{$\sim$\+Layer()}{~Layer()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+\hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::$\sim$\hyperlink{class_layer}{Layer} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_layer_a7f77b112096ae4aeeddc218f8c6aa707}\label{class_layer_a7f77b112096ae4aeeddc218f8c6aa707}} 
+\index{Layer@{Layer}!backpropagate@{backpropagate}}
+\index{backpropagate@{backpropagate}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{backpropagate()}{backpropagate()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+void \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::backpropagate (\begin{DoxyParamCaption}\item[{array$<$ double, L\+E\+N\+\_\+\+IN $>$}]{input\+Vals,  }\item[{array$<$ double, L\+E\+N\+\_\+\+O\+UT $>$}]{new\+Deltas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_layer_a9eab88a84b81d25ba8327e94d5a61bd9}\label{class_layer_a9eab88a84b81d25ba8327e94d5a61bd9}} 
+\index{Layer@{Layer}!backpropagate\+Base@{backpropagate\+Base}}
+\index{backpropagate\+Base@{backpropagate\+Base}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{backpropagate\+Base()}{backpropagateBase()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+void \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::backpropagate\+Base (\begin{DoxyParamCaption}\item[{array$<$ double, L\+E\+N\+\_\+\+IN $>$}]{input\+Vals,  }\item[{array$<$ double, L\+E\+N\+\_\+\+O\+UT $>$}]{new\+Deltas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_layer_adb74d1888a61fe0a0e13cebe9b300bb2}\label{class_layer_adb74d1888a61fe0a0e13cebe9b300bb2}} 
+\index{Layer@{Layer}!forward\+Pass@{forward\+Pass}}
+\index{forward\+Pass@{forward\+Pass}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{forward\+Pass()}{forwardPass()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+void \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::forward\+Pass (\begin{DoxyParamCaption}\item[{array$<$ double, L\+E\+N\+\_\+\+IN $>$}]{input\+Vals,  }\item[{array$<$ double, L\+E\+N\+\_\+\+O\+UT $>$}]{output\+Vals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_layer_aee349ae2e2c54fa8079cc564e84cb938}\label{class_layer_aee349ae2e2c54fa8079cc564e84cb938}} 
+\index{Layer@{Layer}!randomize\+Weights@{randomize\+Weights}}
+\index{randomize\+Weights@{randomize\+Weights}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{randomize\+Weights()}{randomizeWeights()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+void \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::randomize\+Weights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_layer_aa490ca327cae4e71d017d444c2c87468}\label{class_layer_aa490ca327cae4e71d017d444c2c87468}} 
+\index{Layer@{Layer}!update\+Weights@{update\+Weights}}
+\index{update\+Weights@{update\+Weights}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{update\+Weights()}{updateWeights()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+void \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::update\+Weights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_layer_a53bead8fe194586f9ab2f69b11de3d87}\label{class_layer_a53bead8fe194586f9ab2f69b11de3d87}} 
+\index{Layer@{Layer}!activation\+Function@{activation\+Function}}
+\index{activation\+Function@{activation\+Function}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{activation\+Function}{activationFunction}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+\hyperlink{class_a_f_activation_function}{A\+F\+Activation\+Function} \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::activation\+Function}
+
+
+
+The activation function {\ttfamily g} such that `output\+Values = g(weights $\ast$ Input\+Vals). Note that g takes a vector. 
+
+\mbox{\Hypertarget{class_layer_aeefbb274f205f4960c4a1a3ed5f5d807}\label{class_layer_aeefbb274f205f4960c4a1a3ed5f5d807}} 
+\index{Layer@{Layer}!deltas@{deltas}}
+\index{deltas@{deltas}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{deltas}{deltas}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+array$<$double, L\+E\+N\+\_\+\+O\+UT$>$$\ast$ \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::deltas}
+
+
+
+The intermediate gradients of the loss, {\ttfamily deltas\mbox{[}i\mbox{]} = d(\+Error)/d(sum\+\_\+i)} 
+
+\mbox{\Hypertarget{class_layer_a844e22c542ae02cb475cabb8353300a8}\label{class_layer_a844e22c542ae02cb475cabb8353300a8}} 
+\index{Layer@{Layer}!len\+In@{len\+In}}
+\index{len\+In@{len\+In}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{len\+In}{lenIn}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+int \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::len\+In}
+
+
+
+The size of the vector that this layer takes as input. 
+
+Hello! \mbox{\Hypertarget{class_layer_ae10a61035ba7a18f9f2a6d1d3ebf9811}\label{class_layer_ae10a61035ba7a18f9f2a6d1d3ebf9811}} 
+\index{Layer@{Layer}!len\+Out@{len\+Out}}
+\index{len\+Out@{len\+Out}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{len\+Out}{lenOut}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+int \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::len\+Out}
+
+
+
+The size of the vector that this layer outputs. 
+
+\mbox{\Hypertarget{class_layer_ab4afc6b6fdda2b5fd21621f40be776fd}\label{class_layer_ab4afc6b6fdda2b5fd21621f40be776fd}} 
+\index{Layer@{Layer}!weight\+Gradient@{weight\+Gradient}}
+\index{weight\+Gradient@{weight\+Gradient}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{weight\+Gradient}{weightGradient}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$double, L\+E\+N\+\_\+\+O\+UT, L\+E\+N\+\_\+\+IN$>$$\ast$ \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::weight\+Gradient}
+
+
+
+The weight gradients. {\ttfamily weight\+Gradient\mbox{[}i,j\mbox{]} = d(\+Error)/d(weights\mbox{[}i,j\mbox{]})}. Same shape as {\ttfamily weights}. 
+
+\mbox{\Hypertarget{class_layer_aa362ee5edaf5b0fe8d5d7c4674ded7a1}\label{class_layer_aa362ee5edaf5b0fe8d5d7c4674ded7a1}} 
+\index{Layer@{Layer}!weights@{weights}}
+\index{weights@{weights}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{weights}{weights}}
+{\footnotesize\ttfamily template$<$size\+\_\+t L\+E\+N\+\_\+\+IN, size\+\_\+t L\+E\+N\+\_\+\+O\+UT$>$ \\
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$double, L\+E\+N\+\_\+\+O\+UT, L\+E\+N\+\_\+\+IN$>$$\ast$ \hyperlink{class_layer}{Layer}$<$ L\+E\+N\+\_\+\+IN, L\+E\+N\+\_\+\+O\+UT $>$\+::weights}
+
+
+
+The weights which are multiplied against the input values. This has {\ttfamily len\+Out} rows and {\ttfamily len\+In} cols. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{_layer_8h}{Layer.\+h}\end{DoxyCompactItemize}

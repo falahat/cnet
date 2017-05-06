@@ -1,0 +1,351 @@
+\hypertarget{class_a_f_matrix}{}\section{A\+F\+Matrix$<$ T, R\+O\+WS, C\+O\+LS $>$ Class Template Reference}
+\label{class_a_f_matrix}\index{A\+F\+Matrix$<$ T, R\+O\+W\+S, C\+O\+L\+S $>$@{A\+F\+Matrix$<$ T, R\+O\+W\+S, C\+O\+L\+S $>$}}
+
+
+{\ttfamily \#include $<$A\+F\+Matrix.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_f_matrix_a6ccd1bdad16dfa7ef38db5e0fc4e0e2b}{A\+F\+Matrix} ()
+\item 
+\hyperlink{class_a_f_matrix_ae76418eb02f3f9b84ee13aebaeca564a}{A\+F\+Matrix} (\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$copy\+From)
+\item 
+\hyperlink{class_a_f_matrix_adf63ea3dbdc05d678371099310993471}{A\+F\+Matrix} (array$<$ T, R\+O\+WS $\ast$C\+O\+LS $>$ $\ast$copy\+From)
+\item 
+\hyperlink{class_a_f_matrix_a657752979ec2d7bad591e3def1f4bcc7}{$\sim$\+A\+F\+Matrix} ()
+\item 
+T \hyperlink{class_a_f_matrix_a1363727b7a4b97bad5e7c9d9552d9cf5}{get\+Index} (int row, int col)
+\item 
+T \hyperlink{class_a_f_matrix_a0e36b5c6f333ac3d6508d5b00c92852c}{get\+Value} (int row, int col)
+\item 
+{\footnotesize template$<$size\+\_\+t O\+T\+H\+E\+R\+\_\+\+C\+O\+LS$>$ }\\void \hyperlink{class_a_f_matrix_a2c3183f964593d1bc52f6dc09429dbcc}{inner\+Product} (\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, C\+O\+LS, O\+T\+H\+E\+R\+\_\+\+C\+O\+LS $>$ $\ast$other, \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, O\+T\+H\+E\+R\+\_\+\+C\+O\+LS $>$ $\ast$out)
+\item 
+void \hyperlink{class_a_f_matrix_a9f0e4b22b84400a30d275be6bd67d128}{inner\+Product} (array$<$ T, R\+O\+WS $>$ $\ast$other, \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, C\+O\+LS, 1 $>$ $\ast$out)
+\item 
+void \hyperlink{class_a_f_matrix_ad2763218bc42414ca32cdecba3b88be2}{inner\+Product} (array$<$ T, R\+O\+WS $>$ $\ast$other, array$<$ T, C\+O\+LS $>$ $\ast$out)
+\item 
+void \hyperlink{class_a_f_matrix_ae087fb4a064d256eac51513863b06fa2}{transpose} (\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, C\+O\+LS, R\+O\+WS $>$ $\ast$out)
+\item 
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix} $\ast$ \hyperlink{class_a_f_matrix_a5f20b3ee2b16cbb9b9b39215a81d3aa1}{transpose} ()
+\item 
+void \hyperlink{class_a_f_matrix_a905b58769fceaf03972f7ea179ea3934}{scale} (double factor, \hyperlink{class_a_f_matrix}{A\+F\+Matrix} $\ast$out)
+\item 
+void \hyperlink{class_a_f_matrix_aad31e9f92bfa3323313b153fddcd676b}{add} (\hyperlink{class_a_f_matrix}{A\+F\+Matrix} $\ast$other, \hyperlink{class_a_f_matrix}{A\+F\+Matrix} $\ast$out)
+\item 
+void \hyperlink{class_a_f_matrix_a8826fb01197325729f0516721e14027f}{subtract} (\hyperlink{class_a_f_matrix}{A\+F\+Matrix} $\ast$other, \hyperlink{class_a_f_matrix}{A\+F\+Matrix} $\ast$out)
+\item 
+array$<$ T, R\+O\+WS $\ast$C\+O\+LS $>$ $\ast$ \hyperlink{class_a_f_matrix_a7e3659073ff6da5ffd02de48156decf5}{to\+Array} ()
+\item 
+void \hyperlink{class_a_f_matrix_ad44dc733a8bcf412437d0beebd458176}{copy\+Values} (\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$dst, \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$src)
+\item 
+void \hyperlink{class_a_f_matrix_ac655b95d85d38a72621381b5cf89df83}{copy\+Values} (\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$dst, array$<$ T, R\+O\+WS $\ast$C\+O\+LS $>$ $\ast$src)
+\item 
+{\footnotesize template$<$typename T1 , size\+\_\+t N$>$ }\\void \hyperlink{class_a_f_matrix_ac8930dd6d5ea5167fed5c768b96635f7}{copy\+Values} (array$<$ T1, N $>$ $\ast$dst, array$<$ T1, N $>$ $\ast$src)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_a_f_matrix_a8e18ed7d084bfa8b040f7abd89918b42}{num\+Rows}
+\item 
+int \hyperlink{class_a_f_matrix_aed28746540fcca94d5d1448b098b4ecc}{num\+Cols}
+\item 
+array$<$ T, R\+O\+WS $\ast$C\+O\+LS $>$ $\ast$ \hyperlink{class_a_f_matrix_abca47cc50d551c1e8d79559773729e87}{vals}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_a_f_matrix_a6ccd1bdad16dfa7ef38db5e0fc4e0e2b}\label{class_a_f_matrix_a6ccd1bdad16dfa7ef38db5e0fc4e0e2b}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!A\+F\+Matrix@{A\+F\+Matrix}}
+\index{A\+F\+Matrix@{A\+F\+Matrix}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{A\+F\+Matrix()}{AFMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::\hyperlink{class_a_f_matrix}{A\+F\+Matrix} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_a_f_matrix_ae76418eb02f3f9b84ee13aebaeca564a}\label{class_a_f_matrix_ae76418eb02f3f9b84ee13aebaeca564a}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!A\+F\+Matrix@{A\+F\+Matrix}}
+\index{A\+F\+Matrix@{A\+F\+Matrix}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{A\+F\+Matrix()}{AFMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::\hyperlink{class_a_f_matrix}{A\+F\+Matrix} (\begin{DoxyParamCaption}\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$}]{copy\+From }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Creates a new copy and copies data. \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]Make this effecient and non-\/copying \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em copy\+From} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_adf63ea3dbdc05d678371099310993471}\label{class_a_f_matrix_adf63ea3dbdc05d678371099310993471}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!A\+F\+Matrix@{A\+F\+Matrix}}
+\index{A\+F\+Matrix@{A\+F\+Matrix}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{A\+F\+Matrix()}{AFMatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::\hyperlink{class_a_f_matrix}{A\+F\+Matrix} (\begin{DoxyParamCaption}\item[{array$<$ T, R\+O\+WS $\ast$C\+O\+LS $>$ $\ast$}]{copy\+From }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Creates a new copy and copies data from {\ttfamily copy\+From}. \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]Make this effecient and non-\/copying \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em copy\+From} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_a657752979ec2d7bad591e3def1f4bcc7}\label{class_a_f_matrix_a657752979ec2d7bad591e3def1f4bcc7}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!````~A\+F\+Matrix@{$\sim$\+A\+F\+Matrix}}
+\index{````~A\+F\+Matrix@{$\sim$\+A\+F\+Matrix}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{$\sim$\+A\+F\+Matrix()}{~AFMatrix()}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::$\sim$\hyperlink{class_a_f_matrix}{A\+F\+Matrix} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_f_matrix_aad31e9f92bfa3323313b153fddcd676b}\label{class_a_f_matrix_aad31e9f92bfa3323313b153fddcd676b}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!add@{add}}
+\index{add@{add}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::add (\begin{DoxyParamCaption}\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$}]{other,  }\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Adds two matrices and writes result into {\ttfamily out} 
+\begin{DoxyParams}{Parameters}
+{\em other} & -\/ The matrix to add to {\ttfamily this}. \\
+\hline
+{\em out} & -\/ The matrix to write the result to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+requires 
+\end{DoxyWarning}
+\mbox{\Hypertarget{class_a_f_matrix_ad44dc733a8bcf412437d0beebd458176}\label{class_a_f_matrix_ad44dc733a8bcf412437d0beebd458176}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!copy\+Values@{copy\+Values}}
+\index{copy\+Values@{copy\+Values}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{copy\+Values()}{copyValues()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::copy\+Values (\begin{DoxyParamCaption}\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$}]{dst,  }\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Copies values from {\ttfamily src} to {\ttfamily dst}. The two matrices will be exactly identitcal. 
+\begin{DoxyParams}{Parameters}
+{\em dst} & \\
+\hline
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_ac655b95d85d38a72621381b5cf89df83}\label{class_a_f_matrix_ac655b95d85d38a72621381b5cf89df83}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!copy\+Values@{copy\+Values}}
+\index{copy\+Values@{copy\+Values}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{copy\+Values()}{copyValues()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::copy\+Values (\begin{DoxyParamCaption}\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$}]{dst,  }\item[{array$<$ T, R\+O\+WS $\ast$C\+O\+LS $>$ $\ast$}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Copies data from the {\ttfamily src} array to {\ttfamily dst-\/$>$vals}. \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Clarify how things work if matrices can be row-\/major or column-\/major. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em dst} & \\
+\hline
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_ac8930dd6d5ea5167fed5c768b96635f7}\label{class_a_f_matrix_ac8930dd6d5ea5167fed5c768b96635f7}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!copy\+Values@{copy\+Values}}
+\index{copy\+Values@{copy\+Values}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{copy\+Values()}{copyValues()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+template$<$typename T1 , size\+\_\+t N$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::copy\+Values (\begin{DoxyParamCaption}\item[{array$<$ T1, N $>$ $\ast$}]{dst,  }\item[{array$<$ T1, N $>$ $\ast$}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Copies values from {\ttfamily src} to {\ttfamily dst}. The arrays will be identical afterwards. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em N} & -\/ The size of the arrays, must be equal \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em dst} & \\
+\hline
+{\em src} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_a1363727b7a4b97bad5e7c9d9552d9cf5}\label{class_a_f_matrix_a1363727b7a4b97bad5e7c9d9552d9cf5}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!get\+Index@{get\+Index}}
+\index{get\+Index@{get\+Index}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{get\+Index()}{getIndex()}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+T \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::get\+Index (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & \\
+\hline
+{\em col} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index {\ttfamily i} such that {\ttfamily this-\/$>$vals\mbox{[}i\mbox{]} = (row, col)}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_f_matrix_a0e36b5c6f333ac3d6508d5b00c92852c}\label{class_a_f_matrix_a0e36b5c6f333ac3d6508d5b00c92852c}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{get\+Value()}{getValue()}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+T \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::get\+Value (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em row} & \\
+\hline
+{\em col} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index {\ttfamily i} such that {\ttfamily this-\/$>$vals\mbox{[}i\mbox{]} = (row, col)}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_f_matrix_a2c3183f964593d1bc52f6dc09429dbcc}\label{class_a_f_matrix_a2c3183f964593d1bc52f6dc09429dbcc}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!inner\+Product@{inner\+Product}}
+\index{inner\+Product@{inner\+Product}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{inner\+Product()}{innerProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+template$<$size\+\_\+t O\+T\+H\+E\+R\+\_\+\+C\+O\+LS$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::inner\+Product (\begin{DoxyParamCaption}\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, C\+O\+LS, O\+T\+H\+E\+R\+\_\+\+C\+O\+LS $>$ $\ast$}]{other,  }\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, O\+T\+H\+E\+R\+\_\+\+C\+O\+LS $>$ $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other matrix to multiply this against \\
+\hline
+{\em out} & The matrix to write the output values \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_a9f0e4b22b84400a30d275be6bd67d128}\label{class_a_f_matrix_a9f0e4b22b84400a30d275be6bd67d128}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!inner\+Product@{inner\+Product}}
+\index{inner\+Product@{inner\+Product}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{inner\+Product()}{innerProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::inner\+Product (\begin{DoxyParamCaption}\item[{array$<$ T, R\+O\+WS $>$ $\ast$}]{other,  }\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, C\+O\+LS, 1 $>$ $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Multiplies a matrix on the left against a array on the right. \begin{DoxyPrecond}{Precondition}
+this.\+num\+Rows = other.\+size() 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other array to inner product with. \\
+\hline
+{\em out} & Output matrix to write values to. It has this.\+num\+Rows rows and 1 column. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_ad2763218bc42414ca32cdecba3b88be2}\label{class_a_f_matrix_ad2763218bc42414ca32cdecba3b88be2}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!inner\+Product@{inner\+Product}}
+\index{inner\+Product@{inner\+Product}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{inner\+Product()}{innerProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::inner\+Product (\begin{DoxyParamCaption}\item[{array$<$ T, R\+O\+WS $>$ $\ast$}]{other,  }\item[{array$<$ T, C\+O\+LS $>$ $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Multiplies a matrix on the left against a vector on the right. \begin{DoxyPrecond}{Precondition}
+this.\+num\+Rows = other.\+size() 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other vector to inner product with. \\
+\hline
+{\em out} & Output matrix to write values to. It has this.\+num\+Rows rows and 1 column. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_a905b58769fceaf03972f7ea179ea3934}\label{class_a_f_matrix_a905b58769fceaf03972f7ea179ea3934}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!scale@{scale}}
+\index{scale@{scale}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{scale()}{scale()}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::scale (\begin{DoxyParamCaption}\item[{double}]{factor,  }\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Multiplies all entries of a matrix by {\ttfamily factor} 
+\begin{DoxyParams}{Parameters}
+{\em factor} & \\
+\hline
+{\em out} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_a8826fb01197325729f0516721e14027f}\label{class_a_f_matrix_a8826fb01197325729f0516721e14027f}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!subtract@{subtract}}
+\index{subtract@{subtract}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{subtract()}{subtract()}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::subtract (\begin{DoxyParamCaption}\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$}]{other,  }\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$ $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Subtracts two matrices and writes result into {\ttfamily out} 
+\begin{DoxyParams}{Parameters}
+{\em other} & -\/ The matrix to subtract from {\ttfamily this}. \\
+\hline
+{\em out} & -\/ The matrix to write the result to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_a7e3659073ff6da5ffd02de48156decf5}\label{class_a_f_matrix_a7e3659073ff6da5ffd02de48156decf5}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!to\+Array@{to\+Array}}
+\index{to\+Array@{to\+Array}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{to\+Array()}{toArray()}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+array$<$T, R\+O\+WS$\ast$C\+O\+LS$>$$\ast$ \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::to\+Array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Dynamically makes a new vector that is {\ttfamily this.\+num\+Rows $\ast$ this.\+num\+Cols} elements long and copies {\ttfamily this.\+vals} into it. \begin{DoxyReturn}{Returns}
+The new dynamically allocated vector (we call {\ttfamily reserve()} on it though). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_f_matrix_ae087fb4a064d256eac51513863b06fa2}\label{class_a_f_matrix_ae087fb4a064d256eac51513863b06fa2}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!transpose@{transpose}}
+\index{transpose@{transpose}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{transpose()}{transpose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+void \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::transpose (\begin{DoxyParamCaption}\item[{\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, C\+O\+LS, R\+O\+WS $>$ $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Transposes this matrix and writes result to out 
+\begin{DoxyParams}{Parameters}
+{\em out} & -\/ Matrix that has this.\+num\+Cols rows and this.\+num\+Rows cols. The result will be written to out. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_f_matrix_a5f20b3ee2b16cbb9b9b39215a81d3aa1}\label{class_a_f_matrix_a5f20b3ee2b16cbb9b9b39215a81d3aa1}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!transpose@{transpose}}
+\index{transpose@{transpose}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{transpose()}{transpose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+\hyperlink{class_a_f_matrix}{A\+F\+Matrix}$\ast$ \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::transpose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyReturn}{Returns}
+A new, dynamically allocated matrix that is the transpose of this 
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Remember to delete the returned Matrix when done 
+\end{DoxyWarning}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_f_matrix_aed28746540fcca94d5d1448b098b4ecc}\label{class_a_f_matrix_aed28746540fcca94d5d1448b098b4ecc}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!num\+Cols@{num\+Cols}}
+\index{num\+Cols@{num\+Cols}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{num\+Cols}{numCols}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+int \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::num\+Cols}
+
+\mbox{\Hypertarget{class_a_f_matrix_a8e18ed7d084bfa8b040f7abd89918b42}\label{class_a_f_matrix_a8e18ed7d084bfa8b040f7abd89918b42}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!num\+Rows@{num\+Rows}}
+\index{num\+Rows@{num\+Rows}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{num\+Rows}{numRows}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+int \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::num\+Rows}
+
+\mbox{\Hypertarget{class_a_f_matrix_abca47cc50d551c1e8d79559773729e87}\label{class_a_f_matrix_abca47cc50d551c1e8d79559773729e87}} 
+\index{A\+F\+Matrix@{A\+F\+Matrix}!vals@{vals}}
+\index{vals@{vals}!A\+F\+Matrix@{A\+F\+Matrix}}
+\subsubsection{\texorpdfstring{vals}{vals}}
+{\footnotesize\ttfamily template$<$class T, size\+\_\+t R\+O\+WS, size\+\_\+t C\+O\+LS$>$ \\
+array$<$T, R\+O\+WS$\ast$C\+O\+LS$>$$\ast$ \hyperlink{class_a_f_matrix}{A\+F\+Matrix}$<$ T, R\+O\+WS, C\+O\+LS $>$\+::vals}
+
+This is the values of the matrix stored in one long array regardless of the matrix\textquotesingle{}s actual shape. The values are stored in row-\/by-\/row
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]Is vals dynamically allocated or what?? $\vert$ a b $\vert$~\newline
+$\vert$ c d $\vert$ = \mbox{[}a b c d e f\mbox{]}~\newline
+$\vert$ e f $\vert$~\newline
+\end{DoxyRefDesc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{_a_f_matrix_8h}{A\+F\+Matrix.\+h}\end{DoxyCompactItemize}

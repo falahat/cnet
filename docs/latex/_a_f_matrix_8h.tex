@@ -1,0 +1,68 @@
+\hypertarget{_a_f_matrix_8h}{}\section{src/\+A\+F\+Matrix.h File Reference}
+\label{_a_f_matrix_8h}\index{src/\+A\+F\+Matrix.\+h@{src/\+A\+F\+Matrix.\+h}}
+{\ttfamily \#include $<$array$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_a_f_matrix}{A\+F\+Matrix$<$ T, R\+O\+W\+S, C\+O\+L\+S $>$}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , size\+\_\+t N$>$ }\\T \hyperlink{_a_f_matrix_8h_aab0242d9abf78560470c22023ee5d701}{vector\+Inner\+Product} (array$<$ T, N $>$ $\ast$vec1, array$<$ T, N $>$ $\ast$vec2)
+\item 
+{\footnotesize template$<$typename T , size\+\_\+t N$>$ }\\T \hyperlink{_a_f_matrix_8h_a3642605226af032c63df0ec34ae85cf6}{vector\+Inner\+Product} (array$<$ T, N $>$ $\ast$vec1, array$<$ T, N $>$ $\ast$vec2, int start1, int end1, int start2, int end2)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_a_f_matrix_8h_aab0242d9abf78560470c22023ee5d701}\label{_a_f_matrix_8h_aab0242d9abf78560470c22023ee5d701}} 
+\index{A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}!vector\+Inner\+Product@{vector\+Inner\+Product}}
+\index{vector\+Inner\+Product@{vector\+Inner\+Product}!A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}}
+\subsubsection{\texorpdfstring{vector\+Inner\+Product()}{vectorInnerProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , size\+\_\+t N$>$ \\
+T vector\+Inner\+Product (\begin{DoxyParamCaption}\item[{array$<$ T, N $>$ $\ast$}]{vec1,  }\item[{array$<$ T, N $>$ $\ast$}]{vec2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data in the vectors being multiplies. Probably a {\ttfamily double}. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em vec1} & -\/ Left vector \\
+\hline
+{\em vec2} & -\/ Right vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The dot product (inner product) of two vectors. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+vec1 and vec2 have the same length. 
+\end{DoxyPrecond}
+\mbox{\Hypertarget{_a_f_matrix_8h_a3642605226af032c63df0ec34ae85cf6}\label{_a_f_matrix_8h_a3642605226af032c63df0ec34ae85cf6}} 
+\index{A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}!vector\+Inner\+Product@{vector\+Inner\+Product}}
+\index{vector\+Inner\+Product@{vector\+Inner\+Product}!A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}}
+\subsubsection{\texorpdfstring{vector\+Inner\+Product()}{vectorInnerProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , size\+\_\+t N$>$ \\
+T vector\+Inner\+Product (\begin{DoxyParamCaption}\item[{array$<$ T, N $>$ $\ast$}]{vec1,  }\item[{array$<$ T, N $>$ $\ast$}]{vec2,  }\item[{int}]{start1,  }\item[{int}]{end1,  }\item[{int}]{start2,  }\item[{int}]{end2 }\end{DoxyParamCaption})}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of data in the vectors being multiplies. Probably a {\ttfamily double}. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em vec1} & -\/ Left vector \\
+\hline
+{\em vec2} & -\/ Right vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The dot product (inner product) of two vectors. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+vec1 and vec2 have the same length. 
+\end{DoxyPrecond}
