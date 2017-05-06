@@ -442,7 +442,7 @@ class FormatEpochTimeInMillisAsIso8601Test : public Test {
     // tzset() distinguishes between the TZ variable being present and empty
     // and not being present, so we have to consider the case of time_zone
     // being NULL.
-#if _MSC_VER || GTEST_OS_WINDOWS_MINGW
+#if _MSC_VER
     // ...Unless it's MSVC, whose standard library's _putenv doesn't
     // distinguish between an empty and a missing variable.
     const std::string env_var =
@@ -6411,7 +6411,7 @@ class FlagfileTest : public InitGoogleTestTest {
     InitGoogleTestTest::SetUp();
 
     testdata_path_.Set(internal::FilePath(
-        testing::TempDir() + internal::GetCurrentExecutableName().string() +
+        internal::TempDir() + internal::GetCurrentExecutableName().string() +
         "_flagfile_test"));
     testing::internal::posix::RmDir(testdata_path_.c_str());
     EXPECT_TRUE(testdata_path_.CreateFolder());
