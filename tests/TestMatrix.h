@@ -41,14 +41,13 @@ TEST (TestMatrix, CreateMatrixFromValues) {
     (*ogVals)[3] = 4.0;
     (*ogVals)[4] = 5.0;
     (*ogVals)[5] = 6.0;
-    (*ogVals)[6] = 7.0;
     AFMatrix<double, 2, 3> *mat = new AFMatrix<double, 2, 3>(ogVals);
 
     // Basic Val Checks
     EXPECT_EQ(mat->numRows, 2);
     EXPECT_EQ(mat->numCols, 3);
     EXPECT_DOUBLE_EQ(mat->getValue(0,0), 1.0);
-    EXPECT_DOUBLE_EQ(mat->getValue(1,2), 7.0);
+    EXPECT_DOUBLE_EQ(mat->getValue(1,2), 6.0);
 
     // Mutate/Delete and check we copied ogValues, not just passed a reference
     (*ogVals)[0] = -1;
@@ -112,9 +111,9 @@ TEST (TestMatrix, VectorInnerProduct) {
 TEST (TestMatrix, VectorInnerProductBounded) {
     array<double, 3> vec1 = {1.0, 1.0, 3.0};
     array<double, 3> vec2 = {1.0, 20.0, 10.0};
-    double outVal1 = vectorInnerProductBounded(&vec1, &vec2, 1, 2, 1, 2);
+    double outVal1 = vectorInnerProductBounded(&vec1, &vec2, 1, 1, 1);
     EXPECT_DOUBLE_EQ(outVal1, 20.0);
-    double outVal2 = vectorInnerProductBounded(&vec1, &vec2, 1, 3, 1, 3);
+    double outVal2 = vectorInnerProductBounded(&vec1, &vec2, 1, 1, 2);
     EXPECT_DOUBLE_EQ(outVal2, 50.0);
 }
 

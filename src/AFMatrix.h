@@ -5,6 +5,7 @@
 #ifndef CNET_AFMATRIX_H
 #define CNET_AFMATRIX_H
 
+#define ACCEPTABLE_DOUBLE_DIFF 0.000000001
 #include <array>
 using namespace std;
 
@@ -28,8 +29,8 @@ public:
 
     AFMatrix() {
         this->numRows = ROWS;
-        this->numCols = ROWS;
-        this->vals = new T[ROWS*COLS];
+        this->numCols = COLS;
+        this->vals = new array<T, ROWS*COLS>();
     }
 
 
@@ -39,7 +40,9 @@ public:
      * @param copyFrom
      */
     AFMatrix(AFMatrix<T, ROWS, COLS> *copyFrom) {
-        AFMatrix();
+        this->numRows = ROWS;
+        this->numCols = COLS;
+        this->vals = new array<T, ROWS*COLS>();
         this->copyValues(this, copyFrom); // Copies the values from `copyFrom` to itself
     }
 
@@ -48,8 +51,11 @@ public:
      * @todo Make this effecient and non-copying
      * @param copyFrom
      */
-    AFMatrix(array<T, ROWS*COLS> *copyFrom) {
-        this->copyValues(this, copyFrom); // Copies the values from `copyFrom` to itself
+    AFMatrix(array<T, ROWS*COLS> *copyFromArray) {
+        this->numRows = ROWS;
+        this->numCols = COLS;
+        this->vals = new array<T, ROWS*COLS>();
+        this->copyValues(this->vals, copyFromArray); // Copies the values from `copyFrom` to itself
     }
 
     ~AFMatrix() {
@@ -61,8 +67,8 @@ public:
      * @param col
      * @return the index `i` such that `this->vals[i] = (row, col)`.
      */
-    inline T getIndex(int row, int col) {
-        return col * this->numCols + row;
+    inline int getIndex(int row, int col) {
+        return row * this->numCols + col;
     }
 
     /**
@@ -71,7 +77,16 @@ public:
      * @return the index `i` such that `this->vals[i] = (row, col)`.
      */
     inline T getValue(int row, int col) {
-        return this->vals[this->getIndex(row, col)];
+        return (*this->vals)[this->getIndex(row, col)];
+    }
+
+    /**
+     * @param row
+     * @param col
+     * @param newValue The new value to put in this row/col
+     */
+    void setValue(int row, int col, T newValue) {
+        (*this->vals)[this->getIndex(row, col)] = newValue;
     }
 
     /**
@@ -85,12 +100,12 @@ public:
     }
 
     /**
-     * Multiplies a matrix on the left against a array on the right.
-     * @pre this.numRows = other.size()
+     * Multiplies a matrix on the left against a array on the right. The array on the right is treated as a column vector.
+     * @pre this.numCols = other.size()
      * @param other The other array to inner product with.
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
-    void innerProduct(array<T, ROWS> *other,  AFMatrix<T, COLS, 1> *out) {
+    void innerProduct(array<T, COLS> *other,  AFMatrix<T, ROWS, 1> *out) {
     }
 
     /**
@@ -99,7 +114,7 @@ public:
      * @param other The other vector to inner product with.
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
-    void innerProduct(array<T, ROWS> *other,  array<T, COLS> *out) {
+    void innerProduct(array<T, COLS> *other,  array<T, ROWS> *out) {
     }
 
     /**
@@ -127,7 +142,7 @@ public:
     void scale(double factor, AFMatrix* out) {
         for (int col = 0; col < COLS; ++col) {
             for (int row = 0; row < ROWS; ++row) {
-                out->vals[out->getIndex(row, col)] = factor * this->getValue(row, col);
+                out->setValue(row, col, factor * this->getValue(row, col));
             }
         }
     }
@@ -138,10 +153,11 @@ public:
      * @param out - The matrix to write the result to
      * @warning requires
      */
-    void add(AFMatrix* other, AFMatrix* out) {
+    void add(AFMatrix<T, ROWS, COLS> *other, AFMatrix<T, ROWS, COLS> *out) {
         for (int col = 0; col < COLS; ++col) {
             for (int row = 0; row < ROWS; ++row) {
-                out->vals[out->getIndex(row, col)] = this->getValue(row, col) + other->getValue(row, col);
+                T val = this->getValue(row, col) + other->getValue(row, col);
+                out->setValue(row, col, val);
             }
         }
     }
@@ -151,10 +167,11 @@ public:
      * @param other - The matrix to subtract from `this`.
      * @param out - The matrix to write the result to
      */
-    void subtract(AFMatrix* other, AFMatrix* out) {
+    void subtract(AFMatrix<T, ROWS, COLS> *other, AFMatrix<T, ROWS, COLS> *out) {
         for (int col = 0; col < COLS; ++col) {
             for (int row = 0; row < ROWS; ++row) {
-                out->vals[out->getIndex(row, col)] = this->getValue(row, col) - other->getValue(row, col);
+                T val = this->getValue(row, col) - other->getValue(row, col);
+                out->setValue(row, col, val);
             }
         }
     }
@@ -198,10 +215,41 @@ public:
     template <typename T1, size_t N>
     void copyValues(array<T1, N> *dst, array<T1, N> *src) {
         for (int i = 0; i < N; ++i) {
-            dst[i] = src[i];
+            (*dst)[i] = (*src)[i];
         }
     }
+
+    bool equals(AFMatrix<T, ROWS, COLS> *otherMat) {
+        for (int i = 0; i < ROWS; ++i) {
+            for (int j = 0; j < COLS; ++j) {
+                // TODO: This assumes doubles
+                if (this->getValue(i, j) - otherMat->getValue(i, j) >= ACCEPTABLE_DOUBLE_DIFF) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 };
+
+
+
+template <typename T, size_t N>
+/**
+ * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
+ * @param vec1 - Left vector
+ * @param vec2 - Right vector
+ * @return The dot product (inner product) of two vectors.
+ * @pre vec1 and vec2 have the same length.
+ */
+T vectorInnerProductBounded(array<T, N> *vec1, array<T, N> *vec2, size_t start1, size_t start2, size_t len) {
+    // TODO: Add bound checking?
+    T ans;
+    for (int offset = 0; offset < len ; ++offset) {
+        ans += (*vec1)[start1 + offset] * (*vec2)[start2 + offset];
+    }
+    return ans;
+}
 
 // TODO: integer matrices multiplied by double matrices though?
 template <typename T, size_t N>
@@ -212,27 +260,18 @@ template <typename T, size_t N>
  * @return The dot product (inner product) of two vectors.
  * @pre vec1 and vec2 have the same length.
  */
-inline T vectorInnerProduct(array<T, N> *vec1, array<T, N> *vec2) {
-    return vectorInnerProduct(vec1, vec2, 0, N, 0, N);
+T vectorInnerProduct(array<T, N> *vec1, array<T, N> *vec2) {
+    return vectorInnerProductBounded(vec1, vec2, 0ul, 0ul, N);
 }
 
-template <typename T, size_t N>
-/**
- * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
- * @param vec1 - Left vector
- * @param vec2 - Right vector
- * @return The dot product (inner product) of two vectors.
- * @pre vec1 and vec2 have the same length.
- */
-T vectorInnerProduct(array<T, N> *vec1, array<T, N> *vec2, int start1, int end1, int start2, int end2) {
-    // TODO: Add bound checking?
-    T ans;
-    for (int i = start1; i < end1; ++i) {
-        for (int j = start2; j < end2; ++j) {
-            ans += (*vec1)[i] * (*vec2)[j];
+
+template <size_t N>
+bool doubleVectorEqual(array<double, N> *vec1, array<double, N> *vec2) {
+    for (int i = 0; i < N; ++i) {
+        if ((*vec1)[i] - (*vec2)[i] >= ACCEPTABLE_DOUBLE_DIFF) {
+            return false;
         }
     }
-    return ans;
+    return true;
 }
-
 #endif //CNET_AFMATRIX_H
