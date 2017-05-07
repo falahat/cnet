@@ -63,4 +63,41 @@ public:
     }
 };
 
+
+template <typename T, size_t N, size_t M>
+class AFLossFunction {
+public:
+    void evaluate(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
+    }
+
+    void derivative(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
+    }
+};
+
+
+template <typename T, size_t N, size_t M>
+class AFSquareLossFunction : AFLossFunction<T,N,M> {
+public:
+    T evaluate(array<T,N> *actualVals, array<T,N> *expectedVals) {
+        T ans = 0;
+        for (int i = 0; i < N; ++i) {
+            double diff = (*actualVals)[i] - (*expectedVals)[i];
+            ans += diff*diff*0.5;
+        }
+    }
+
+    /**
+     * Finds derivative of squared loss L(inputVal, actualVal, expectedVal) w.r.t. actualVals.
+     * @param actualVals
+     * @param expectedVals
+     * @param output
+     */
+    void derivative(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
+        for (int i = 0; i < N; ++i) {
+            double diff =  (*expectedVals)[i] - (*actualVals)[i];
+            (*output)[i] = diff;
+        }
+    }
+};
+
 #endif //CNET_AFACTIVATIONFUNCTION_H

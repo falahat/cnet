@@ -7,7 +7,7 @@
 
 
 #include "../lib/googletest/googletest/include/gtest/gtest.h"
-#include "../src/AFActivationFunction.h"
+#include "../src/AFFunctions.h"
 #include "../src/AFMatrix.h"
 
 TEST (TestActivationFunction, ReLU) {
@@ -53,6 +53,30 @@ TEST (TestActivationFunction, IdentityFunction) {
     EXPECT_TRUE(doubleVectorEqual(&expectedDerivative, &actualDerivative));
 
     delete(identityFn);
+}
+
+
+
+TEST (TestLossFunction, SquaredLoss) {
+    /**
+     * Create matrix and make sure it's the right dimensions
+     * Try to set/get some values
+     */
+    AFSquareLossFunction<double,5,5> *squareLoss = new AFSquareLossFunction<double,5,5>();
+
+    array<double, 5> actualValues = {0.0, 0.0, -1.0, 5.0, 2.0};
+    array<double, 5> expectedValues = {0.0, 3.0, 1.0, -5.0, 2.0}; // 0 + 9 + 4 + 100 + 0 = 113
+    double expectedValue = 113.0/2;
+    array<double, 5> expectedDerivative = {0, 3, 2, -10.0, 0}; // {0, 3, 2, -10, 0}
+
+    double actualValue = squareLoss->evaluate(&actualValues, &expectedValues);
+    array<double, 5> actualDerivative;
+    squareLoss->derivative(&actualValues, &expectedValues, &actualDerivative);
+
+    EXPECT_DOUBLE_EQ(expectedValue, actualValue);
+    EXPECT_TRUE(doubleVectorEqual(&expectedDerivative, &actualDerivative));
+
+    delete(squareLoss);
 }
 
 #endif //CNET_TESTACTIVATIONFUNCTION_H

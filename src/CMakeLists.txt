@@ -1,1 +1,1 @@
-add_library(CNet AFMatrix.h AFMatrix.cpp Layer.h Layer.cpp Net.h Net.cpp AFActivationFunction.h)
+add_library(CNet AFMatrix.h AFMatrix.cpp Layer.h Layer.cpp Net.h Net.cpp AFFunctions.h)
