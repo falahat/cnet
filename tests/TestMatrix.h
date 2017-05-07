@@ -140,11 +140,11 @@ TEST (TestMatrix, MatrixInnerProduct) {
     array<double, 3*3> vals2 = {1.0, 2.0, 3.0,
                                 1.0, 2.0, 3.0,
                                 1.0, 2.0, 3.0};
+
     AFMatrix<double, 3, 3> *mat2 = new AFMatrix<double, 3, 3>(&vals2);
 
     array<double, 3*2> expectedVals = {6.0, 12.0, 18.0,
                                        15.0, 30.0, 45.0};
-
 
     AFMatrix<double, 2, 3> *expected = new AFMatrix<double, 2, 3>(&expectedVals);
     AFMatrix<double, 2, 3> *actual = new AFMatrix<double, 2, 3>();

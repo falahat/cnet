@@ -9,6 +9,53 @@
 #include <array>
 using namespace std;
 
+
+
+
+
+template <typename T, size_t N>
+/**
+ * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
+ * @param vec1 - Left vector
+ * @param vec2 - Right vector
+ * @return The dot product (inner product) of two vectors.
+ * @pre vec1 and vec2 have the same length.
+ */
+T vectorInnerProductBounded(array<T, N> *vec1, array<T, N> *vec2, size_t start1, size_t start2, size_t len) {
+    // TODO: Add bound checking?
+    T ans;
+    for (int offset = 0; offset < len ; ++offset) {
+        ans += (*vec1)[start1 + offset] * (*vec2)[start2 + offset];
+    }
+    return ans;
+}
+
+// TODO: integer matrices multiplied by double matrices though?
+template <typename T, size_t N>
+
+/**
+ * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
+ * @param vec1 - Left vector
+ * @param vec2 - Right vector
+ * @return The dot product (inner product) of two vectors.
+ * @pre vec1 and vec2 have the same length.
+ */
+T vectorInnerProduct(array<T, N> *vec1, array<T, N> *vec2) {
+    return vectorInnerProductBounded(vec1, vec2, 0ul, 0ul, N);
+}
+
+
+template <size_t N>
+bool doubleVectorEqual(array<double, N> *vec1, array<double, N> *vec2) {
+    for (int i = 0; i < N; ++i) {
+        if ((*vec1)[i] - (*vec2)[i] >= ACCEPTABLE_DOUBLE_DIFF) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 template <class T, size_t ROWS, size_t COLS>
 class AFMatrix {
 public:
@@ -81,6 +128,35 @@ public:
     }
 
     /**
+     *
+     * @param col
+     * @return An `std:array` filled with the column values of this matrix
+     * @warning Delete the new array to free memory
+     */
+    array<T, ROWS> *getCol(int col) {
+        array<T, ROWS> *ans = new array<T, ROWS>();
+        for (int row = 0; row < ROWS; ++row) {
+            (*ans)[row] = this->getValue(row, col);
+        }
+        return ans;
+    };
+
+    /**
+     *
+     * @param row
+     * @return An `std:array` filled with the row values of this matrix
+     * @warning Delete the new array to free memory
+     */
+    array<T, COLS> *getRow(int row) {
+        array<T, COLS> *ans = new array<T, COLS>();
+        for (int col = 0; col < COLS; ++col) {
+            (*ans)[col] = this->getValue(row, col);
+        }
+        return ans;
+    };
+
+
+    /**
      * @param row
      * @param col
      * @param newValue The new value to put in this row/col
@@ -96,7 +172,20 @@ public:
      */
     template <size_t OTHER_COLS>
     void innerProduct(AFMatrix<T, COLS, OTHER_COLS> *other, AFMatrix<T, ROWS, OTHER_COLS> *out) {
+        this->innerProduct(other, out, 0, 0);
+    }
 
+    /**
+     *
+     * @param other The other matrix to multiply this against
+     * @param out The matrix to write the output values
+     */
+    template <size_t OTHER_COLS>
+    void innerProduct(AFMatrix<T, COLS, OTHER_COLS> *other, AFMatrix<T, ROWS, OTHER_COLS> *out, size_t outStartRow, size_t outStartCol) {
+        for (int outCol = outStartCol; outCol < OTHER_COLS; ++outCol) {
+            array<T, COLS> *currRightCol = other->getCol(outCol);
+            this->innerProduct(currRightCol, out, outCol);
+        }
     }
 
     /**
@@ -105,7 +194,15 @@ public:
      * @param other The other array to inner product with.
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
-    void innerProduct(array<T, COLS> *other,  AFMatrix<T, ROWS, 1> *out) {
+    template <size_t COLSOUT>
+    void innerProduct(array<T, COLS> *other,  AFMatrix<T, ROWS, COLSOUT> *out, int outCol) {
+        for (int outRow = 0; outRow < ROWS; ++outRow) {
+            // TODO: Assumes that `this->vals` is row-wise
+            array<T, COLS> *currLeftRow = this->getRow(outRow);
+            T currVal = vectorInnerProduct(currLeftRow, other);
+            out->setValue(outRow, outCol, currVal);
+            // FIXME: DRY!!!
+        }
     }
 
     /**
@@ -115,6 +212,12 @@ public:
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
     void innerProduct(array<T, COLS> *other,  array<T, ROWS> *out) {
+        for (int outRow = 0; outRow < ROWS; ++outRow) {
+            // TODO: Assumes that `this->vals` is row-wise
+            array<T, COLS> *currLeftRow = this->getRow(outRow);
+            T currVal = vectorInnerProduct(currLeftRow, other);
+            (*out)[outRow] =  currVal;
+        }
     }
 
     /**
@@ -192,8 +295,26 @@ public:
      * @param dst
      * @param src
      */
-    void copyValues(AFMatrix<T, ROWS, COLS> *dst, AFMatrix<T, ROWS, COLS> *src) {
-        copyValues(dst->vals, src->vals);
+    template <size_t ROWSDST, size_t COLSDST>
+    void copyValues(AFMatrix<T, ROWSDST, COLSDST> *dst, AFMatrix<T, ROWS, COLS> *src) {
+        copyValues(dst, src, 0, 0);
+    }
+
+    /**
+     * Copies values from `src` to `dst`. The two matrices will be exactly identitcal.
+     * @param dst
+     * @param src
+     */
+    template <size_t ROWSDST, size_t COLSDST>
+    void copyValues(AFMatrix<T, ROWSDST, COLSDST> *dst, AFMatrix<T, ROWS, COLS> *src, size_t srcRowStart, size_t srcColStart) {
+        // TODO: Check that srcRowStart
+        for (int dstRow = 0; dstRow < ROWSDST; ++dstRow) {
+            int srcRow = dstRow + srcRowStart;
+            for (int dstCol = 0; dstCol < COLSDST; ++dstCol) {
+                int srcCol = dstCol + srcColStart;
+                dst->setValue(dstRow, dstCol, src->getValue(srcRow, srcCol));
+            }
+        }
     }
 
     /**
@@ -233,45 +354,4 @@ public:
 };
 
 
-
-template <typename T, size_t N>
-/**
- * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
- * @param vec1 - Left vector
- * @param vec2 - Right vector
- * @return The dot product (inner product) of two vectors.
- * @pre vec1 and vec2 have the same length.
- */
-T vectorInnerProductBounded(array<T, N> *vec1, array<T, N> *vec2, size_t start1, size_t start2, size_t len) {
-    // TODO: Add bound checking?
-    T ans;
-    for (int offset = 0; offset < len ; ++offset) {
-        ans += (*vec1)[start1 + offset] * (*vec2)[start2 + offset];
-    }
-    return ans;
-}
-
-// TODO: integer matrices multiplied by double matrices though?
-template <typename T, size_t N>
-/**
- * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
- * @param vec1 - Left vector
- * @param vec2 - Right vector
- * @return The dot product (inner product) of two vectors.
- * @pre vec1 and vec2 have the same length.
- */
-T vectorInnerProduct(array<T, N> *vec1, array<T, N> *vec2) {
-    return vectorInnerProductBounded(vec1, vec2, 0ul, 0ul, N);
-}
-
-
-template <size_t N>
-bool doubleVectorEqual(array<double, N> *vec1, array<double, N> *vec2) {
-    for (int i = 0; i < N; ++i) {
-        if ((*vec1)[i] - (*vec2)[i] >= ACCEPTABLE_DOUBLE_DIFF) {
-            return false;
-        }
-    }
-    return true;
-}
 #endif //CNET_AFMATRIX_H
