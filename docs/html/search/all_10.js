@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_7eafmatrix',['~AFMatrix',['../class_a_f_matrix.html#a657752979ec2d7bad591e3def1f4bcc7',1,'AFMatrix']]],
-  ['_7elayer',['~Layer',['../class_layer.html#a3ed1ecdffa6a2bb492aa282f029e85ae',1,'Layer']]]
+  ['vals',['vals',['../class_a_f_matrix.html#abca47cc50d551c1e8d79559773729e87',1,'AFMatrix']]],
+  ['vectorinnerproduct',['vectorInnerProduct',['../_a_f_matrix_8h.html#aab0242d9abf78560470c22023ee5d701',1,'AFMatrix.h']]],
+  ['vectorinnerproductbounded',['vectorInnerProductBounded',['../_a_f_matrix_8h.html#a6a24b85d64910ecfa542cc487960cfe7',1,'AFMatrix.h']]]
 ];

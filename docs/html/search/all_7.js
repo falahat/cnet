@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['layer',['Layer',['../class_layer.html',1,'Layer&lt; LEN_IN, LEN_OUT &gt;'],['../class_layer.html#a16f07312c7711257ffdefe9d3d51f8b2',1,'Layer::Layer()']]],
-  ['layer_2ecpp',['Layer.cpp',['../_layer_8cpp.html',1,'']]],
-  ['layer_2eh',['Layer.h',['../_layer_8h.html',1,'']]],
-  ['lenin',['lenIn',['../class_layer.html#a844e22c542ae02cb475cabb8353300a8',1,'Layer']]],
-  ['lenout',['lenOut',['../class_layer.html#ae10a61035ba7a18f9f2a6d1d3ebf9811',1,'Layer']]]
+  ['identityfunction',['IdentityFunction',['../class_identity_function.html',1,'']]],
+  ['innerproduct',['innerProduct',['../class_a_f_matrix.html#a2c3183f964593d1bc52f6dc09429dbcc',1,'AFMatrix::innerProduct(AFMatrix&lt; T, COLS, OTHER_COLS &gt; *other, AFMatrix&lt; T, ROWS, OTHER_COLS &gt; *out)'],['../class_a_f_matrix.html#a735c5a51f49427b88555d718b9055b1b',1,'AFMatrix::innerProduct(AFMatrix&lt; T, COLS, OTHER_COLS &gt; *other, AFMatrix&lt; T, ROWS, OTHER_COLS &gt; *out, size_t outStartRow, size_t outStartCol)'],['../class_a_f_matrix.html#a46b0627e74a9a013b12578734d3fe8dc',1,'AFMatrix::innerProduct(array&lt; T, COLS &gt; *other, AFMatrix&lt; T, ROWS, COLSOUT &gt; *out, int outCol)'],['../class_a_f_matrix.html#ab0d162f4bf848e2d93ed0e65ecea606b',1,'AFMatrix::innerProduct(array&lt; T, COLS &gt; *other, array&lt; T, ROWS &gt; *out)']]],
+  ['inputvals',['inputVals',['../class_layer.html#a38145ae44adb77f559a0ae77dad7c6f9',1,'Layer']]]
 ];

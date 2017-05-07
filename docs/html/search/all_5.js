@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['getindex',['getIndex',['../class_a_f_matrix.html#a1363727b7a4b97bad5e7c9d9552d9cf5',1,'AFMatrix']]],
-  ['getvalue',['getValue',['../class_a_f_matrix.html#a0e36b5c6f333ac3d6508d5b00c92852c',1,'AFMatrix']]]
+  ['forwardpass',['forwardPass',['../class_layer.html#a5088f4edabd0de4d59f3c59cc8190786',1,'Layer::forwardPass(array&lt; double, LEN_IN &gt; *inputVals, array&lt; double, LEN_OUT &gt; *outputVals)'],['../class_layer.html#a5f09327f0ab9f2d5b0d8fbe3e7994714',1,'Layer::forwardPass(array&lt; double, LEN_IN &gt; *inputVals)']]]
 ];

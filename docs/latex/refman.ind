@@ -1,0 +1,228 @@
+\begin{theindex}
+
+  \item {$\sim$\+A\+F\+Matrix}
+    \subitem {A\+F\+Matrix}, \hyperpage{13}
+  \item {$\sim$\+Layer}
+    \subitem {Layer}, \hyperpage{25}
+
+  \indexspace
+
+  \item {A\+C\+C\+E\+P\+T\+A\+B\+L\+E\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+D\+I\+FF}
+    \subitem {A\+F\+Matrix.\+h}, \hyperpage{34}
+  \item {A\+F\+Activation\+Function}
+    \subitem {derivative}, \hyperpage{9}
+    \subitem {evaluate}, \hyperpage{9}
+  \item {A\+F\+Activation\+Function$<$ T, N, M $>$}, \hyperpage{9}
+  \item {A\+F\+Loss\+Function}
+    \subitem {derivative}, \hyperpage{10}
+    \subitem {evaluate}, \hyperpage{10}
+  \item {A\+F\+Loss\+Function$<$ T, N, M $>$}, \hyperpage{10}
+  \item {A\+F\+Matrix}
+    \subitem {$\sim$\+A\+F\+Matrix}, \hyperpage{13}
+    \subitem {A\+F\+Matrix}, \hyperpage{12}
+    \subitem {add}, \hyperpage{13}
+    \subitem {copy\+Values}, \hyperpage{13, 14}
+    \subitem {equals}, \hyperpage{15}
+    \subitem {get\+Col}, \hyperpage{15}
+    \subitem {get\+Index}, \hyperpage{15}
+    \subitem {get\+Row}, \hyperpage{16}
+    \subitem {get\+Value}, \hyperpage{16}
+    \subitem {inner\+Product}, \hyperpage{16}, \hyperpage{18}
+    \subitem {num\+Cols}, \hyperpage{21}
+    \subitem {num\+Rows}, \hyperpage{21}
+    \subitem {scale}, \hyperpage{19}
+    \subitem {set\+Value}, \hyperpage{19}
+    \subitem {subtract}, \hyperpage{19}
+    \subitem {to\+Array}, \hyperpage{20}
+    \subitem {transpose}, \hyperpage{20}
+    \subitem {vals}, \hyperpage{21}
+  \item {A\+F\+Matrix$<$ T, R\+O\+W\+S, C\+O\+L\+S $>$}, \hyperpage{11}
+  \item {A\+F\+Matrix.\+h}
+    \subitem {A\+C\+C\+E\+P\+T\+A\+B\+L\+E\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+D\+I\+FF}, 
+		\hyperpage{34}
+    \subitem {double\+Vector\+Equal}, \hyperpage{34}
+    \subitem {vector\+Inner\+Product}, \hyperpage{34}
+    \subitem {vector\+Inner\+Product\+Bounded}, \hyperpage{35}
+  \item {A\+F\+Square\+Loss\+Function}
+    \subitem {derivative}, \hyperpage{22}
+    \subitem {evaluate}, \hyperpage{22}
+  \item {A\+F\+Square\+Loss\+Function$<$ T, N, M $>$}, \hyperpage{22}
+  \item {activation\+Function}
+    \subitem {Layer}, \hyperpage{28}
+  \item {add}
+    \subitem {A\+F\+Matrix}, \hyperpage{13}
+
+  \indexspace
+
+  \item {backpropagate}
+    \subitem {Layer}, \hyperpage{25, 26}
+  \item {backpropagate\+Base}
+    \subitem {Layer}, \hyperpage{26}
+
+  \indexspace
+
+  \item {C\+:/\+Users/\+Aryan/\+C\+Lion\+Projects/\+C\+Net/src/\+A\+F\+Functions.\+h}, 
+		\hyperpage{33}
+  \item {C\+:/\+Users/\+Aryan/\+C\+Lion\+Projects/\+C\+Net/src/\+A\+F\+Matrix.\+cpp}, 
+		\hyperpage{33}
+  \item {C\+:/\+Users/\+Aryan/\+C\+Lion\+Projects/\+C\+Net/src/\+A\+F\+Matrix.\+h}, 
+		\hyperpage{33}
+  \item {C\+:/\+Users/\+Aryan/\+C\+Lion\+Projects/\+C\+Net/src/\+Layer.\+cpp}, 
+		\hyperpage{35}
+  \item {C\+:/\+Users/\+Aryan/\+C\+Lion\+Projects/\+C\+Net/src/\+Layer.\+h}, 
+		\hyperpage{35}
+  \item {C\+:/\+Users/\+Aryan/\+C\+Lion\+Projects/\+C\+Net/src/\+Net.\+cpp}, 
+		\hyperpage{36}
+  \item {C\+:/\+Users/\+Aryan/\+C\+Lion\+Projects/\+C\+Net/src/\+Net.\+h}, 
+		\hyperpage{36}
+  \item {C\+:/\+Users/\+Aryan/\+C\+Lion\+Projects/\+C\+Net/src/main.\+cpp}, 
+		\hyperpage{36}
+  \item {copy\+Values}
+    \subitem {A\+F\+Matrix}, \hyperpage{13, 14}
+
+  \indexspace
+
+  \item {deltas}
+    \subitem {Layer}, \hyperpage{28}
+  \item {derivative}
+    \subitem {A\+F\+Activation\+Function}, \hyperpage{9}
+    \subitem {A\+F\+Loss\+Function}, \hyperpage{10}
+    \subitem {A\+F\+Square\+Loss\+Function}, \hyperpage{22}
+    \subitem {Identity\+Function}, \hyperpage{23}
+    \subitem {Re\+LU}, \hyperpage{30}
+  \item {double\+Vector\+Equal}
+    \subitem {A\+F\+Matrix.\+h}, \hyperpage{34}
+
+  \indexspace
+
+  \item {equals}
+    \subitem {A\+F\+Matrix}, \hyperpage{15}
+  \item {evaluate}
+    \subitem {A\+F\+Activation\+Function}, \hyperpage{9}
+    \subitem {A\+F\+Loss\+Function}, \hyperpage{10}
+    \subitem {A\+F\+Square\+Loss\+Function}, \hyperpage{22}
+    \subitem {Identity\+Function}, \hyperpage{23}
+    \subitem {Re\+LU}, \hyperpage{30}
+
+  \indexspace
+
+  \item {forward\+Pass}
+    \subitem {Layer}, \hyperpage{27}
+
+  \indexspace
+
+  \item {get\+Col}
+    \subitem {A\+F\+Matrix}, \hyperpage{15}
+  \item {get\+Index}
+    \subitem {A\+F\+Matrix}, \hyperpage{15}
+  \item {get\+Row}
+    \subitem {A\+F\+Matrix}, \hyperpage{16}
+  \item {get\+Value}
+    \subitem {A\+F\+Matrix}, \hyperpage{16}
+
+  \indexspace
+
+  \item {Identity\+Function}
+    \subitem {derivative}, \hyperpage{23}
+    \subitem {evaluate}, \hyperpage{23}
+  \item {Identity\+Function$<$ T, N, M $>$}, \hyperpage{23}
+  \item {inner\+Product}
+    \subitem {A\+F\+Matrix}, \hyperpage{16}, \hyperpage{18}
+  \item {input\+Vals}
+    \subitem {Layer}, \hyperpage{28}
+
+  \indexspace
+
+  \item {Layer}
+    \subitem {$\sim$\+Layer}, \hyperpage{25}
+    \subitem {activation\+Function}, \hyperpage{28}
+    \subitem {backpropagate}, \hyperpage{25, 26}
+    \subitem {backpropagate\+Base}, \hyperpage{26}
+    \subitem {deltas}, \hyperpage{28}
+    \subitem {forward\+Pass}, \hyperpage{27}
+    \subitem {input\+Vals}, \hyperpage{28}
+    \subitem {Layer}, \hyperpage{25}
+    \subitem {len\+In}, \hyperpage{28}
+    \subitem {len\+Out}, \hyperpage{29}
+    \subitem {output\+Vals}, \hyperpage{29}
+    \subitem {randomize\+Weights}, \hyperpage{28}
+    \subitem {sums}, \hyperpage{29}
+    \subitem {update\+Weights}, \hyperpage{28}
+    \subitem {weight\+Gradient}, \hyperpage{29}
+    \subitem {weights}, \hyperpage{29}
+  \item {Layer$<$ L\+E\+N\+\_\+\+I\+N, L\+E\+N\+\_\+\+O\+U\+T $>$}, 
+		\hyperpage{23}
+  \item {len\+In}
+    \subitem {Layer}, \hyperpage{28}
+  \item {len\+Out}
+    \subitem {Layer}, \hyperpage{29}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.\+cpp}, \hyperpage{36}
+  \item {main.\+cpp}
+    \subitem {main}, \hyperpage{36}
+
+  \indexspace
+
+  \item {Net$<$ T $>$}, \hyperpage{30}
+  \item {num\+Cols}
+    \subitem {A\+F\+Matrix}, \hyperpage{21}
+  \item {num\+Rows}
+    \subitem {A\+F\+Matrix}, \hyperpage{21}
+
+  \indexspace
+
+  \item {output\+Vals}
+    \subitem {Layer}, \hyperpage{29}
+
+  \indexspace
+
+  \item {randomize\+Weights}
+    \subitem {Layer}, \hyperpage{28}
+  \item {Re\+L\+U$<$ T, N, M $>$}, \hyperpage{30}
+  \item {Re\+LU}
+    \subitem {derivative}, \hyperpage{30}
+    \subitem {evaluate}, \hyperpage{30}
+
+  \indexspace
+
+  \item {scale}
+    \subitem {A\+F\+Matrix}, \hyperpage{19}
+  \item {set\+Value}
+    \subitem {A\+F\+Matrix}, \hyperpage{19}
+  \item {subtract}
+    \subitem {A\+F\+Matrix}, \hyperpage{19}
+  \item {sums}
+    \subitem {Layer}, \hyperpage{29}
+
+  \indexspace
+
+  \item {to\+Array}
+    \subitem {A\+F\+Matrix}, \hyperpage{20}
+  \item {transpose}
+    \subitem {A\+F\+Matrix}, \hyperpage{20}
+
+  \indexspace
+
+  \item {update\+Weights}
+    \subitem {Layer}, \hyperpage{28}
+
+  \indexspace
+
+  \item {vals}
+    \subitem {A\+F\+Matrix}, \hyperpage{21}
+  \item {vector\+Inner\+Product}
+    \subitem {A\+F\+Matrix.\+h}, \hyperpage{34}
+  \item {vector\+Inner\+Product\+Bounded}
+    \subitem {A\+F\+Matrix.\+h}, \hyperpage{35}
+
+  \indexspace
+
+  \item {weight\+Gradient}
+    \subitem {Layer}, \hyperpage{29}
+  \item {weights}
+    \subitem {Layer}, \hyperpage{29}
+
+\end{theindex}

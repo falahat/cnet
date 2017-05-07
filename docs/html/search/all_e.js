@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['vals',['vals',['../class_a_f_matrix.html#abca47cc50d551c1e8d79559773729e87',1,'AFMatrix']]],
-  ['vectorinnerproduct',['vectorInnerProduct',['../_a_f_matrix_8h.html#aab0242d9abf78560470c22023ee5d701',1,'vectorInnerProduct(array&lt; T, N &gt; *vec1, array&lt; T, N &gt; *vec2):&#160;AFMatrix.h'],['../_a_f_matrix_8h.html#a3642605226af032c63df0ec34ae85cf6',1,'vectorInnerProduct(array&lt; T, N &gt; *vec1, array&lt; T, N &gt; *vec2, int start1, int end1, int start2, int end2):&#160;AFMatrix.h']]]
+  ['toarray',['toArray',['../class_a_f_matrix.html#a7e3659073ff6da5ffd02de48156decf5',1,'AFMatrix']]],
+  ['todo_20list',['Todo List',['../todo.html',1,'']]],
+  ['transpose',['transpose',['../class_a_f_matrix.html#ae087fb4a064d256eac51513863b06fa2',1,'AFMatrix::transpose(AFMatrix&lt; T, COLS, ROWS &gt; *out)'],['../class_a_f_matrix.html#a5f20b3ee2b16cbb9b9b39215a81d3aa1',1,'AFMatrix::transpose()']]]
 ];

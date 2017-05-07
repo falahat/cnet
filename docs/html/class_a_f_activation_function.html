@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CNet: AFActivationFunction Class Reference</title>
+<title>CNet: AFActivationFunction&lt; T, N, M &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,9 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNet
-   &#160;<span id="projectnumber">0.5</span>
    </div>
-   <div id="projectbrief">C++ Neural Net</div>
   </td>
  </tr>
  </tbody>
@@ -61,24 +59,111 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_a_f_activation_function-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">AFActivationFunction Class Reference</div>  </div>
+<div class="title">AFActivationFunction&lt; T, N, M &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="_a_f_activation_function_8h_source.html">AFActivationFunction.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_a_f_functions_8h_source.html">AFFunctions.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for AFActivationFunction:</div>
+Inheritance diagram for AFActivationFunction&lt; T, N, M &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_a_f_activation_function.png" usemap="#AFActivationFunction_map" alt=""/>
-  <map id="AFActivationFunction_map" name="AFActivationFunction_map">
-<area href="class_re_l_u.html" alt="ReLU" shape="rect" coords="0,56,134,80"/>
+  <img src="class_a_f_activation_function.png" usemap="#AFActivationFunction_3C_20T_2C_20N_2C_20M_20_3E_map" alt=""/>
+  <map id="AFActivationFunction_3C_20T_2C_20N_2C_20M_20_3E_map" name="AFActivationFunction_3C_20T_2C_20N_2C_20M_20_3E_map">
+<area href="class_identity_function.html" alt="IdentityFunction&lt; T, N, M &gt;" shape="rect" coords="0,56,203,80"/>
+<area href="class_re_l_u.html" alt="ReLU&lt; T, N, M &gt;" shape="rect" coords="213,56,416,80"/>
 </map>
  </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:adeaf0636a7bb08eb73d58f8cd663d9d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_f_activation_function.html#adeaf0636a7bb08eb73d58f8cd663d9d8">evaluate</a> (array&lt; T, N &gt; *input, array&lt; T, N &gt; *output)</td></tr>
+<tr class="separator:adeaf0636a7bb08eb73d58f8cd663d9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a60ee5d55ca4730c1808d050016c62e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_f_activation_function.html#a2a60ee5d55ca4730c1808d050016c62e">derivative</a> (array&lt; T, M &gt; *input, array&lt; T, M &gt; *output)</td></tr>
+<tr class="separator:a2a60ee5d55ca4730c1808d050016c62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2a60ee5d55ca4730c1808d050016c62e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a60ee5d55ca4730c1808d050016c62e">&#9670;&nbsp;</a></span>derivative()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, size_t N, size_t M&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_a_f_activation_function.html">AFActivationFunction</a>&lt; T, N, M &gt;::derivative </td>
+          <td>(</td>
+          <td class="paramtype">array&lt; T, M &gt; *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array&lt; T, M &gt; *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adeaf0636a7bb08eb73d58f8cd663d9d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeaf0636a7bb08eb73d58f8cd663d9d8">&#9670;&nbsp;</a></span>evaluate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, size_t N, size_t M&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_a_f_activation_function.html">AFActivationFunction</a>&lt; T, N, M &gt;::evaluate </td>
+          <td>(</td>
+          <td class="paramtype">array&lt; T, N &gt; *&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array&lt; T, N &gt; *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/Aryan/CLionProjects/CNet/src/<a class="el" href="_a_f_activation_function_8h_source.html">AFActivationFunction.h</a></li>
+<li>C:/Users/Aryan/CLionProjects/CNet/src/<a class="el" href="_a_f_functions_8h_source.html">AFFunctions.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

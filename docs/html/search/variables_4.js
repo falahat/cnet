@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vals',['vals',['../class_a_f_matrix.html#abca47cc50d551c1e8d79559773729e87',1,'AFMatrix']]]
+  ['numcols',['numCols',['../class_a_f_matrix.html#aed28746540fcca94d5d1448b098b4ecc',1,'AFMatrix']]],
+  ['numrows',['numRows',['../class_a_f_matrix.html#a8e18ed7d084bfa8b040f7abd89918b42',1,'AFMatrix']]]
 ];

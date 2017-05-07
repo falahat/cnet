@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['activationfunction',['activationFunction',['../class_layer.html#a53bead8fe194586f9ab2f69b11de3d87',1,'Layer']]]
+  ['activationfunction',['activationFunction',['../class_layer.html#aa986af731d3638fe75d0fd93e3481386',1,'Layer']]]
 ];

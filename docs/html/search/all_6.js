@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['innerproduct',['innerProduct',['../class_a_f_matrix.html#a2c3183f964593d1bc52f6dc09429dbcc',1,'AFMatrix::innerProduct(AFMatrix&lt; T, COLS, OTHER_COLS &gt; *other, AFMatrix&lt; T, ROWS, OTHER_COLS &gt; *out)'],['../class_a_f_matrix.html#a9f0e4b22b84400a30d275be6bd67d128',1,'AFMatrix::innerProduct(array&lt; T, ROWS &gt; *other, AFMatrix&lt; T, COLS, 1 &gt; *out)'],['../class_a_f_matrix.html#ad2763218bc42414ca32cdecba3b88be2',1,'AFMatrix::innerProduct(array&lt; T, ROWS &gt; *other, array&lt; T, COLS &gt; *out)']]]
+  ['getcol',['getCol',['../class_a_f_matrix.html#ae6de9932dfad5cd7d4ad9887907155cb',1,'AFMatrix']]],
+  ['getindex',['getIndex',['../class_a_f_matrix.html#aff522a072446367c8e224c955a7743c1',1,'AFMatrix']]],
+  ['getrow',['getRow',['../class_a_f_matrix.html#a0ddbf6fe5a2aa085d7f2bc7b99bfa8bc',1,'AFMatrix']]],
+  ['getvalue',['getValue',['../class_a_f_matrix.html#a0e36b5c6f333ac3d6508d5b00c92852c',1,'AFMatrix']]]
 ];

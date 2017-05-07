@@ -6,22 +6,45 @@
 \item 
 class \hyperlink{class_a_f_matrix}{A\+F\+Matrix$<$ T, R\+O\+W\+S, C\+O\+L\+S $>$}
 \end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_a_f_matrix_8h_a7debcc56eebf47ab14a1f89eeb1411bd}{A\+C\+C\+E\+P\+T\+A\+B\+L\+E\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+D\+I\+FF}~0.\+000000001
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+{\footnotesize template$<$typename T , size\+\_\+t N$>$ }\\T \hyperlink{_a_f_matrix_8h_a6a24b85d64910ecfa542cc487960cfe7}{vector\+Inner\+Product\+Bounded} (array$<$ T, N $>$ $\ast$vec1, array$<$ T, N $>$ $\ast$vec2, size\+\_\+t start1, size\+\_\+t start2, size\+\_\+t len)
+\item 
 {\footnotesize template$<$typename T , size\+\_\+t N$>$ }\\T \hyperlink{_a_f_matrix_8h_aab0242d9abf78560470c22023ee5d701}{vector\+Inner\+Product} (array$<$ T, N $>$ $\ast$vec1, array$<$ T, N $>$ $\ast$vec2)
 \item 
-{\footnotesize template$<$typename T , size\+\_\+t N$>$ }\\T \hyperlink{_a_f_matrix_8h_a3642605226af032c63df0ec34ae85cf6}{vector\+Inner\+Product} (array$<$ T, N $>$ $\ast$vec1, array$<$ T, N $>$ $\ast$vec2, int start1, int end1, int start2, int end2)
+{\footnotesize template$<$size\+\_\+t N$>$ }\\bool \hyperlink{_a_f_matrix_8h_ae85d381f5c756442ed6e93035828aa3b}{double\+Vector\+Equal} (array$<$ double, N $>$ $\ast$vec1, array$<$ double, N $>$ $\ast$vec2)
 \end{DoxyCompactItemize}
 
 
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_a_f_matrix_8h_a7debcc56eebf47ab14a1f89eeb1411bd}\label{_a_f_matrix_8h_a7debcc56eebf47ab14a1f89eeb1411bd}} 
+\index{A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}!A\+C\+C\+E\+P\+T\+A\+B\+L\+E\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+D\+I\+FF@{A\+C\+C\+E\+P\+T\+A\+B\+L\+E\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+D\+I\+FF}}
+\index{A\+C\+C\+E\+P\+T\+A\+B\+L\+E\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+D\+I\+FF@{A\+C\+C\+E\+P\+T\+A\+B\+L\+E\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+D\+I\+FF}!A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}}
+\subsubsection{\texorpdfstring{A\+C\+C\+E\+P\+T\+A\+B\+L\+E\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+D\+I\+FF}{ACCEPTABLE\_DOUBLE\_DIFF}}
+{\footnotesize\ttfamily \#define A\+C\+C\+E\+P\+T\+A\+B\+L\+E\+\_\+\+D\+O\+U\+B\+L\+E\+\_\+\+D\+I\+FF~0.\+000000001}
+
+
+
 \subsection{Function Documentation}
+\mbox{\Hypertarget{_a_f_matrix_8h_ae85d381f5c756442ed6e93035828aa3b}\label{_a_f_matrix_8h_ae85d381f5c756442ed6e93035828aa3b}} 
+\index{A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}!double\+Vector\+Equal@{double\+Vector\+Equal}}
+\index{double\+Vector\+Equal@{double\+Vector\+Equal}!A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}}
+\subsubsection{\texorpdfstring{double\+Vector\+Equal()}{doubleVectorEqual()}}
+{\footnotesize\ttfamily template$<$size\+\_\+t N$>$ \\
+bool double\+Vector\+Equal (\begin{DoxyParamCaption}\item[{array$<$ double, N $>$ $\ast$}]{vec1,  }\item[{array$<$ double, N $>$ $\ast$}]{vec2 }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{_a_f_matrix_8h_aab0242d9abf78560470c22023ee5d701}\label{_a_f_matrix_8h_aab0242d9abf78560470c22023ee5d701}} 
 \index{A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}!vector\+Inner\+Product@{vector\+Inner\+Product}}
 \index{vector\+Inner\+Product@{vector\+Inner\+Product}!A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}}
-\subsubsection{\texorpdfstring{vector\+Inner\+Product()}{vectorInnerProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+\subsubsection{\texorpdfstring{vector\+Inner\+Product()}{vectorInnerProduct()}}
 {\footnotesize\ttfamily template$<$typename T , size\+\_\+t N$>$ \\
-T vector\+Inner\+Product (\begin{DoxyParamCaption}\item[{array$<$ T, N $>$ $\ast$}]{vec1,  }\item[{array$<$ T, N $>$ $\ast$}]{vec2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+T vector\+Inner\+Product (\begin{DoxyParamCaption}\item[{array$<$ T, N $>$ $\ast$}]{vec1,  }\item[{array$<$ T, N $>$ $\ast$}]{vec2 }\end{DoxyParamCaption})}
 
 
 \begin{DoxyTemplParams}{Template Parameters}
@@ -41,12 +64,12 @@ The dot product (inner product) of two vectors.
 \begin{DoxyPrecond}{Precondition}
 vec1 and vec2 have the same length. 
 \end{DoxyPrecond}
-\mbox{\Hypertarget{_a_f_matrix_8h_a3642605226af032c63df0ec34ae85cf6}\label{_a_f_matrix_8h_a3642605226af032c63df0ec34ae85cf6}} 
-\index{A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}!vector\+Inner\+Product@{vector\+Inner\+Product}}
-\index{vector\+Inner\+Product@{vector\+Inner\+Product}!A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}}
-\subsubsection{\texorpdfstring{vector\+Inner\+Product()}{vectorInnerProduct()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\mbox{\Hypertarget{_a_f_matrix_8h_a6a24b85d64910ecfa542cc487960cfe7}\label{_a_f_matrix_8h_a6a24b85d64910ecfa542cc487960cfe7}} 
+\index{A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}!vector\+Inner\+Product\+Bounded@{vector\+Inner\+Product\+Bounded}}
+\index{vector\+Inner\+Product\+Bounded@{vector\+Inner\+Product\+Bounded}!A\+F\+Matrix.\+h@{A\+F\+Matrix.\+h}}
+\subsubsection{\texorpdfstring{vector\+Inner\+Product\+Bounded()}{vectorInnerProductBounded()}}
 {\footnotesize\ttfamily template$<$typename T , size\+\_\+t N$>$ \\
-T vector\+Inner\+Product (\begin{DoxyParamCaption}\item[{array$<$ T, N $>$ $\ast$}]{vec1,  }\item[{array$<$ T, N $>$ $\ast$}]{vec2,  }\item[{int}]{start1,  }\item[{int}]{end1,  }\item[{int}]{start2,  }\item[{int}]{end2 }\end{DoxyParamCaption})}
+T vector\+Inner\+Product\+Bounded (\begin{DoxyParamCaption}\item[{array$<$ T, N $>$ $\ast$}]{vec1,  }\item[{array$<$ T, N $>$ $\ast$}]{vec2,  }\item[{size\+\_\+t}]{start1,  }\item[{size\+\_\+t}]{start2,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
 
 
 \begin{DoxyTemplParams}{Template Parameters}

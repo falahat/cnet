@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['scale',['scale',['../class_a_f_matrix.html#a905b58769fceaf03972f7ea179ea3934',1,'AFMatrix']]],
-  ['subtract',['subtract',['../class_a_f_matrix.html#a85ffed84dc6b1acb24a2c73e54511dff',1,'AFMatrix']]]
+  ['outputvals',['outputVals',['../class_layer.html#a5007d0043790b288b9473ec233108482',1,'Layer']]]
 ];

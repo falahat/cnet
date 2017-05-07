@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['layer',['Layer',['../class_layer.html',1,'']]]
+  ['identityfunction',['IdentityFunction',['../class_identity_function.html',1,'']]]
 ];

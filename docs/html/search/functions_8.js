@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['randomizeweights',['randomizeWeights',['../class_layer.html#aee349ae2e2c54fa8079cc564e84cb938',1,'Layer']]]
+  ['layer',['Layer',['../class_layer.html#a458cd765beb3e884d631d15e0e6cb690',1,'Layer']]]
 ];

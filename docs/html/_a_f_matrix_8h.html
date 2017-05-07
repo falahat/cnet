@@ -22,9 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNet
-   &#160;<span id="projectnumber">0.5</span>
    </div>
-   <div id="projectbrief">C++ Neural Net</div>
   </td>
  </tr>
  </tbody>
@@ -66,6 +64,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">AFMatrix.h File Reference</div>  </div>
@@ -80,26 +79,76 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_f_matrix.html">AFMatrix&lt; T, ROWS, COLS &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a7debcc56eebf47ab14a1f89eeb1411bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_a_f_matrix_8h.html#a7debcc56eebf47ab14a1f89eeb1411bd">ACCEPTABLE_DOUBLE_DIFF</a>&#160;&#160;&#160;0.000000001</td></tr>
+<tr class="separator:a7debcc56eebf47ab14a1f89eeb1411bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a6a24b85d64910ecfa542cc487960cfe7"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t N&gt; </td></tr>
+<tr class="memitem:a6a24b85d64910ecfa542cc487960cfe7"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_a_f_matrix_8h.html#a6a24b85d64910ecfa542cc487960cfe7">vectorInnerProductBounded</a> (array&lt; T, N &gt; *vec1, array&lt; T, N &gt; *vec2, size_t start1, size_t start2, size_t len)</td></tr>
+<tr class="separator:a6a24b85d64910ecfa542cc487960cfe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab0242d9abf78560470c22023ee5d701"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t N&gt; </td></tr>
 <tr class="memitem:aab0242d9abf78560470c22023ee5d701"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_a_f_matrix_8h.html#aab0242d9abf78560470c22023ee5d701">vectorInnerProduct</a> (array&lt; T, N &gt; *vec1, array&lt; T, N &gt; *vec2)</td></tr>
 <tr class="separator:aab0242d9abf78560470c22023ee5d701"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3642605226af032c63df0ec34ae85cf6"><td class="memTemplParams" colspan="2">template&lt;typename T , size_t N&gt; </td></tr>
-<tr class="memitem:a3642605226af032c63df0ec34ae85cf6"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_a_f_matrix_8h.html#a3642605226af032c63df0ec34ae85cf6">vectorInnerProduct</a> (array&lt; T, N &gt; *vec1, array&lt; T, N &gt; *vec2, int start1, int end1, int start2, int end2)</td></tr>
-<tr class="separator:a3642605226af032c63df0ec34ae85cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae85d381f5c756442ed6e93035828aa3b"><td class="memTemplParams" colspan="2">template&lt;size_t N&gt; </td></tr>
+<tr class="memitem:ae85d381f5c756442ed6e93035828aa3b"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_a_f_matrix_8h.html#ae85d381f5c756442ed6e93035828aa3b">doubleVectorEqual</a> (array&lt; double, N &gt; *vec1, array&lt; double, N &gt; *vec2)</td></tr>
+<tr class="separator:ae85d381f5c756442ed6e93035828aa3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a7debcc56eebf47ab14a1f89eeb1411bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7debcc56eebf47ab14a1f89eeb1411bd">&#9670;&nbsp;</a></span>ACCEPTABLE_DOUBLE_DIFF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ACCEPTABLE_DOUBLE_DIFF&#160;&#160;&#160;0.000000001</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ae85d381f5c756442ed6e93035828aa3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae85d381f5c756442ed6e93035828aa3b">&#9670;&nbsp;</a></span>doubleVectorEqual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t N&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool doubleVectorEqual </td>
+          <td>(</td>
+          <td class="paramtype">array&lt; double, N &gt; *&#160;</td>
+          <td class="paramname"><em>vec1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array&lt; double, N &gt; *&#160;</td>
+          <td class="paramname"><em>vec2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aab0242d9abf78560470c22023ee5d701"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab0242d9abf78560470c22023ee5d701">&#9670;&nbsp;</a></span>vectorInnerProduct() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aab0242d9abf78560470c22023ee5d701">&#9670;&nbsp;</a></span>vectorInnerProduct()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T , size_t N&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">T vectorInnerProduct </td>
@@ -119,11 +168,6 @@ template&lt;typename T , size_t N&gt; </div>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -143,8 +187,8 @@ template&lt;typename T , size_t N&gt; </div>
 
 </div>
 </div>
-<a id="a3642605226af032c63df0ec34ae85cf6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3642605226af032c63df0ec34ae85cf6">&#9670;&nbsp;</a></span>vectorInnerProduct() <span class="overload">[2/2]</span></h2>
+<a id="a6a24b85d64910ecfa542cc487960cfe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a24b85d64910ecfa542cc487960cfe7">&#9670;&nbsp;</a></span>vectorInnerProductBounded()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -152,7 +196,7 @@ template&lt;typename T , size_t N&gt; </div>
 template&lt;typename T , size_t N&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T vectorInnerProduct </td>
+          <td class="memname">T vectorInnerProductBounded </td>
           <td>(</td>
           <td class="paramtype">array&lt; T, N &gt; *&#160;</td>
           <td class="paramname"><em>vec1</em>, </td>
@@ -166,26 +210,20 @@ template&lt;typename T , size_t N&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>start1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>end1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>start2</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>end2</em>&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
