@@ -3,7 +3,7 @@
 //
 
 #include "TestMatrix.h"
-
+#include "TestActivationFunction.h"
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

@@ -7,8 +7,6 @@
 
 #include "../src/AFMatrix.h"
 #include "../lib/googletest/googletest/include/gtest/gtest.h"
-#include "../lib/googletest/googletest/include/gtest/internal/gtest-internal.h"
-
 
 TEST (TestMatrix, CreateMatrix) {
     /**
