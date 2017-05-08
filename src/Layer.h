@@ -165,10 +165,14 @@ public:
                            AFLossFunction<double,LEN_OUT> *lossFn,
                            array<double, LEN_OUT> *newDeltas) {
 
-        array<double, LEN_OUT> valDerivatives; // d(Error)/d(actualVals)
+        array<double, LEN_OUT> lossDerivatives; // d(Error)/d(actualVals)
+        lossFn->derivative(actualVals, expectedVals, &lossDerivatives);
+
+        array<double, LEN_OUT> valDerivatives; // d(actualVals)/d(sums)
         this->activationFunction->derivative(this->sums, &valDerivatives);
+        // TODO: Vectorize this operation
         for (int i = 0; i < LEN_OUT; ++i) {
-            (*newDeltas)[i] = ((*expectedVals)[i] - (*actualVals)[i]) * valDerivatives[i];
+            (*newDeltas)[i] = lossDerivatives[i] * valDerivatives[i];
         }
     }
 
@@ -184,7 +188,7 @@ public:
                            array<double, LEN_OUT> *expectedVals,
                            AFLossFunction<double,LEN_OUT> *lossFn) {
 
-        this->backpropagateBase(actualVals, expectedVals, lossFn);
+        this->backpropagateBase(actualVals, expectedVals, lossFn, this->deltas);
     }
 
     void updateWeights(double learningRate) {
@@ -194,6 +198,8 @@ public:
                 this->weightGradient->setValue(row, col, newVal * learningRate);
             }
         }
+
+        this->weights->subtract(this->weightGradient, this->weights);
     }
 
 

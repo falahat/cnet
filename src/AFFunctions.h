@@ -65,16 +65,16 @@ public:
 template <typename T, size_t N>
 class AFLossFunction {
 public:
-    void evaluate(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
+    virtual void evaluate(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
     }
 
-    void derivative(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
+    virtual void derivative(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
     }
 };
 
 
 template <typename T, size_t N>
-class AFSquareLossFunction : AFLossFunction<T,N> {
+class AFSquareLossFunction : public AFLossFunction<T,N> {
 public:
     T evaluate(array<T,N> *actualVals, array<T,N> *expectedVals) {
         T ans = 0;
@@ -92,7 +92,7 @@ public:
      */
     void derivative(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
         for (int i = 0; i < N; ++i) {
-            double diff =  (*expectedVals)[i] - (*actualVals)[i];
+            double diff =  (*actualVals)[i] - (*expectedVals)[i] ;
             (*output)[i] = diff;
         }
     }
