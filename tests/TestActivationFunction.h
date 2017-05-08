@@ -15,7 +15,7 @@ TEST (TestActivationFunction, ReLU) {
      * Create matrix and make sure it's the right dimensions
      * Try to set/get some values
      */
-    ReLU<double,5, 5> *reluFn = new ReLU<double,5, 5>();
+    ReLU<double,5> *reluFn = new ReLU<double,5>();
 
     array<double, 5> sampleInput = {0.0, 3.0, -1.0, -5.0, 2.0};
     array<double, 5> expectedValue = {0.0, 3.0, 0.0, 0.0, 2.0};
@@ -38,7 +38,7 @@ TEST (TestActivationFunction, IdentityFunction) {
      * Create matrix and make sure it's the right dimensions
      * Try to set/get some values
      */
-    IdentityFunction<double,5,5> *identityFn = new IdentityFunction<double,5,5>();
+    IdentityFunction<double,5> *identityFn = new IdentityFunction<double,5>();
 
     array<double, 5> sampleInput = {0.0, 3.0, -1.0, -5.0, 2.0};
     array<double, 5> expectedValue = {0.0, 3.0, -1.0, -5.0, 2.0};
@@ -62,7 +62,7 @@ TEST (TestLossFunction, SquaredLoss) {
      * Create matrix and make sure it's the right dimensions
      * Try to set/get some values
      */
-    AFSquareLossFunction<double,5,5> *squareLoss = new AFSquareLossFunction<double,5,5>();
+    AFSquareLossFunction<double,5> *squareLoss = new AFSquareLossFunction<double,5>();
 
     array<double, 5> actualValues = {0.0, 0.0, -1.0, 5.0, 2.0};
     array<double, 5> expectedValues = {0.0, 3.0, 1.0, -5.0, 2.0}; // 0 + 9 + 4 + 100 + 0 = 113

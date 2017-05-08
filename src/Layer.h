@@ -40,7 +40,7 @@ public:
     AFMatrix<double, LEN_OUT, LEN_IN> *weightGradient;
 
     /// The activation function `g` such that `outputValues = g(weights * InputVals). Note that g takes a vector.
-    AFActivationFunction<double, LEN_IN, LEN_OUT> *activationFunction;
+    AFActivationFunction<double,LEN_OUT> *activationFunction;
 
 
     /**
@@ -49,7 +49,7 @@ public:
      * @param lenOut The output size of this layer
      * @param activationFn Pass an AFActivationFunction by value so this layer knows how to calculate output values.
      */
-    Layer(int lenIn,int lenOut, AFActivationFunction<double, LEN_IN, LEN_OUT> *activationFn) {
+    Layer(int lenIn,int lenOut, AFActivationFunction<double, LEN_OUT> *activationFn) {
         this->lenIn = lenIn;
         this->lenOut = lenOut;
         this->activationFunction = activationFn;
@@ -162,7 +162,7 @@ public:
      */
     void backpropagateBase(array<double, LEN_OUT> *actualVals,
                            array<double, LEN_OUT> *expectedVals,
-                           AFLossFunction *lossFn,
+                           AFLossFunction<double,LEN_OUT> *lossFn,
                            array<double, LEN_OUT> *newDeltas) {
 
         array<double, LEN_OUT> valDerivatives; // d(Error)/d(actualVals)
@@ -182,16 +182,16 @@ public:
      */
     void backpropagateBase(array<double, LEN_OUT> *actualVals,
                            array<double, LEN_OUT> *expectedVals,
-                           AFLossFunction *lossFn) {
+                           AFLossFunction<double,LEN_OUT> *lossFn) {
 
         this->backpropagateBase(actualVals, expectedVals, lossFn);
     }
 
-    void updateWeights() {
+    void updateWeights(double learningRate) {
         for (int row = 0; row < LEN_OUT; ++row) {
             for (int col = 0; col < LEN_IN; ++col) {
-                double newVal = this->deltas[col] * this->
-                this->weightGradient->setValue(row, col, newVal);
+                double newVal = (*this->deltas)[row] * (*this->inputVals)[col];
+                this->weightGradient->setValue(row, col, newVal * learningRate);
             }
         }
     }

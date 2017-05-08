@@ -11,18 +11,18 @@ using namespace std;
 
 //TODO: THis is annoyingly verbose.
 
-template <typename T, size_t N, size_t M>
+template <typename T, size_t N>
 class AFActivationFunction {
 public:
-    void evaluate(array<T, N> *input, array<T, N> *output) {
+    virtual void evaluate(array<T, N> *input, array<T, N> *output) {
     }
 
-    void derivative(array<T, M> *input, array<T, M> *output) {
+    virtual void derivative(array<T, N> *input, array<T, N> *output) {
     }
 };
 
-template <typename T, size_t N, size_t M>
-class ReLU : AFActivationFunction<T,N,M> {
+template <typename T, size_t N>
+class ReLU : public AFActivationFunction<T,N> {
 public:
     void evaluate(array<T, N> *input, array<T, N> *output) {
         for (int i = 0; i < N; ++i) {
@@ -34,8 +34,8 @@ public:
         }
     }
 
-    void derivative(array<T, M> *input, array<T, M> *output) {
-        for (int i = 0; i < M; ++i) {
+    void derivative(array<T, N> *input, array<T, N> *output) {
+        for (int i = 0; i < N; ++i) {
             if ((*input)[i] > 0) {
                 (*output)[i] = 1;
             } else {
@@ -45,9 +45,8 @@ public:
     }
 };
 
-
-template <typename T, size_t N, size_t M>
-class IdentityFunction: AFActivationFunction<T,N,M> {
+template <typename T, size_t N>
+class IdentityFunction: public AFActivationFunction<T,N> {
 public:
     void evaluate(array<T,N> *input, array<T,N> *output) {
         // TODO: How are some ways to copy two arrays?
@@ -56,15 +55,14 @@ public:
         }
     }
 
-    void derivative(array<T,M> *input, array<T,M> *output) {
-        for (int i = 0; i < M; ++i) {
+    void derivative(array<T,N> *input, array<T,N> *output) {
+        for (int i = 0; i < N; ++i) {
             (*output)[i] = 1;
         }
     }
 };
 
-
-template <typename T, size_t N, size_t M>
+template <typename T, size_t N>
 class AFLossFunction {
 public:
     void evaluate(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
@@ -75,8 +73,8 @@ public:
 };
 
 
-template <typename T, size_t N, size_t M>
-class AFSquareLossFunction : AFLossFunction<T,N,M> {
+template <typename T, size_t N>
+class AFSquareLossFunction : AFLossFunction<T,N> {
 public:
     T evaluate(array<T,N> *actualVals, array<T,N> *expectedVals) {
         T ans = 0;

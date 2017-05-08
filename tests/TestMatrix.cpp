@@ -3,6 +3,7 @@
 //
 
 #include "TestMatrix.h"
+#include "TestLayer.h"
 #include "TestActivationFunction.h"
 
 int main(int argc, char **argv) {

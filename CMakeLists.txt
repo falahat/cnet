@@ -4,7 +4,7 @@ project(CNet)
 set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES src/main.cpp)
-set(TEST_FILES tests/TestMatrix.cpp tests/TestMatrix.h tests/TestActivationFunction.h)
+set(TEST_FILES tests/TestMatrix.cpp tests/TestMatrix.h tests/TestActivationFunction.h tests/TestLayer.h)
 add_subdirectory(src)
 add_subdirectory(lib)
 #add_subdirectory(tests)
