@@ -15,14 +15,19 @@ TEST (TestActivationFunction, ReLU) {
      * Create matrix and make sure it's the right dimensions
      * Try to set/get some values
      */
-    ReLU<double,5> *reluFn = new ReLU<double,5>();
+    ReLU<double> *reluFn = new ReLU<double>();
 
-    array<double, 5> sampleInput = {0.0, 3.0, -1.0, -5.0, 2.0};
-    array<double, 5> expectedValue = {0.0, 3.0, 0.0, 0.0, 2.0};
-    array<double, 5> expectedDerivative = {0.0, 1.0, 0.0, 0.0, 1.0};
+    vector<double> sampleInput = {0.0, 3.0, -1.0, -5.0, 2.0};
+    vector<double> expectedValue = {0.0, 3.0, 0.0, 0.0, 2.0};
+    vector<double> expectedDerivative = {0.0, 1.0, 0.0, 0.0, 1.0};
 
-    array<double, 5> actualValue;
-    array<double, 5> actualDerivative;
+    vector<double> actualValue;
+    vector<double> actualDerivative;
+    actualDerivative.reserve(expectedDerivative.size());
+    actualDerivative.assign(expectedDerivative.size(), 0);
+    actualValue.reserve(expectedValue.size());
+    actualValue.assign(expectedValue.size(), 0);
+
     reluFn->evaluate(&sampleInput, &actualValue);
     reluFn->derivative(&sampleInput, &actualDerivative);
 
@@ -38,14 +43,20 @@ TEST (TestActivationFunction, IdentityFunction) {
      * Create matrix and make sure it's the right dimensions
      * Try to set/get some values
      */
-    IdentityFunction<double,5> *identityFn = new IdentityFunction<double,5>();
+    IdentityFunction<double> *identityFn = new IdentityFunction<double>();
 
-    array<double, 5> sampleInput = {0.0, 3.0, -1.0, -5.0, 2.0};
-    array<double, 5> expectedValue = {0.0, 3.0, -1.0, -5.0, 2.0};
-    array<double, 5> expectedDerivative = {1.0, 1.0, 1.0, 1.0, 1.0};
+    vector<double> sampleInput = {0.0, 3.0, -1.0, -5.0, 2.0};
+    vector<double> expectedValue = {0.0, 3.0, -1.0, -5.0, 2.0};
+    vector<double> expectedDerivative = {1.0, 1.0, 1.0, 1.0, 1.0};
 
-    array<double, 5> actualValue;
-    array<double, 5> actualDerivative;
+    vector<double> actualValue;
+    vector<double> actualDerivative;
+    actualDerivative.reserve(expectedDerivative.size());
+    actualDerivative.assign(expectedDerivative.size(), 0);
+    actualValue.reserve(expectedValue.size());
+    actualValue.assign(expectedValue.size(), 0);
+
+
     identityFn->evaluate(&sampleInput, &actualValue);
     identityFn->derivative(&sampleInput, &actualDerivative);
 
@@ -62,15 +73,18 @@ TEST (TestLossFunction, SquaredLoss) {
      * Create matrix and make sure it's the right dimensions
      * Try to set/get some values
      */
-    AFSquareLossFunction<double,5> *squareLoss = new AFSquareLossFunction<double,5>();
+    AFSquareLossFunction<double> *squareLoss = new AFSquareLossFunction<double>();
 
-    array<double, 5> actualValues = {0.0, 0.0, -1.0, 5.0, 2.0};
-    array<double, 5> expectedValues = {0.0, 3.0, 1.0, -5.0, 2.0}; // 0 + 9 + 4 + 100 + 0 = 113
+    vector<double> actualValues = {0.0, 0.0, -1.0, 5.0, 2.0};
+    vector<double> expectedValues = {0.0, 3.0, 1.0, -5.0, 2.0}; // 0 + 9 + 4 + 100 + 0 = 113
     double expectedValue = 113.0/2;
-    array<double, 5> expectedDerivative = {0, -3, -2, 10.0, 0}; // {0, 3, 2, -10, 0}
+    vector<double> expectedDerivative = {0, -3, -2, 10.0, 0}; // {0, 3, 2, -10, 0}
 
     double actualValue = squareLoss->evaluate(&actualValues, &expectedValues);
-    array<double, 5> actualDerivative;
+    vector<double> actualDerivative;
+    actualDerivative.reserve(expectedDerivative.size());
+    actualDerivative.assign(expectedDerivative.size(), 0);
+
     squareLoss->derivative(&actualValues, &expectedValues, &actualDerivative);
 
     EXPECT_DOUBLE_EQ(expectedValue, actualValue);

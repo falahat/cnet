@@ -7,28 +7,28 @@
 
 using namespace std;
 #include <math.h>
-#include <array>
+#include <vector>
 
 //TODO: THis is annoyingly verbose.
 
-template <typename T, size_t N>
+template <typename T>
 class AFActivationFunction {
 public:
     AFActivationFunction() {
 
     }
-    virtual void evaluate(array<T, N> *input, array<T, N> *output) {
+    virtual void evaluate(vector<T> *input, vector<T> *output) {
     }
 
-    virtual void derivative(array<T, N> *input, array<T, N> *output) {
+    virtual void derivative(vector<T> *input, vector<T> *output) {
     }
 };
 
-template <typename T, size_t N>
-class ReLU : public AFActivationFunction<T,N> {
+template <typename T>
+class ReLU : public AFActivationFunction<T> {
 public:
-    void evaluate(array<T, N> *input, array<T, N> *output) {
-        for (int i = 0; i < N; ++i) {
+    void evaluate(vector<T> *input, vector<T> *output) {
+        for (int i = 0; i < input->size(); ++i) {
             if ((*input)[i] > 0) {
                 (*output)[i] = (*input)[i];
             } else {
@@ -37,8 +37,8 @@ public:
         }
     }
 
-    void derivative(array<T, N> *input, array<T, N> *output) {
-        for (int i = 0; i < N; ++i) {
+    void derivative(vector<T> *input, vector<T> *output) {
+        for (int i = 0; i < input->size(); ++i) {
             if ((*input)[i] > 0) {
                 (*output)[i] = 1;
             } else {
@@ -48,40 +48,40 @@ public:
     }
 };
 
-template <typename T, size_t N>
-class IdentityFunction: public AFActivationFunction<T,N> {
+template <typename T>
+class IdentityFunction: public AFActivationFunction<T> {
 public:
-    void evaluate(array<T,N> *input, array<T,N> *output) {
+    void evaluate(vector<T> *input, vector<T> *output) {
         // TODO: How are some ways to copy two arrays?
-        for (int i = 0; i < N; ++i) {
+        for (int i = 0; i < input->size(); ++i) {
             (*output)[i] = (*input)[i];
         }
     }
 
-    void derivative(array<T,N> *input, array<T,N> *output) {
-        for (int i = 0; i < N; ++i) {
+    void derivative(vector<T> *input, vector<T> *output) {
+        for (int i = 0; i < input->size(); ++i) {
             (*output)[i] = 1;
         }
     }
 };
 
-template <typename T, size_t N>
+template <typename T>
 class AFLossFunction {
 public:
-    virtual T evaluate(array<T,N> *actualVals, array<T,N> *expectedVals) {
+    virtual T evaluate(vector<T> *actualVals, vector<T> *expectedVals) {
     }
 
-    virtual void derivative(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
+    virtual void derivative(vector<T> *actualVals, vector<T> *expectedVals, vector<T> *output) {
     }
 };
 
 
-template <typename T, size_t N>
-class AFSquareLossFunction : public AFLossFunction<T,N> {
+template <typename T>
+class AFSquareLossFunction : public AFLossFunction<T> {
 public:
-    T evaluate(array<T,N> *actualVals, array<T,N> *expectedVals) {
+    T evaluate(vector<T> *actualVals, vector<T> *expectedVals) {
         T ans = 0;
-        for (int i = 0; i < N; ++i) {
+        for (int i = 0; i < actualVals->size(); ++i) {
             double diff = (*actualVals)[i] - (*expectedVals)[i];
             ans += diff*diff*0.5;
         }
@@ -93,8 +93,8 @@ public:
      * @param expectedVals
      * @param output
      */
-    void derivative(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
-        for (int i = 0; i < N; ++i) {
+    void derivative(vector<T> *actualVals, vector<T> *expectedVals, vector<T> *output) {
+        for (int i = 0; i < output->size(); ++i) {
             double diff =  (*actualVals)[i] - (*expectedVals)[i] ;
             (*output)[i] = diff;
         }
@@ -103,20 +103,20 @@ public:
 
 
 
-template <typename T, size_t IN_SIZE>
-AFActivationFunction<T,IN_SIZE> *createActivationFunction(int activationFnCode) {
+template <typename T>
+AFActivationFunction<T> *createActivationFunction(int activationFnCode) {
     // TODO: Make `activationFnCode` an enum, not int
     if (activationFnCode == 0) {
-        return new ReLU<T, IN_SIZE>();
+        return new ReLU<T>();
     }
 };
 
 
-template <typename T, size_t OUT_SIZE>
-AFLossFunction<T,OUT_SIZE> *createLossFunction(int lossFnCode) {
+template <typename T>
+AFLossFunction<T> *createLossFunction(int lossFnCode) {
     // TODO: Make `activationFnCode` an enum, not int
     if (lossFnCode == 0) {
-        return new AFSquareLossFunction<T, OUT_SIZE>();
+        return new AFSquareLossFunction<T>();
     }
 };
 

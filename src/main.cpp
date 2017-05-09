@@ -7,19 +7,25 @@ int main() {
 
     std::cout << "Loading Data..." << std::endl;
     Loader *loader = new Loader();
-    vector<array<double,2>> *X = new vector<array<double,2>>();
-    vector<array<double,1>> *Y = new vector<array<double,1>>();
+    vector<vector<double>> *X = new vector<vector<double>>();
+    vector<vector<double>> *Y = new vector<vector<double>>();
     loader->loadXorData(X,Y);
     std::cout << "Data Loaded." << std::endl << std::endl;
 
     std::cout << "Creating Net..." << std::endl;
-    // Type, Num Layers, L1 Input Size, L1 function, L2 Input Size, L2 Function, Output Size, Loss Fn
-    Net<double,2,2,0,3,0,1,0> *net;
-    net = new Net<double,2,2,0,3,0,1,0>(); // TODO: Explicitly declare?
+    Net<double> *net;
+    AFActivationFunction<double> *relu = new ReLU<double>();
+    vector<Layer*> *layers = new vector<Layer*>();
+    layers->push_back(new Layer(2,4,relu));
+    layers->push_back(new Layer(4,1,relu));
+
+    AFLossFunction<double> *lossFunction = new AFSquareLossFunction<double>();
+
+    net = new Net<double>(layers, lossFunction); // TODO: Explicitly declare?
     std::cout << "Net Created." << std::endl << std::endl;
 
     std::cout << "Training Net..." << std::endl;
-    net->train(X, Y, 5);
+    net->train(X, Y, 40);
     std::cout << "Net Trained." << std::endl << std::endl;
 
     return 0;

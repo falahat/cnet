@@ -16,7 +16,7 @@ public:
 
     }
 
-    void loadXorData(vector<array<double,2>> *X, vector<array<double,1>> *Y) {
+    void loadXorData(vector<vector<double>> *X, vector<vector<double>> *Y) {
         X->push_back({0,0}); Y->push_back({0});
         X->push_back({0,1}); Y->push_back({1});
         X->push_back({1,0}); Y->push_back({1});

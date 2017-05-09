@@ -6,14 +6,17 @@
 #define CNET_AFMATRIX_H
 
 #define ACCEPTABLE_DOUBLE_DIFF 0.000000001
-#include <array>
+#include <vector>
+#include <sstream>
+#include <iterator>
+
 using namespace std;
 
 
 
 
 
-template <typename T, size_t N>
+template <typename T>
 /**
  * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
  * @param vec1 - Left vector
@@ -21,7 +24,7 @@ template <typename T, size_t N>
  * @return The dot product (inner product) of two vectors.
  * @pre vec1 and vec2 have the same length.
  */
-T vectorInnerProductBounded(array<T, N> *vec1, array<T, N> *vec2, size_t start1, size_t start2, size_t len) {
+T vectorInnerProductBounded(vector<T> *vec1, vector<T> *vec2, size_t start1, size_t start2, size_t len) {
     // TODO: Add bound checking?
     T ans;
     for (int offset = 0; offset < len ; ++offset) {
@@ -31,8 +34,7 @@ T vectorInnerProductBounded(array<T, N> *vec1, array<T, N> *vec2, size_t start1,
 }
 
 // TODO: integer matrices multiplied by double matrices though?
-template <typename T, size_t N>
-
+template <typename T>
 /**
  * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
  * @param vec1 - Left vector
@@ -40,14 +42,13 @@ template <typename T, size_t N>
  * @return The dot product (inner product) of two vectors.
  * @pre vec1 and vec2 have the same length.
  */
-T vectorInnerProduct(array<T, N> *vec1, array<T, N> *vec2) {
-    return vectorInnerProductBounded(vec1, vec2, 0ul, 0ul, N);
+T vectorInnerProduct(vector<T> *vec1, vector<T> *vec2) {
+    return vectorInnerProductBounded(vec1, vec2, 0ul, 0ul, vec1->size());
 }
 
 
-template <size_t N>
-bool doubleVectorEqual(array<double, N> *vec1, array<double, N> *vec2) {
-    for (int i = 0; i < N; ++i) {
+bool doubleVectorEqual(vector<double> *vec1, vector<double> *vec2) {
+    for (int i = 0; i < vec1->size(); ++i) {
         if ((*vec1)[i] - (*vec2)[i] >= ACCEPTABLE_DOUBLE_DIFF) {
             return false;
         }
@@ -56,7 +57,7 @@ bool doubleVectorEqual(array<double, N> *vec1, array<double, N> *vec2) {
 }
 
 
-template <class T, size_t ROWS, size_t COLS>
+template <class T>
 class AFMatrix {
 public:
     int numRows;
@@ -71,13 +72,15 @@ public:
      * | e  f |\n
      *
      */
-    array<T, ROWS*COLS> *vals;
+    vector<T> *vals;
 
 
-    AFMatrix() {
-        this->numRows = ROWS;
-        this->numCols = COLS;
-        this->vals = new array<T, ROWS*COLS>();
+    AFMatrix(int numRows, int numCols) {
+        this->numRows = numRows;
+        this->numCols = numCols;
+        this->vals = new vector<T>();
+        this->vals->reserve(numRows*numCols);
+        this->vals->assign(numRows*numCols,0);
     }
 
 
@@ -86,10 +89,12 @@ public:
      * @todo Make this effecient and non-copying
      * @param copyFrom
      */
-    AFMatrix(AFMatrix<T, ROWS, COLS> *copyFrom) {
-        this->numRows = ROWS;
-        this->numCols = COLS;
-        this->vals = new array<T, ROWS*COLS>();
+    AFMatrix(AFMatrix<T> *copyFrom) {
+        this->numRows = copyFrom->numRows;
+        this->numCols = copyFrom->numCols;
+        this->vals = new vector<T>();
+        this->vals->reserve(numRows*numCols);
+        this->vals->assign(numRows*numCols,0);
         this->copyValues(this, copyFrom); // Copies the values from `copyFrom` to itself
     }
 
@@ -98,14 +103,17 @@ public:
      * @todo Make this effecient and non-copying
      * @param copyFrom
      */
-    AFMatrix(array<T, ROWS*COLS> *copyFromArray) {
-        this->numRows = ROWS;
-        this->numCols = COLS;
-        this->vals = new array<T, ROWS*COLS>();
+    AFMatrix(int numRows, int numCols, vector<T> *copyFromArray) {
+        this->numRows = numRows;
+        this->numCols = numCols;
+        this->vals = new vector<T>();
+        this->vals->reserve(numRows*numCols);
+        this->vals->assign(numRows*numCols,0);
         this->copyValues(this->vals, copyFromArray); // Copies the values from `copyFrom` to itself
     }
 
     ~AFMatrix() {
+        // TODO: Delete stuff
         delete this->vals;
     }
 
@@ -133,9 +141,11 @@ public:
      * @return An `std:array` filled with the column values of this matrix
      * @warning Delete the new array to free memory
      */
-    array<T, ROWS> *getCol(int col) {
-        array<T, ROWS> *ans = new array<T, ROWS>();
-        for (int row = 0; row < ROWS; ++row) {
+    vector<T> *getCol(int col) {
+        vector<T> *ans = new vector<T>();
+        ans->reserve(this->numRows);
+        ans->assign(this->numCols,0);
+        for (int row = 0; row < this->numRows; ++row) {
             (*ans)[row] = this->getValue(row, col);
         }
         return ans;
@@ -147,9 +157,11 @@ public:
      * @return An `std:array` filled with the row values of this matrix
      * @warning Delete the new array to free memory
      */
-    array<T, COLS> *getRow(int row) {
-        array<T, COLS> *ans = new array<T, COLS>();
-        for (int col = 0; col < COLS; ++col) {
+    vector<T> *getRow(int row) {
+        vector<T> *ans = new vector<T>();
+        ans->reserve(this->numCols);
+        ans->assign(this->numCols,0);
+        for (int col = 0; col < this->numCols; ++col) {
             (*ans)[col] = this->getValue(row, col);
         }
         return ans;
@@ -170,8 +182,7 @@ public:
      * @param other The other matrix to multiply this against
      * @param out The matrix to write the output values
      */
-    template <size_t OTHER_COLS>
-    void innerProduct(AFMatrix<T, COLS, OTHER_COLS> *other, AFMatrix<T, ROWS, OTHER_COLS> *out) {
+    void innerProduct(AFMatrix<T> *other, AFMatrix<T> *out) {
         this->innerProduct(other, out, 0, 0);
     }
 
@@ -180,10 +191,9 @@ public:
      * @param other The other matrix to multiply this against
      * @param out The matrix to write the output values
      */
-    template <size_t OTHER_COLS>
-    void innerProduct(AFMatrix<T, COLS, OTHER_COLS> *other, AFMatrix<T, ROWS, OTHER_COLS> *out, size_t outStartRow, size_t outStartCol) {
-        for (int outCol = outStartCol; outCol < OTHER_COLS; ++outCol) {
-            array<T, COLS> *currRightCol = other->getCol(outCol);
+    void innerProduct(AFMatrix<T> *other, AFMatrix<T> *out, size_t outStartRow, size_t outStartCol) {
+        for (size_t outCol = outStartCol; outCol < other->numCols; ++outCol) {
+            vector<T> *currRightCol = other->getCol(outCol);
             this->innerProduct(currRightCol, out, outCol);
         }
     }
@@ -194,11 +204,10 @@ public:
      * @param other The other array to inner product with.
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
-    template <size_t COLSOUT>
-    void innerProduct(array<T, COLS> *other,  AFMatrix<T, ROWS, COLSOUT> *out, int outCol) {
-        for (int outRow = 0; outRow < ROWS; ++outRow) {
+    void innerProduct(vector<T> *other,  AFMatrix<T> *out, size_t outCol) {
+        for (int outRow = 0; outRow < this->numRows; ++outRow) {
             // TODO: Assumes that `this->vals` is row-wise
-            array<T, COLS> *currLeftRow = this->getRow(outRow);
+            vector<T> *currLeftRow = this->getRow(outRow);
             T currVal = vectorInnerProduct(currLeftRow, other);
             out->setValue(outRow, outCol, currVal);
             // FIXME: DRY!!!
@@ -211,10 +220,10 @@ public:
      * @param other The other vector to inner product with.
      * @param out Output matrix to write values to. It has this.numRows rows and 1 column.
      */
-    void innerProduct(array<T, COLS> *other,  array<T, ROWS> *out) {
-        for (int outRow = 0; outRow < ROWS; ++outRow) {
+    void innerProduct(vector<T> *other,  vector<T> *out) {
+        for (int outRow = 0; outRow < this->numRows; ++outRow) {
             // TODO: Assumes that `this->vals` is row-wise
-            array<T, COLS> *currLeftRow = this->getRow(outRow);
+            vector<T> *currLeftRow = this->getRow(outRow);
             T currVal = vectorInnerProduct(currLeftRow, other);
             (*out)[outRow] =  currVal;
         }
@@ -224,8 +233,8 @@ public:
      * Transposes this matrix and writes result to out
      * @param out - Matrix that has this.numCols rows and this.numRows cols. The result will be written to out.
      */
-    void transpose(AFMatrix<T, COLS, ROWS> *out) {
-
+    void transpose(AFMatrix<T> *out) {
+        // TODO: Implement transpose
     }
 
     /**
@@ -234,7 +243,7 @@ public:
      * @warning Remember to delete the returned Matrix when done
      */
     AFMatrix* transpose() {
-
+        // TODO: Implement transpose
     }
 
     /**
@@ -243,8 +252,8 @@ public:
      * @param out
      */
     void scale(double factor, AFMatrix* out) {
-        for (int col = 0; col < COLS; ++col) {
-            for (int row = 0; row < ROWS; ++row) {
+        for (int col = 0; col < this->numCols; ++col) {
+            for (int row = 0; row < this->numRows; ++row) {
                 out->setValue(row, col, factor * this->getValue(row, col));
             }
         }
@@ -256,9 +265,9 @@ public:
      * @param out - The matrix to write the result to
      * @warning requires
      */
-    void add(AFMatrix<T, ROWS, COLS> *other, AFMatrix<T, ROWS, COLS> *out) {
-        for (int col = 0; col < COLS; ++col) {
-            for (int row = 0; row < ROWS; ++row) {
+    void add(AFMatrix<T> *other, AFMatrix<T> *out) {
+        for (int col = 0; col < this->numCols; ++col) {
+            for (int row = 0; row < this->numRows; ++row) {
                 T val = this->getValue(row, col) + other->getValue(row, col);
                 out->setValue(row, col, val);
             }
@@ -270,9 +279,9 @@ public:
      * @param other - The matrix to subtract from `this`.
      * @param out - The matrix to write the result to
      */
-    void subtract(AFMatrix<T, ROWS, COLS> *other, AFMatrix<T, ROWS, COLS> *out) {
-        for (int col = 0; col < COLS; ++col) {
-            for (int row = 0; row < ROWS; ++row) {
+    void subtract(AFMatrix<T> *other, AFMatrix<T> *out) {
+        for (int col = 0; col < this->numCols; ++col) {
+            for (int row = 0; row < this->numRows; ++row) {
                 T val = this->getValue(row, col) - other->getValue(row, col);
                 out->setValue(row, col, val);
             }
@@ -284,8 +293,9 @@ public:
      * into it.
      * @return The new dynamically allocated vector (we call `reserve()` on it though).
      */
-    array<T, ROWS*COLS> *toArray() {
-        array<T, ROWS*COLS> *ans = new array<T, ROWS*COLS>();
+    vector<T> *toArray() {
+        vector<T> *ans = new vector<T>();
+        // TODO: Does this copy or overwrite the pointer
         ans = this->vals;
         return ans;
     }
@@ -295,8 +305,7 @@ public:
      * @param dst
      * @param src
      */
-    template <size_t ROWSDST, size_t COLSDST>
-    void copyValues(AFMatrix<T, ROWSDST, COLSDST> *dst, AFMatrix<T, ROWS, COLS> *src) {
+    void copyValues(AFMatrix<T> *dst, AFMatrix<T> *src) {
         copyValues(dst, src, 0, 0);
     }
 
@@ -305,12 +314,11 @@ public:
      * @param dst
      * @param src
      */
-    template <size_t ROWSDST, size_t COLSDST>
-    void copyValues(AFMatrix<T, ROWSDST, COLSDST> *dst, AFMatrix<T, ROWS, COLS> *src, size_t srcRowStart, size_t srcColStart) {
+    void copyValues(AFMatrix<T> *dst, AFMatrix<T> *src, size_t srcRowStart, size_t srcColStart) {
         // TODO: Check that srcRowStart
-        for (int dstRow = 0; dstRow < ROWSDST; ++dstRow) {
+        for (int dstRow = 0; dstRow < dst->numRows; ++dstRow) {
             int srcRow = dstRow + srcRowStart;
-            for (int dstCol = 0; dstCol < COLSDST; ++dstCol) {
+            for (int dstCol = 0; dstCol < dst->numCols; ++dstCol) {
                 int srcCol = dstCol + srcColStart;
                 dst->setValue(dstRow, dstCol, src->getValue(srcRow, srcCol));
             }
@@ -323,7 +331,7 @@ public:
      * @param dst
      * @param src
      */
-    void copyValues(AFMatrix<T, ROWS, COLS> *dst, array<T, ROWS*COLS> *src) {
+    void copyValues(AFMatrix<T> *dst, vector<T> *src) {
         copyValues(this->vals, src);
     }
 
@@ -333,16 +341,17 @@ public:
      * @param dst
      * @param src
      */
-    template <typename T1, size_t N>
-    void copyValues(array<T1, N> *dst, array<T1, N> *src) {
-        for (int i = 0; i < N; ++i) {
+    void copyValues(vector<T> *dst, vector<T> *src) {
+        for (int i = 0; i < dst->size(); ++i) {
             (*dst)[i] = (*src)[i];
         }
     }
 
-    bool equals(AFMatrix<T, ROWS, COLS> *otherMat) {
-        for (int i = 0; i < ROWS; ++i) {
-            for (int j = 0; j < COLS; ++j) {
+    bool equals(AFMatrix<T> *otherMat) {
+        // TODO: Check dimensions!
+
+        for (int i = 0; i < this->numRows; ++i) {
+            for (int j = 0; j < this->numCols; ++j) {
                 // TODO: This assumes doubles
                 if (this->getValue(i, j) - otherMat->getValue(i, j) >= ACCEPTABLE_DOUBLE_DIFF) {
                     return false;
@@ -353,5 +362,19 @@ public:
     }
 };
 
+template <typename T>
+std::ostringstream vectorToString(vector<T> vec) {
+    std::ostringstream oss;
+    if (!vec.empty())
+    {
+// Convert all but the last element to avoid a trailing ","
+        std::copy(vec.begin(), vec.end()-1,
+                  std::ostream_iterator<int>(oss, ","));
+
+// Now add the last element with no delimiter
+        oss << vec.back();
+    }
+    return oss;
+}
 
 #endif //CNET_AFMATRIX_H

@@ -5,68 +5,68 @@
 #ifndef CNET_NET_H
 #define CNET_NET_H
 
+
+#define LEARNING_RATE 0.01
 #include <vector>
 #include "Layer.h"
 #include "AFFunctions.h"
 
 // TODO: Compiler Macro??
-template <
-        typename T,
-        int NUMLAYERS,
-        size_t IN_SIZE_0,
-        int FN_0,
-        size_t IN_SIZE_1,
-        int FN_1,
-        size_t OUT_SIZE,
-        int LOSSFN>
+template <typename T>
 class Net {
 public:
     int numLayers;
-    array<AbstractLayer*,NUMLAYERS> *layers; // TODO: is this chill?
+    vector<Layer*> *layers; // TODO: is this chill?
     // TODO: Free the activation and loss functions
-    AFLossFunction<double, OUT_SIZE> *lossFn;
+    AFLossFunction<double> *lossFn;
 
-    Net() {
-        this->layers = new array<AbstractLayer*,NUMLAYERS>(); // TODO: is this copying or changing reference or what?
-        this->numLayers = NUMLAYERS;
-        this->lossFn = createLossFunction<double, OUT_SIZE>(LOSSFN);
-//        AFActivationFunction<T,IN_SIZE_0> *fn0 = new ReLU<double,IN_SIZE_0>();
-//        AFActivationFunction<T,IN_SIZE_1> *fn1 =  new ReLU<double,IN_SIZE_1>();
-
-        // TODO: Make some compiler MACRO for where we just do a for loop
-        (*layers)[0] = new Layer<IN_SIZE_0, IN_SIZE_1>(IN_SIZE_0 , IN_SIZE_1, FN_0);
-        (*layers)[1] = new Layer<IN_SIZE_1, OUT_SIZE>(IN_SIZE_1 , OUT_SIZE, FN_1);
+    Net(vector<Layer*> *layers, AFLossFunction<double> *lossFunction) {
+        this->layers = new vector<Layer*>(numLayers); // TODO: is this copying or changing reference or what?
+        this->numLayers = layers->size();
+        this->lossFn = lossFunction;
+        this->layers = layers;
     }
 
-    double trainSingle(array<T, IN_SIZE_0> *inputVals, array<T, OUT_SIZE> *expectedVals) {
+    double trainSingle(vector<T> *inputVals, vector<T> *expectedVals) {
 
         // Forward propogation
         (*this->layers)[0]->forwardPass(inputVals);
-        for (int i = 1; i < NUMLAYERS; ++i) {
+        for (int i = 1; i < this->numLayers; ++i) {
             (*this->layers)[i]->forwardPass((*this->layers)[i-1]->outputVals);
         }
-        array<T, OUT_SIZE> *actualVals = (*this->layers)[NUMLAYERS-1]->outputVals;
+        vector<T> *actualVals = (*this->layers)[this->numLayers-1]->outputVals;
+//        actualVals->reserve((*this->layers)[this->numLayers-1]->outputVals->size());
+//        actualVals->assign((*this->layers)[this->numLayers-1]->outputVals->size(), 0);
 
         // Backpropogation and loss calculation
         double loss = this->lossFn->evaluate(actualVals, expectedVals);
-        (*this->layers)[NUMLAYERS-1].backpropogateBase(actualVals, expectedVals);
-        for (int i = NUMLAYERS-2; i >= 0; i--) {
-            (*this->layers)[i]->backpropogate((*this->layers)[i+1]->deltas, (*this->layers)[i+1]->weights);
+        (*this->layers)[this->numLayers-1]->backpropagateBase(actualVals, expectedVals, this->lossFn);
+        (*this->layers)[this->numLayers-1]->updateWeights(LEARNING_RATE);
+        for (int i = this->numLayers-2; i >= 0; i--) {
+            (*this->layers)[i]->backpropagate((*this->layers)[i+1]->deltas, (*this->layers)[i+1]->weights);
+            (*this->layers)[i]->updateWeights(LEARNING_RATE);
         }
+
+        cout << "Training..." << endl;
+        cout << "Input: " << vectorToString<double>(*inputVals).str() << endl;
+        cout << "Expected: " << vectorToString<double>(*expectedVals).str() << endl;
+        cout << "Actual: " << vectorToString<double>(*actualVals).str() << endl;
+        cout << "Loss: " << loss << endl;
+        cout << endl;
 
         return loss;
     }
 
-    double trainEpoch(vector<array<T, IN_SIZE_0>> *allInputVals, vector<array<T, OUT_SIZE>> *allExpectedVals) {
+    double trainEpoch(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals) {
         for (int i = 0; i < allInputVals->size(); ++i) {
-            array<T, IN_SIZE_0> *inputVals = &(*allInputVals)[i];
-            array<T, OUT_SIZE> *expectedVals = &(*allExpectedVals)[i];
+            vector<T> *inputVals = &(*allInputVals)[i];
+            vector<T> *expectedVals = &(*allExpectedVals)[i];
             double loss = this->trainSingle(inputVals, expectedVals);
             cout << "The loss for this turn is " << loss << endl;
         }
     }
 
-    double train(vector<array<T, IN_SIZE_0>> *allInputVals, vector<array<T, OUT_SIZE>> *allExpectedVals, int numEpochs) {
+    double train(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals, int numEpochs) {
         for (int i = 0; i < numEpochs; ++i) {
             this->trainEpoch(allInputVals, allExpectedVals);
         }
