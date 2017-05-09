@@ -14,6 +14,9 @@ using namespace std;
 template <typename T, size_t N>
 class AFActivationFunction {
 public:
+    AFActivationFunction() {
+
+    }
     virtual void evaluate(array<T, N> *input, array<T, N> *output) {
     }
 
@@ -65,7 +68,7 @@ public:
 template <typename T, size_t N>
 class AFLossFunction {
 public:
-    virtual void evaluate(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
+    virtual T evaluate(array<T,N> *actualVals, array<T,N> *expectedVals) {
     }
 
     virtual void derivative(array<T,N> *actualVals, array<T,N> *expectedVals, array<T,N> *output) {
@@ -97,5 +100,25 @@ public:
         }
     }
 };
+
+
+
+template <typename T, size_t IN_SIZE>
+AFActivationFunction<T,IN_SIZE> *createActivationFunction(int activationFnCode) {
+    // TODO: Make `activationFnCode` an enum, not int
+    if (activationFnCode == 0) {
+        return new ReLU<T, IN_SIZE>();
+    }
+};
+
+
+template <typename T, size_t OUT_SIZE>
+AFLossFunction<T,OUT_SIZE> *createLossFunction(int lossFnCode) {
+    // TODO: Make `activationFnCode` an enum, not int
+    if (lossFnCode == 0) {
+        return new AFSquareLossFunction<T, OUT_SIZE>();
+    }
+};
+
 
 #endif //CNET_AFACTIVATIONFUNCTION_H

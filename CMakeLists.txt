@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 project(CNet)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES src/main.cpp)
 set(TEST_FILES tests/TestMatrix.cpp tests/TestMatrix.h tests/TestActivationFunction.h tests/TestLayer.h)

@@ -9,8 +9,11 @@
 #include "AFMatrix.h"
 #include <iostream>
 
+class AbstractLayer {
+
+};
 template <size_t LEN_IN, size_t LEN_OUT>
-class Layer {
+class Layer : public AbstractLayer{
 /**
  * Hello!
  */
@@ -101,6 +104,22 @@ public:
      * @param outputVals - outputVals[i] = this->weights.row(i).innerProduct(inputVals).
      */
     void forwardPass(array<double, LEN_IN> *inputVals, array<double, LEN_OUT> *outputVals) {
+        for (int i = 0; i < LEN_IN; ++i) {
+            (*this->inputVals)[i] = (*inputVals)[i];
+        }
+        this->weights->innerProduct(inputVals, this->sums);
+        this->activationFunction->evaluate(this->sums, outputVals);
+    }
+
+
+    /**
+     * Will perform the forward pass on this Layer. Will take in `inputVals`, calculate weighted sums, and then pass
+     * that result to this layer's activation function. The output will be written to `outputVals`.
+     * @param inputVals
+     * @param outputVals - outputVals[i] = this->weights.row(i).innerProduct(inputVals).
+     */
+    template <size_t OTHER_OUT>
+    void forwardPass(array<double, LEN_IN> *inputVals, Layer<LEN_OUT, OTHER_OUT> layer) {
         for (int i = 0; i < LEN_IN; ++i) {
             (*this->inputVals)[i] = (*inputVals)[i];
         }
