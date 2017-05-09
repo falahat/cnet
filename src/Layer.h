@@ -10,10 +10,24 @@
 #include <iostream>
 
 class AbstractLayer {
+public:
+    //TODO: Are these void* s okay?
+    void* outputVals;
+    void* deltas;
+    void* weights;
+    AbstractLayer() {
+
+    }
+
+    virtual void forwardPass(void* dudInput) {
+
+    }
+
 
 };
 template <size_t LEN_IN, size_t LEN_OUT>
 class Layer : public AbstractLayer{
+
 /**
  * Hello!
  */
@@ -52,10 +66,10 @@ public:
      * @param lenOut The output size of this layer
      * @param activationFn Pass an AFActivationFunction by value so this layer knows how to calculate output values.
      */
-    Layer(int lenIn,int lenOut, AFActivationFunction<double, LEN_OUT> *activationFn) {
+    Layer(size_t lenIn,size_t lenOut, int activationFnCode) {
         this->lenIn = lenIn;
         this->lenOut = lenOut;
-        this->activationFunction = activationFn;
+        this->activationFunction = createActivationFunction<double, LEN_OUT>(activationFnCode);
 
         if (!(this->inputVals = new array<double, LEN_IN> )) {// TODO: Correct syntax?
             std::cout << "Not enough memory for inputVals" << std::endl;
