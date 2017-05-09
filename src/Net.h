@@ -40,8 +40,6 @@ public:
             (*this->layers)[i]->forwardPass((*this->layers)[i-1]->outputVals);
         }
         vector<T> *actualVals = (*this->layers)[this->numLayers-1]->outputVals;
-//        actualVals->reserve((*this->layers)[this->numLayers-1]->outputVals->size());
-//        actualVals->assign((*this->layers)[this->numLayers-1]->outputVals->size(), 0);
 
         // Backpropogation and loss calculation
         double loss = this->lossFn->evaluate(actualVals, expectedVals);

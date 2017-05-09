@@ -98,6 +98,7 @@ public:
     }
 };
 
+
 template <typename T>
 class AFLossFunction {
 public:
@@ -130,6 +131,32 @@ public:
         for (int i = 0; i < output->size(); ++i) {
             double diff =  (*actualVals)[i] - (*expectedVals)[i] ;
             (*output)[i] = diff;
+        }
+    }
+};
+
+
+
+template <typename T>
+class CrossEntropyLoss : public AFLossFunction<T> {
+public:
+    T evaluate(vector<T> *actualVals, vector<T> *expectedVals) {
+        T ans = 0;
+        for (int i = 0; i < actualVals->size(); ++i) {
+            ans -= (*expectedVals)[i] * log( (*actualVals)[i] );
+        }
+    }
+
+    /**
+     * Finds derivative of squared loss L(inputVal, actualVal, expectedVal) w.r.t. actualVals.
+     * @param actualVals
+     * @param expectedVals
+     * @param output
+     */
+    void derivative(vector<T> *actualVals, vector<T> *expectedVals, vector<T> *output) {
+        for (int i = 0; i < output->size(); ++i) {
+            double val =  (*actualVals)[i] / (*expectedVals)[i] ;
+            (*output)[i] = val;
         }
     }
 };
