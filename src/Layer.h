@@ -4,6 +4,8 @@
 #ifndef CNET_LAYER_H
 #define CNET_LAYER_H
 
+#define BIG_PRIME 1299647
+
 #include "AFFunctions.h"
 
 #include "AFMatrix.h"
@@ -92,9 +94,10 @@ class Layer {
 
         void randomizeWeights() {
             // TODO: Clarify references and pointers
+            long int precision = 1000000;
             vector<double> *weightVals = this->weights->vals;
             for (int i = 0; i < lenIn * lenOut; ++i) {
-                (*weightVals)[i] = (double) (rand() % 10000) / 10000.0;;
+                (*weightVals)[i] = (double) ((BIG_PRIME * rand()) % precision) / (1.0*precision);
             }
         }
 
@@ -144,6 +147,7 @@ class Layer {
                 }
                 (*newDeltas)[i] = (currVal) * valDerivatives[i];
             }
+            this->updateWeightGradient();
         }
 
         /**
@@ -184,6 +188,8 @@ class Layer {
             for (int i = 0; i < this->lenOut; ++i) {
                 (*newDeltas)[i] = lossDerivatives[i] * valDerivatives[i];
             }
+
+            this->updateWeightGradient();
         }
 
         /**
@@ -201,15 +207,18 @@ class Layer {
             this->backpropagateBase(actualVals, expectedVals, lossFn, this->deltas);
         }
 
-        void updateWeights(double learningRate) {
-
+        void updateWeightGradient() {
             for (int row = 0; row < this->lenOut; ++row) {
                 for (int col = 0; col < this->lenIn; ++col) {
                     double newVal = (*this->deltas)[row] * (*this->inputVals)[col];
-                    this->weightGradient->setValue(row, col, newVal * learningRate);
+                    this->weightGradient->setValue(row, col, newVal);
                 }
             }
+        }
 
+        void updateWeights(double learningRate) {
+//            updateWeightGradient();
+            this->weightGradient->scale(learningRate, this->weightGradient);
             this->weights->subtract(this->weightGradient, this->weights);
         }
 };

@@ -48,6 +48,39 @@ public:
     }
 };
 
+
+template <typename T>
+class LeakyReLU : public AFActivationFunction<T> {
+public:
+    double leakFactor;
+    LeakyReLU() {
+
+    }
+
+    LeakyReLU(double leakFactor) {
+        this->leakFactor = leakFactor;
+    }
+    void evaluate(vector<T> *input, vector<T> *output) {
+        for (int i = 0; i < input->size(); ++i) {
+            if ((*input)[i] > 0) {
+                (*output)[i] = (*input)[i];
+            } else {
+                (*output)[i] = this->leakFactor*(*input)[i];
+            }
+        }
+    }
+
+    void derivative(vector<T> *input, vector<T> *output) {
+        for (int i = 0; i < input->size(); ++i) {
+            if ((*input)[i] > 0) {
+                (*output)[i] = 1;
+            } else {
+                (*output)[i] = this->leakFactor;
+            }
+        }
+    }
+};
+
 template <typename T>
 class IdentityFunction: public AFActivationFunction<T> {
 public:

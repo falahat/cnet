@@ -5,8 +5,13 @@
 #ifndef CNET_NET_H
 #define CNET_NET_H
 
+#define PRINT_SINGLE
+//#define     PRINT_DETAILS
+#define         PRINT_MATRICES
+#define         PRINT_LAYER_VALS
+#define PRINT_EPOCH
 
-#define LEARNING_RATE 0.0001
+#define LEARNING_RATE 0.1
 #include <vector>
 #include "Layer.h"
 #include "AFFunctions.h"
@@ -47,48 +52,63 @@ public:
             (*this->layers)[i]->updateWeights(LEARNING_RATE);
         }
 
+        // TODO: When is the right time to update weights?
+//        for (int i = 1; i < this->numLayers; ++i) {
+//            (*this->layers)[i]->updateWeights(LEARNING_RATE);
+//        }
+        #ifdef PRINT_SINGLE
+
         cout << "Training..." << endl;
         cout << "Input: " << vectorToString<double>(*inputVals).str() << endl;
         cout << "Expected: " << vectorToString<double>(*expectedVals).str() << endl;
         cout << "Actual: " << vectorToString<double>(*actualVals).str() << endl;
         cout << "Loss: " << loss << endl;
-        cout << "Weights: ";
+        #ifdef PRINT_DETAILS
+        #ifdef PRINT_MATRICES
+        cout << "Weights: " << endl;
         for (int i = 0; i < this->numLayers; ++i) {
             cout << (*this->layers)[i]->weights->toString().str() << endl;
         }
-        cout << "Weight Gradients: ";
+        cout << "Weight Gradients: " << endl;
         for (int i = 0; i < this->numLayers; ++i) {
             cout << (*this->layers)[i]->weightGradient->toString().str() << endl;
         }
+        #endif
 
-        cout << "Outputs: ";
+        #ifdef PRINT_LAYER_VALS
+        cout << "Outputs: " << endl;
         for (int i = 0; i < this->numLayers; ++i) {
             cout << vectorToString<double>(*(*this->layers)[i]->outputVals).str() << endl;
         }
 
-        cout << "Inputs: ";
+        cout << "Inputs: " << endl;
         for (int i = 0; i < this->numLayers; ++i) {
             cout << vectorToString<double>(*(*this->layers)[i]->inputVals).str() << endl;
         }
 
-        cout << "Sums: ";
+        cout << "Sums: " << endl;
         for (int i = 0; i < this->numLayers; ++i) {
             cout << vectorToString<double>(*(*this->layers)[i]->sums).str() << endl;
         }
-
+        #endif
+        #endif
         cout << endl;
+        #endif
 
         return loss;
     }
 
     double trainEpoch(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals) {
+        double loss = 0;
         for (int i = 0; i < allInputVals->size(); ++i) {
             shuffleInplace(allInputVals, allExpectedVals);
             vector<T> *inputVals = &(*allInputVals)[i];
             vector<T> *expectedVals = &(*allExpectedVals)[i];
-            double loss = this->trainSingle(inputVals, expectedVals);
-            cout << "The loss for this turn is " << loss << endl;
+            loss += this->trainSingle(inputVals, expectedVals);
         }
+        #ifdef PRINT_EPOCH
+        cout << "The total loss for this epoch is " << loss << endl;
+        #endif
     }
 
     double train(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals, int numEpochs) {

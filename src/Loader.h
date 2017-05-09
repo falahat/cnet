@@ -25,11 +25,26 @@ public:
         X->push_back({1,1}); Y->push_back({0});
     }
 
+    void loadAndData(vector<vector<double>> *X, vector<vector<double>> *Y) {
+        X->push_back({0,0}); Y->push_back({0});
+        X->push_back({0,1}); Y->push_back({0});
+        X->push_back({1,0}); Y->push_back({0});
+        X->push_back({1,1}); Y->push_back({1});
+    }
+
+    void loadOrData(vector<vector<double>> *X, vector<vector<double>> *Y) {
+        X->push_back({0,0}); Y->push_back({0});
+        X->push_back({0,1}); Y->push_back({1});
+        X->push_back({1,0}); Y->push_back({1});
+        X->push_back({1,1}); Y->push_back({1});
+    }
+
 
     void loadLineData(vector<vector<double>> *X, vector<vector<double>> *Y, double slope, double intercept) {
-        int NUM_POINTS = 10;
+        int NUM_POINTS = 20;
+        double AMPLITUDE = 1.0;
         for (int i = 0; i < NUM_POINTS; ++i) {
-            double x = (30.0 * i) / NUM_POINTS;
+            double x = (AMPLITUDE * i) / NUM_POINTS;
             double y = slope * x + intercept;
             X->push_back({x}); Y->push_back({y});
 
