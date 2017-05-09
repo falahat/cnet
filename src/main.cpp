@@ -9,15 +9,15 @@ int main() {
     Loader *loader = new Loader();
     vector<vector<double>> *X = new vector<vector<double>>();
     vector<vector<double>> *Y = new vector<vector<double>>();
-    loader->loadXorData(X,Y);
+    loader->loadLineData(X,Y, 3.5, 0.0);
     std::cout << "Data Loaded." << std::endl << std::endl;
 
     std::cout << "Creating Net..." << std::endl;
     Net<double> *net;
     AFActivationFunction<double> *relu = new ReLU<double>();
     vector<Layer*> *layers = new vector<Layer*>();
-    layers->push_back(new Layer(2,4,relu));
-    layers->push_back(new Layer(4,1,relu));
+    layers->push_back(new Layer(1,1,relu));
+    layers->push_back(new Layer(1,1,relu));
 
     AFLossFunction<double> *lossFunction = new AFSquareLossFunction<double>();
 
@@ -25,7 +25,7 @@ int main() {
     std::cout << "Net Created." << std::endl << std::endl;
 
     std::cout << "Training Net..." << std::endl;
-    net->train(X, Y, 40);
+    net->train(X, Y, 10);
     std::cout << "Net Trained." << std::endl << std::endl;
 
     return 0;

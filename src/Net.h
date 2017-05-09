@@ -6,10 +6,11 @@
 #define CNET_NET_H
 
 
-#define LEARNING_RATE 0.01
+#define LEARNING_RATE 0.0001
 #include <vector>
 #include "Layer.h"
 #include "AFFunctions.h"
+#include "AFMatrix.h"
 
 // TODO: Compiler Macro??
 template <typename T>
@@ -28,7 +29,6 @@ public:
     }
 
     double trainSingle(vector<T> *inputVals, vector<T> *expectedVals) {
-
         // Forward propogation
         (*this->layers)[0]->forwardPass(inputVals);
         for (int i = 1; i < this->numLayers; ++i) {
@@ -52,6 +52,30 @@ public:
         cout << "Expected: " << vectorToString<double>(*expectedVals).str() << endl;
         cout << "Actual: " << vectorToString<double>(*actualVals).str() << endl;
         cout << "Loss: " << loss << endl;
+        cout << "Weights: ";
+        for (int i = 0; i < this->numLayers; ++i) {
+            cout << (*this->layers)[i]->weights->toString().str() << endl;
+        }
+        cout << "Weight Gradients: ";
+        for (int i = 0; i < this->numLayers; ++i) {
+            cout << (*this->layers)[i]->weightGradient->toString().str() << endl;
+        }
+
+        cout << "Outputs: ";
+        for (int i = 0; i < this->numLayers; ++i) {
+            cout << vectorToString<double>(*(*this->layers)[i]->outputVals).str() << endl;
+        }
+
+        cout << "Inputs: ";
+        for (int i = 0; i < this->numLayers; ++i) {
+            cout << vectorToString<double>(*(*this->layers)[i]->inputVals).str() << endl;
+        }
+
+        cout << "Sums: ";
+        for (int i = 0; i < this->numLayers; ++i) {
+            cout << vectorToString<double>(*(*this->layers)[i]->sums).str() << endl;
+        }
+
         cout << endl;
 
         return loss;
@@ -59,6 +83,7 @@ public:
 
     double trainEpoch(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals) {
         for (int i = 0; i < allInputVals->size(); ++i) {
+            shuffleInplace(allInputVals, allExpectedVals);
             vector<T> *inputVals = &(*allInputVals)[i];
             vector<T> *expectedVals = &(*allExpectedVals)[i];
             double loss = this->trainSingle(inputVals, expectedVals);

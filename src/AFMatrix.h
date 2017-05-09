@@ -360,20 +360,39 @@ public:
         }
         return true;
     }
+
+
+    std::ostringstream toString() {
+        std::ostringstream oss;
+        oss << "Matrix: " << this->numRows << " Rows, " << this->numCols << " Cols." << endl;
+        for (int row = 0; row < this->numRows; ++row) {
+            oss << "| ";
+            for (int col = 0; col < this->numCols; ++col) {
+                oss << this->getValue(row, col);
+                if (col != this->numCols - 1) {
+                    oss << ", ";
+                }
+            }
+            oss << "| " << endl;
+        }
+        return oss;
+    }
 };
 
 template <typename T>
 std::ostringstream vectorToString(vector<T> vec) {
     std::ostringstream oss;
+    oss << "[";
     if (!vec.empty())
     {
-// Convert all but the last element to avoid a trailing ","
+    // Convert all but the last element to avoid a trailing ","
         std::copy(vec.begin(), vec.end()-1,
                   std::ostream_iterator<int>(oss, ","));
 
-// Now add the last element with no delimiter
+    // Now add the last element with no delimiter
         oss << vec.back();
     }
+    oss << "] ";
     return oss;
 }
 

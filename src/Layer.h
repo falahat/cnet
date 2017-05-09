@@ -171,9 +171,14 @@ class Layer {
                                vector<double> *newDeltas) {
 
             vector<double> lossDerivatives(this->lenOut); // d(Error)/d(actualVals)
+            lossDerivatives.reserve(this->lenOut);
+            lossDerivatives.assign(this->lenOut, 0);
             lossFn->derivative(actualVals, expectedVals, &lossDerivatives);
 
             vector<double> valDerivatives(this->lenOut); // d(actualVals)/d(sums)
+            valDerivatives.reserve(this->lenOut);
+            valDerivatives.assign(this->lenOut, 0);
+
             this->activationFunction->derivative(this->sums, &valDerivatives);
             // TODO: Vectorize this operation
             for (int i = 0; i < this->lenOut; ++i) {
