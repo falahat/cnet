@@ -1,0 +1,44 @@
+\hypertarget{classAFSquareLossFunction}{}\section{A\+F\+Square\+Loss\+Function$<$ T $>$ Class Template Reference}
+\label{classAFSquareLossFunction}\index{A\+F\+Square\+Loss\+Function$<$ T $>$@{A\+F\+Square\+Loss\+Function$<$ T $>$}}
+Inheritance diagram for A\+F\+Square\+Loss\+Function$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAFSquareLossFunction}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAFSquareLossFunction_a6bf89d61174eae853b603615a7e280a8}\label{classAFSquareLossFunction_a6bf89d61174eae853b603615a7e280a8}} 
+T {\bfseries evaluate} (vector$<$ T $>$ $\ast$actual\+Vals, vector$<$ T $>$ $\ast$expected\+Vals)
+\item 
+void \hyperlink{classAFSquareLossFunction_abba069bd0b248fe89641673844b06616}{derivative} (vector$<$ T $>$ $\ast$actual\+Vals, vector$<$ T $>$ $\ast$expected\+Vals, vector$<$ T $>$ $\ast$output)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classAFSquareLossFunction_abba069bd0b248fe89641673844b06616}\label{classAFSquareLossFunction_abba069bd0b248fe89641673844b06616}} 
+\index{A\+F\+Square\+Loss\+Function@{A\+F\+Square\+Loss\+Function}!derivative@{derivative}}
+\index{derivative@{derivative}!A\+F\+Square\+Loss\+Function@{A\+F\+Square\+Loss\+Function}}
+\subsubsection{\texorpdfstring{derivative()}{derivative()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classAFSquareLossFunction}{A\+F\+Square\+Loss\+Function}$<$ T $>$\+::derivative (\begin{DoxyParamCaption}\item[{vector$<$ T $>$ $\ast$}]{actual\+Vals,  }\item[{vector$<$ T $>$ $\ast$}]{expected\+Vals,  }\item[{vector$<$ T $>$ $\ast$}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Finds derivative of squared loss L(input\+Val, actual\+Val, expected\+Val) w.\+r.\+t. actual\+Vals. 
+\begin{DoxyParams}{Parameters}
+{\em actual\+Vals} & \\
+\hline
+{\em expected\+Vals} & \\
+\hline
+{\em output} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classAFLossFunction}{A\+F\+Loss\+Function$<$ T $>$}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/A\+F\+Functions.\+h\end{DoxyCompactItemize}

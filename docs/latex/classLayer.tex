@@ -1,0 +1,194 @@
+\hypertarget{classLayer}{}\section{Layer Class Reference}
+\label{classLayer}\index{Layer@{Layer}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLayer_ac7b74e6fa9a90f78753c0318cf731719}{Layer} (size\+\_\+t \hyperlink{classLayer_a5f699c67410ebc5acad98cc5d3a9b5ec}{len\+In}, size\+\_\+t \hyperlink{classLayer_a57aa9a6491ea690f338f145c62a582f2}{len\+Out}, \hyperlink{classAFActivationFunction}{A\+F\+Activation\+Function}$<$ double $>$ $\ast$\hyperlink{classLayer_abe40a67ce33b17440ff6b0571b0c49e5}{activation\+Function})
+\item 
+\mbox{\Hypertarget{classLayer_ab725324396c041488c108238e0c23037}\label{classLayer_ab725324396c041488c108238e0c23037}} 
+void {\bfseries randomize\+Weights} ()
+\item 
+void \hyperlink{classLayer_ad8fbfc2d20832ea5f8174074f26aaba1}{forward\+Pass} (vector$<$ double $>$ $\ast$\hyperlink{classLayer_ab72e6e0db19cd376c3c62b59e5f55e56}{input\+Vals}, vector$<$ double $>$ $\ast$\hyperlink{classLayer_a42731a44d761c086b0c4914fcc2ba8a0}{output\+Vals})
+\item 
+void \hyperlink{classLayer_ac447454d60f91693dc98020f0063da5a}{forward\+Pass} (vector$<$ double $>$ $\ast$\hyperlink{classLayer_ab72e6e0db19cd376c3c62b59e5f55e56}{input\+Vals})
+\item 
+void \hyperlink{classLayer_a5fa93a13d02fe9ee536d87b4980c8862}{backpropagate} (vector$<$ double $>$ $\ast$next\+Deltas, \hyperlink{classAFMatrix}{A\+F\+Matrix}$<$ double $>$ $\ast$next\+Weights, vector$<$ double $>$ $\ast$new\+Deltas)
+\item 
+void \hyperlink{classLayer_ab971a401b617ae20c5ab19310be25a70}{backpropagate} (vector$<$ double $>$ $\ast$next\+Deltas, \hyperlink{classAFMatrix}{A\+F\+Matrix}$<$ double $>$ $\ast$next\+Weights)
+\item 
+void \hyperlink{classLayer_a662f96aaa0e56564046baf34d4afddf5}{backpropagate\+Base} (vector$<$ double $>$ $\ast$actual\+Vals, vector$<$ double $>$ $\ast$expected\+Vals, \hyperlink{classAFLossFunction}{A\+F\+Loss\+Function}$<$ double $>$ $\ast$loss\+Fn, vector$<$ double $>$ $\ast$new\+Deltas)
+\item 
+void \hyperlink{classLayer_af2181f3eda8a8c6898d47fc3c280313b}{backpropagate\+Base} (vector$<$ double $>$ $\ast$actual\+Vals, vector$<$ double $>$ $\ast$expected\+Vals, \hyperlink{classAFLossFunction}{A\+F\+Loss\+Function}$<$ double $>$ $\ast$loss\+Fn)
+\item 
+\mbox{\Hypertarget{classLayer_a6896bb337eee9d535030fe115e4951ef}\label{classLayer_a6896bb337eee9d535030fe115e4951ef}} 
+void {\bfseries update\+Weight\+Gradient} ()
+\item 
+\mbox{\Hypertarget{classLayer_a9617331c069ebe2a8f20fd72aa017717}\label{classLayer_a9617331c069ebe2a8f20fd72aa017717}} 
+void {\bfseries update\+Weights} (double learning\+Rate)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classLayer_a5f699c67410ebc5acad98cc5d3a9b5ec}{len\+In}
+\begin{DoxyCompactList}\small\item\em The size of the vector that this layer takes as input. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLayer_a57aa9a6491ea690f338f145c62a582f2}\label{classLayer_a57aa9a6491ea690f338f145c62a582f2}} 
+int \hyperlink{classLayer_a57aa9a6491ea690f338f145c62a582f2}{len\+Out}
+\begin{DoxyCompactList}\small\item\em The size of the vector that this layer outputs. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLayer_ab72e6e0db19cd376c3c62b59e5f55e56}\label{classLayer_ab72e6e0db19cd376c3c62b59e5f55e56}} 
+vector$<$ double $>$ $\ast$ \hyperlink{classLayer_ab72e6e0db19cd376c3c62b59e5f55e56}{input\+Vals}
+\begin{DoxyCompactList}\small\item\em The values that this layer receives from the previous layer L\+E\+N\+\_\+\+IN. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLayer_a615b17469874e0f1d9a63236568c1be4}\label{classLayer_a615b17469874e0f1d9a63236568c1be4}} 
+vector$<$ double $>$ $\ast$ \hyperlink{classLayer_a615b17469874e0f1d9a63236568c1be4}{sums}
+\begin{DoxyCompactList}\small\item\em The sums after the weights are multiplied by input value`. L\+E\+N\+\_\+\+O\+UT. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLayer_a6ba44600aedf6e90536cd76dc94562c0}\label{classLayer_a6ba44600aedf6e90536cd76dc94562c0}} 
+vector$<$ double $>$ $\ast$ \hyperlink{classLayer_a6ba44600aedf6e90536cd76dc94562c0}{deltas}
+\begin{DoxyCompactList}\small\item\em The intermediate gradients of the loss, {\ttfamily deltas\mbox{[}i\mbox{]} = d(\+Error)/d(sum\+\_\+i)} L\+E\+N\+\_\+\+O\+UT. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLayer_a42731a44d761c086b0c4914fcc2ba8a0}\label{classLayer_a42731a44d761c086b0c4914fcc2ba8a0}} 
+vector$<$ double $>$ $\ast$ \hyperlink{classLayer_a42731a44d761c086b0c4914fcc2ba8a0}{output\+Vals}
+\begin{DoxyCompactList}\small\item\em The values after the sums are put through the activation function. L\+E\+N\+\_\+\+O\+UT. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLayer_acb311104d54fd7c09ea4c07006f8fc45}\label{classLayer_acb311104d54fd7c09ea4c07006f8fc45}} 
+\hyperlink{classAFMatrix}{A\+F\+Matrix}$<$ double $>$ $\ast$ \hyperlink{classLayer_acb311104d54fd7c09ea4c07006f8fc45}{weights}
+\begin{DoxyCompactList}\small\item\em The weights which are multiplied against the input values. This has {\ttfamily len\+Out} rows and {\ttfamily len\+In} cols. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLayer_a8b36a2bc8a623ab02c0545097ebc967f}\label{classLayer_a8b36a2bc8a623ab02c0545097ebc967f}} 
+\hyperlink{classAFMatrix}{A\+F\+Matrix}$<$ double $>$ $\ast$ \hyperlink{classLayer_a8b36a2bc8a623ab02c0545097ebc967f}{weight\+Gradient}
+\begin{DoxyCompactList}\small\item\em The weight gradients. {\ttfamily weight\+Gradient\mbox{[}i,j\mbox{]} = d(\+Error)/d(weights\mbox{[}i,j\mbox{]})}. Same shape as {\ttfamily weights}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLayer_abe40a67ce33b17440ff6b0571b0c49e5}\label{classLayer_abe40a67ce33b17440ff6b0571b0c49e5}} 
+\hyperlink{classAFActivationFunction}{A\+F\+Activation\+Function}$<$ double $>$ $\ast$ \hyperlink{classLayer_abe40a67ce33b17440ff6b0571b0c49e5}{activation\+Function}
+\begin{DoxyCompactList}\small\item\em The activation function {\ttfamily g} such that `output\+Values = g(weights $\ast$ Input\+Vals). Note that g takes a vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLayer_ac7b74e6fa9a90f78753c0318cf731719}\label{classLayer_ac7b74e6fa9a90f78753c0318cf731719}} 
+\index{Layer@{Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{Layer()}{Layer()}}
+{\footnotesize\ttfamily Layer\+::\+Layer (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{len\+In,  }\item[{size\+\_\+t}]{len\+Out,  }\item[{\hyperlink{classAFActivationFunction}{A\+F\+Activation\+Function}$<$ double $>$ $\ast$}]{activation\+Function }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em len\+In} & The input length of this layer \\
+\hline
+{\em len\+Out} & The output size of this layer \\
+\hline
+{\em activation\+Fn} & Pass an \hyperlink{classAFActivationFunction}{A\+F\+Activation\+Function} by value so this layer knows how to calculate output values. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classLayer_a5fa93a13d02fe9ee536d87b4980c8862}\label{classLayer_a5fa93a13d02fe9ee536d87b4980c8862}} 
+\index{Layer@{Layer}!backpropagate@{backpropagate}}
+\index{backpropagate@{backpropagate}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{backpropagate()}{backpropagate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Layer\+::backpropagate (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{next\+Deltas,  }\item[{\hyperlink{classAFMatrix}{A\+F\+Matrix}$<$ double $>$ $\ast$}]{next\+Weights,  }\item[{vector$<$ double $>$ $\ast$}]{new\+Deltas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Performs backpropogation algorithm. Writes this layer\textquotesingle{}s new d(\+Err)/d(Sums) into {\ttfamily new\+Deltas}. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em L\+E\+N\+\_\+\+O\+U\+T\+\_\+\+N\+E\+XT} & The next layer\textquotesingle{}s output length \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Deltas} & The next layer\textquotesingle{}s d(\+Err)/d(sums); \\
+\hline
+{\em next\+Weights} & \\
+\hline
+{\em new\+Deltas} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLayer_ab971a401b617ae20c5ab19310be25a70}\label{classLayer_ab971a401b617ae20c5ab19310be25a70}} 
+\index{Layer@{Layer}!backpropagate@{backpropagate}}
+\index{backpropagate@{backpropagate}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{backpropagate()}{backpropagate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Layer\+::backpropagate (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{next\+Deltas,  }\item[{\hyperlink{classAFMatrix}{A\+F\+Matrix}$<$ double $>$ $\ast$}]{next\+Weights }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Performs backpropogation algorithm and writes output to {\ttfamily this-\/$>$deltas}. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em L\+E\+N\+\_\+\+O\+U\+T\+\_\+\+N\+E\+XT} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Deltas} & \\
+\hline
+{\em next\+Weights} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLayer_a662f96aaa0e56564046baf34d4afddf5}\label{classLayer_a662f96aaa0e56564046baf34d4afddf5}} 
+\index{Layer@{Layer}!backpropagate\+Base@{backpropagate\+Base}}
+\index{backpropagate\+Base@{backpropagate\+Base}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{backpropagate\+Base()}{backpropagateBase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Layer\+::backpropagate\+Base (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{actual\+Vals,  }\item[{vector$<$ double $>$ $\ast$}]{expected\+Vals,  }\item[{\hyperlink{classAFLossFunction}{A\+F\+Loss\+Function}$<$ double $>$ $\ast$}]{loss\+Fn,  }\item[{vector$<$ double $>$ $\ast$}]{new\+Deltas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The backprop algorithm for the last layer. First calculates {\ttfamily d(\+Err)/d(output\+Vals)}, which is the derivative of the loss function w.\+r.\+t to {\ttfamily actual\+Vals}. It then calculates d(\+Err)/d(sums)`.
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual\+Vals} & \\
+\hline
+{\em expected\+Vals} & \\
+\hline
+{\em new\+Deltas} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLayer_af2181f3eda8a8c6898d47fc3c280313b}\label{classLayer_af2181f3eda8a8c6898d47fc3c280313b}} 
+\index{Layer@{Layer}!backpropagate\+Base@{backpropagate\+Base}}
+\index{backpropagate\+Base@{backpropagate\+Base}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{backpropagate\+Base()}{backpropagateBase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Layer\+::backpropagate\+Base (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{actual\+Vals,  }\item[{vector$<$ double $>$ $\ast$}]{expected\+Vals,  }\item[{\hyperlink{classAFLossFunction}{A\+F\+Loss\+Function}$<$ double $>$ $\ast$}]{loss\+Fn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The backprop algorithm for the last layer. First calculates {\ttfamily d(\+Err)/d(output\+Vals)}, which is the derivative of the loss function w.\+r.\+t to {\ttfamily actual\+Vals}. It then calculates d(\+Err)/d(sums)`.
+
+
+\begin{DoxyParams}{Parameters}
+{\em actual\+Vals} & \\
+\hline
+{\em expected\+Vals} & \\
+\hline
+{\em new\+Deltas} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLayer_ad8fbfc2d20832ea5f8174074f26aaba1}\label{classLayer_ad8fbfc2d20832ea5f8174074f26aaba1}} 
+\index{Layer@{Layer}!forward\+Pass@{forward\+Pass}}
+\index{forward\+Pass@{forward\+Pass}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{forward\+Pass()}{forwardPass()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Layer\+::forward\+Pass (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{input\+Vals,  }\item[{vector$<$ double $>$ $\ast$}]{output\+Vals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Will perform the forward pass on this \hyperlink{classLayer}{Layer}. Will take in {\ttfamily input\+Vals}, calculate weighted sums, and then pass that result to this layer\textquotesingle{}s activation function. The output will be written to {\ttfamily output\+Vals}. 
+\begin{DoxyParams}{Parameters}
+{\em input\+Vals} & \\
+\hline
+{\em output\+Vals} & -\/ output\+Vals\mbox{[}i\mbox{]} = this-\/$>$weights.\+row(i).inner\+Product(input\+Vals). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLayer_ac447454d60f91693dc98020f0063da5a}\label{classLayer_ac447454d60f91693dc98020f0063da5a}} 
+\index{Layer@{Layer}!forward\+Pass@{forward\+Pass}}
+\index{forward\+Pass@{forward\+Pass}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{forward\+Pass()}{forwardPass()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Layer\+::forward\+Pass (\begin{DoxyParamCaption}\item[{vector$<$ double $>$ $\ast$}]{input\+Vals }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Will perform the forward pass on this \hyperlink{classLayer}{Layer}. Will take in {\ttfamily input\+Vals}, calculate weighted sums, and then pass that result to this layer\textquotesingle{}s activation function. The output will be written to {\ttfamily output\+Vals}. 
+\begin{DoxyParams}{Parameters}
+{\em input\+Vals} & \\
+\hline
+{\em output\+Vals} & -\/ output\+Vals\mbox{[}i\mbox{]} = this-\/$>$weights.\+row(i).inner\+Product(input\+Vals). \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classLayer_a5f699c67410ebc5acad98cc5d3a9b5ec}\label{classLayer_a5f699c67410ebc5acad98cc5d3a9b5ec}} 
+\index{Layer@{Layer}!len\+In@{len\+In}}
+\index{len\+In@{len\+In}!Layer@{Layer}}
+\subsubsection{\texorpdfstring{len\+In}{lenIn}}
+{\footnotesize\ttfamily int Layer\+::len\+In}
+
+
+
+The size of the vector that this layer takes as input. 
+
+Hello! 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/Layer.\+h\end{DoxyCompactItemize}

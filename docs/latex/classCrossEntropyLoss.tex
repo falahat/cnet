@@ -1,0 +1,44 @@
+\hypertarget{classCrossEntropyLoss}{}\section{Cross\+Entropy\+Loss$<$ T $>$ Class Template Reference}
+\label{classCrossEntropyLoss}\index{Cross\+Entropy\+Loss$<$ T $>$@{Cross\+Entropy\+Loss$<$ T $>$}}
+Inheritance diagram for Cross\+Entropy\+Loss$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCrossEntropyLoss}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCrossEntropyLoss_a4ee9697f6272e7f94809e69ac85776d1}\label{classCrossEntropyLoss_a4ee9697f6272e7f94809e69ac85776d1}} 
+T {\bfseries evaluate} (vector$<$ T $>$ $\ast$actual\+Vals, vector$<$ T $>$ $\ast$expected\+Vals)
+\item 
+void \hyperlink{classCrossEntropyLoss_a42d889334750f5a38e74dbce97b4a720}{derivative} (vector$<$ T $>$ $\ast$actual\+Vals, vector$<$ T $>$ $\ast$expected\+Vals, vector$<$ T $>$ $\ast$output)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCrossEntropyLoss_a42d889334750f5a38e74dbce97b4a720}\label{classCrossEntropyLoss_a42d889334750f5a38e74dbce97b4a720}} 
+\index{Cross\+Entropy\+Loss@{Cross\+Entropy\+Loss}!derivative@{derivative}}
+\index{derivative@{derivative}!Cross\+Entropy\+Loss@{Cross\+Entropy\+Loss}}
+\subsubsection{\texorpdfstring{derivative()}{derivative()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \hyperlink{classCrossEntropyLoss}{Cross\+Entropy\+Loss}$<$ T $>$\+::derivative (\begin{DoxyParamCaption}\item[{vector$<$ T $>$ $\ast$}]{actual\+Vals,  }\item[{vector$<$ T $>$ $\ast$}]{expected\+Vals,  }\item[{vector$<$ T $>$ $\ast$}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Finds derivative of squared loss L(input\+Val, actual\+Val, expected\+Val) w.\+r.\+t. actual\+Vals. 
+\begin{DoxyParams}{Parameters}
+{\em actual\+Vals} & \\
+\hline
+{\em expected\+Vals} & \\
+\hline
+{\em output} & \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classAFLossFunction}{A\+F\+Loss\+Function$<$ T $>$}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/A\+F\+Functions.\+h\end{DoxyCompactItemize}
