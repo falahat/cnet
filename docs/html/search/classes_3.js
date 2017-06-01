@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['net',['Net',['../class_net.html',1,'']]]
+  ['layer',['Layer',['../classLayer.html',1,'']]],
+  ['leakyrelu',['LeakyReLU',['../classLeakyReLU.html',1,'']]],
+  ['loader',['Loader',['../classLoader.html',1,'']]]
 ];

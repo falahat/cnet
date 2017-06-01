@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sums',['sums',['../class_layer.html#aa0a3384dec407f34bf9d93994fc6613f',1,'Layer']]]
+  ['vals',['vals',['../classAFMatrix.html#a124e51921d4275e00354d3af98399d1e',1,'AFMatrix']]]
 ];

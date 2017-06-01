@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['getcol',['getCol',['../class_a_f_matrix.html#ae6de9932dfad5cd7d4ad9887907155cb',1,'AFMatrix']]],
-  ['getindex',['getIndex',['../class_a_f_matrix.html#aff522a072446367c8e224c955a7743c1',1,'AFMatrix']]],
-  ['getrow',['getRow',['../class_a_f_matrix.html#a0ddbf6fe5a2aa085d7f2bc7b99bfa8bc',1,'AFMatrix']]],
-  ['getvalue',['getValue',['../class_a_f_matrix.html#a0e36b5c6f333ac3d6508d5b00c92852c',1,'AFMatrix']]]
+  ['innerproduct',['innerProduct',['../classAFMatrix.html#a2c4d9cfe683f893fd961904a788f952a',1,'AFMatrix::innerProduct(AFMatrix&lt; T &gt; *other, AFMatrix&lt; T &gt; *out)'],['../classAFMatrix.html#aef663e647574c6f759bee01f9c017a62',1,'AFMatrix::innerProduct(AFMatrix&lt; T &gt; *other, AFMatrix&lt; T &gt; *out, size_t outStartRow, size_t outStartCol)'],['../classAFMatrix.html#a8563ff2d66c9298a08100fbb11b0217b',1,'AFMatrix::innerProduct(vector&lt; T &gt; *other, AFMatrix&lt; T &gt; *out, size_t outCol)'],['../classAFMatrix.html#a4fa983f9e6a6c59e15bfc019d5c380b9',1,'AFMatrix::innerProduct(vector&lt; T &gt; *other, vector&lt; T &gt; *out)']]]
 ];

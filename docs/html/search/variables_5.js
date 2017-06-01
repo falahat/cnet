@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outputvals',['outputVals',['../class_layer.html#a5007d0043790b288b9473ec233108482',1,'Layer']]]
+  ['sums',['sums',['../classLayer.html#a615b17469874e0f1d9a63236568c1be4',1,'Layer']]]
 ];

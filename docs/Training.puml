@@ -1,0 +1,40 @@
+@startuml
+
+group Train All [[for NUM_EPOCHS times]]
+    Runner -> Net : Train(X,Y)
+    group Train Batch [[for BATCH_SIZE times]]
+        group Train Single [[for NUM_ENTRIES times]]
+            group Forward Feed [[for each layer]]
+                Net -> Layer : layer.evaluate(inputVals)
+                note right of Net
+                    Calculates layer.sums
+                    Calculates layer.output using the vectorized activation function
+                    This output is passed to the next layer
+                end note
+                Net <- Layer : output values
+            end
+            Net -> Layer : Backpropogate Base
+            Net <- Layer : Training Loss
+            Net <- Layer : Last layer's delta values
+            group Backpropogate [[for each layer (in reverse order)]]
+                Net -> Layer : layer.backpropogate(nextWeights,nextDeltas)
+                note right of Net
+                    Needs the weights of the next layer.
+                    Calculates this layer's delta values d(Err)/d(Sum)
+                    These delta values will be passed to the layer before this
+                end note
+                Net <- Layer : new delta values
+            end
+        end
+        Net -> Net : updateWeights(BATCH_SIZE, LEARNING_RATE)
+    end
+    Runner -> Runner : Shuffle training data
+end
+
+Runner <- Net : Trained Net
+
+group Validate
+    Runner -> Net : CalculateLoss(TestX, TestY)
+    Runner <- Net : Total Loss of trained model
+end
+@enduml

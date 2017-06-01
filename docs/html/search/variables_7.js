@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vals',['vals',['../class_a_f_matrix.html#abca47cc50d551c1e8d79559773729e87',1,'AFMatrix']]]
+  ['weightgradient',['weightGradient',['../classLayer.html#a8b36a2bc8a623ab02c0545097ebc967f',1,'Layer']]],
+  ['weights',['weights',['../classLayer.html#acb311104d54fd7c09ea4c07006f8fc45',1,'Layer']]]
 ];

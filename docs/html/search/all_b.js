@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['outputvals',['outputVals',['../class_layer.html#a5007d0043790b288b9473ec233108482',1,'Layer']]]
+  ['scale',['scale',['../classAFMatrix.html#a7dd8d7a0e20f2c4d8580e1fe827809c8',1,'AFMatrix']]],
+  ['setvalue',['setValue',['../classAFMatrix.html#ac8a60442dd87009f6d7fe147bdce2b89',1,'AFMatrix']]],
+  ['softmax',['Softmax',['../classSoftmax.html',1,'']]],
+  ['subtract',['subtract',['../classAFMatrix.html#ad45b23088511a63c68b5b8d0179e2fb7',1,'AFMatrix']]],
+  ['sums',['sums',['../classLayer.html#a615b17469874e0f1d9a63236568c1be4',1,'Layer']]]
 ];

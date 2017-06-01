@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inputvals',['inputVals',['../class_layer.html#a38145ae44adb77f559a0ae77dad7c6f9',1,'Layer']]]
+  ['inputvals',['inputVals',['../classLayer.html#ab72e6e0db19cd376c3c62b59e5f55e56',1,'Layer']]]
 ];

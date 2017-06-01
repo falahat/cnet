@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['randomizeweights',['randomizeWeights',['../class_layer.html#aee349ae2e2c54fa8079cc564e84cb938',1,'Layer']]],
-  ['relu',['ReLU',['../class_re_l_u.html',1,'']]]
+  ['toarray',['toArray',['../classAFMatrix.html#af52ad0a9f20833c04caf93053865bcb4',1,'AFMatrix']]],
+  ['todo_20list',['Todo List',['../todo.html',1,'']]],
+  ['transpose',['transpose',['../classAFMatrix.html#ae407612eda3533d1b96ed0fc41ff9d85',1,'AFMatrix::transpose(AFMatrix&lt; T &gt; *out)'],['../classAFMatrix.html#afdd4d2d699db425d02bab1061366616a',1,'AFMatrix::transpose()']]]
 ];
