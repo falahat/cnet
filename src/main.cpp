@@ -2,6 +2,7 @@
 #include "Loader.h"
 #include "Net.h"
 
+
 void xorExperiment() {
     std::cout << "Loading Data..." << std::endl;
     Loader *loader = new Loader();

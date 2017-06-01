@@ -18,7 +18,7 @@
 #define PRINT_EPOCH
 #endif
 
-#define LEARNING_RATE 0.1
+#define LEARNING_RATE 0.5
 #include <vector>
 #include "Layer.h"
 #include "AFFunctions.h"
@@ -64,13 +64,13 @@ public:
         (*this->layers)[this->numLayers-1]->updateWeights(LEARNING_RATE);
         for (int i = this->numLayers-2; i >= 0; i--) {
             (*this->layers)[i]->backpropagate((*this->layers)[i+1]->deltas, (*this->layers)[i+1]->weights);
-            (*this->layers)[i]->updateWeights(LEARNING_RATE);
+//            (*this->layers)[i]->updateWeights(LEARNING_RATE);
         }
 
-        // TODO: When is the right time to update weights?
-//        for (int i = 1; i < this->numLayers; ++i) {
-//            (*this->layers)[i]->updateWeights(LEARNING_RATE);
-//        }
+//         TODO: When is the right time to update weights?
+        for (int i = 1; i < this->numLayers; ++i) {
+            (*this->layers)[i]->updateWeights(LEARNING_RATE);
+        }
 
         #ifdef PRINT_DEBUG
         this->printTraining(loss, inputVals, actualVals, expectedVals);

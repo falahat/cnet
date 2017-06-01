@@ -16,7 +16,6 @@ TEST (TestLayer, CreateLayer) {
      * Creates a sample expected output and uses that to calculate loss. Also uses backpropogation to calculate deltas.
      */
     AFActivationFunction<double> *relu = (new ReLU<double>());
-    AFLossFunction<double> *squaredLoss = new AFSquareLossFunction<double>();
 
     Layer *layer = new Layer(2,3,relu);
     layer->weights->setValue(0,0, 1);   layer->weights->setValue(0,1, 1);
@@ -39,7 +38,6 @@ TEST (TestLayer, ForwardPass) {
      * Creates a sample expected output and uses that to calculate loss. Also uses backpropogation to calculate deltas.
      */
     AFActivationFunction<double> *relu = (new ReLU<double>());
-    AFLossFunction<double> *squaredLoss = new AFSquareLossFunction<double>();
 
     Layer *layer = new Layer(2,3,relu);
     layer->weights->setValue(0,0, 1);   layer->weights->setValue(0,1, 1);

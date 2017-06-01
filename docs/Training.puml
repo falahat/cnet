@@ -1,6 +1,7 @@
 @startuml
 
 group Train All [[for NUM_EPOCHS times]]
+    Runner -> Runner : Shuffle training data
     Runner -> Net : Train(X,Y)
     group Train Batch [[for BATCH_SIZE times]]
         group Train Single [[for NUM_ENTRIES times]]
@@ -28,10 +29,8 @@ group Train All [[for NUM_EPOCHS times]]
         end
         Net -> Net : updateWeights(BATCH_SIZE, LEARNING_RATE)
     end
-    Runner -> Runner : Shuffle training data
+    Runner <- Net : Trained Net
 end
-
-Runner <- Net : Trained Net
 
 group Validate
     Runner -> Net : CalculateLoss(TestX, TestY)
