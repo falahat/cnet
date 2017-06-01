@@ -5,11 +5,18 @@
 #ifndef CNET_NET_H
 #define CNET_NET_H
 
+#define PRINT_DEBUG
+#ifdef PRINT_DEBUG
 #define PRINT_SINGLE
-//#define     PRINT_DETAILS
-#define         PRINT_MATRICES
-#define         PRINT_LAYER_VALS
+#ifdef PRINT_SINGLE
+    #define PRINT_DETAILS
+    #ifdef PRINT_DETAILS
+        #define PRINT_MATRICES
+        #define PRINT_LAYER_VALS
+    #endif
+#endif
 #define PRINT_EPOCH
+#endif
 
 #define LEARNING_RATE 0.1
 #include <vector>
@@ -17,7 +24,17 @@
 #include "AFFunctions.h"
 #include "AFMatrix.h"
 
-// TODO: Compiler Macro??
+
+
+
+
+/**
+ * This is the Net class documentation!
+ * This is a PlantUML diagram of what happens
+ * @image ./docs/Training
+ * @image Training
+ * @tparam T
+ */
 template <typename T>
 class Net {
 public:
@@ -54,8 +71,37 @@ public:
 //        for (int i = 1; i < this->numLayers; ++i) {
 //            (*this->layers)[i]->updateWeights(LEARNING_RATE);
 //        }
-        #ifdef PRINT_SINGLE
 
+        #ifdef PRINT_DEBUG
+        this->printTraining(loss, inputVals, actualVals, expectedVals);
+        #endif
+
+        return loss;
+    }
+
+    double trainEpoch(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals) {
+        double loss = 0;
+        for (int i = 0; i < allInputVals->size(); ++i) {
+            shuffleInplace(allInputVals, allExpectedVals);
+            vector<T> *inputVals = &(*allInputVals)[i];
+            vector<T> *expectedVals = &(*allExpectedVals)[i];
+            loss += this->trainSingle(inputVals, expectedVals);
+        }
+        #ifdef PRINT_EPOCH
+        cout << "The total loss for this epoch is " << loss << endl;
+        #endif
+    }
+
+    double train(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals, int numEpochs) {
+        for (int i = 0; i < numEpochs; ++i) {
+            this->trainEpoch(allInputVals, allExpectedVals);
+        }
+    }
+
+
+    #ifdef PRINT_DEBUG
+    void printTraining(double loss, vector<double> *inputVals, vector<double> *actualVals, vector<double> *expectedVals) {
+        #ifdef PRINT_SINGLE
         cout << "Training..." << endl;
         cout << "Input: " << vectorToString<double>(*inputVals).str() << endl;
         cout << "Expected: " << vectorToString<double>(*expectedVals).str() << endl;
@@ -92,30 +138,9 @@ public:
         #endif
         cout << endl;
         #endif
-
-        return loss;
     }
-
-    double trainEpoch(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals) {
-        double loss = 0;
-        for (int i = 0; i < allInputVals->size(); ++i) {
-            shuffleInplace(allInputVals, allExpectedVals);
-            vector<T> *inputVals = &(*allInputVals)[i];
-            vector<T> *expectedVals = &(*allExpectedVals)[i];
-            loss += this->trainSingle(inputVals, expectedVals);
-        }
-        #ifdef PRINT_EPOCH
-        cout << "The total loss for this epoch is " << loss << endl;
-        #endif
-    }
-
-    double train(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals, int numEpochs) {
-        for (int i = 0; i < numEpochs; ++i) {
-            this->trainEpoch(allInputVals, allExpectedVals);
-        }
-    }
+    #endif
 
 };
-
 
 #endif //CNET_NET_H

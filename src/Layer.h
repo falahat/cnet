@@ -136,10 +136,12 @@ class Layer {
         void backpropagate(vector<double> *nextDeltas,
                            AFMatrix<double> *nextWeights,
                            vector<double> *newDeltas) {
+
             vector<double> valDerivatives; // d(Error)/d(actualVals)
             valDerivatives.reserve(this->lenOut);
             valDerivatives.assign(this->lenOut,0);
             this->activationFunction->derivative(this->sums, &valDerivatives);
+
             for (int i = 0; i < this->lenOut; ++i) {
                 double currVal = 0;
                 for (int j = 0; j < nextDeltas->size(); ++j) {

@@ -100,6 +100,41 @@ public:
 
 
 template <typename T>
+class Softmax: public AFActivationFunction<T> {
+public:
+    void evaluate(vector<T> *input, vector<T> *output) {
+        // TODO: How are some ways to copy two arrays?
+        // TODO: This won't handle 0-length arrays
+
+//        T maxVal = (*input)[0];
+        T sum = 0;
+        for (int i = 0; i < input->size(); ++i) {
+            T currInput = (*input)[i];
+            // TODO: Add numerical stability
+            T currVal = currInput;
+            (*output)[i] = currVal;
+            sum += currVal;
+        }
+
+        for (int i = 0; i < input->size(); ++i) {
+            (*output)[i] /= sum;
+        }
+    }
+
+    void derivative(vector<T> *input, vector<T> *output) {
+        vector<T> evaluated;
+        evaluated.reserve(output->size());
+        evaluated.assign(output->size(), 0);
+        this->evaluate(input, &evaluated);
+        for (int i = 0; i < input->size(); ++i) {
+            (*output)[i] = 1;
+        }
+    }
+};
+
+
+
+template <typename T>
 class AFLossFunction {
 public:
     virtual T evaluate(vector<T> *actualVals, vector<T> *expectedVals) {
