@@ -9,7 +9,7 @@ using namespace std;
 #include <math.h>
 #include <vector>
 
-//TODO: THis is annoyingly verbose.
+//TODO: This is annoyingly verbose.
 
 template <typename T>
 class AFActivationFunction {
@@ -137,7 +137,8 @@ public:
 template <typename T>
 class AFLossFunction {
 public:
-    virtual T evaluate(vector<T> *actualVals, vector<T> *expectedVals) {
+    virtual double evaluate(vector<T> *actualVals, vector<T> *expectedVals) {
+		return 0;
     }
 
     virtual void derivative(vector<T> *actualVals, vector<T> *expectedVals, vector<T> *output) {
@@ -154,6 +155,7 @@ public:
             double diff = (*actualVals)[i] - (*expectedVals)[i];
             ans += diff*diff*0.5;
         }
+		return ans;
     }
 
     /**

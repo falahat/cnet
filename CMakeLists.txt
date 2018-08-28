@@ -3,6 +3,12 @@ project(CNet)
 
 set(CMAKE_CXX_STANDARD 14)
 
+if ( CMAKE_COMPILER_IS_GNUCC )
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wall")
+endif()
+if ( MSVC )
+    set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} /W2")
+endif()
 set(SOURCE_FILES src/main.cpp)
 set(TEST_FILES tests/TestMatrix.cpp tests/TestMatrix.h tests/TestActivationFunction.h tests/TestLayer.h)
 add_subdirectory(src)

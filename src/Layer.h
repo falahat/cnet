@@ -14,9 +14,6 @@
 
 class Layer {
 
-/**
- * Hello!
- */
     public:
         /// The size of the vector that this layer takes as input
         int lenIn;

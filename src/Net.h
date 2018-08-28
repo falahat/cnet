@@ -44,7 +44,6 @@ public:
     AFLossFunction<double> *lossFn;
 
     Net(vector<Layer*> *layers, AFLossFunction<double> *lossFunction) {
-        this->layers = new vector<Layer*>(numLayers); // TODO: is this copying or changing reference or what?
         this->numLayers = layers->size();
         this->lossFn = lossFunction;
         this->layers = layers;
@@ -64,7 +63,6 @@ public:
         (*this->layers)[this->numLayers-1]->updateWeights(LEARNING_RATE);
         for (int i = this->numLayers-2; i >= 0; i--) {
             (*this->layers)[i]->backpropagate((*this->layers)[i+1]->deltas, (*this->layers)[i+1]->weights);
-//            (*this->layers)[i]->updateWeights(LEARNING_RATE);
         }
 
 //         TODO: When is the right time to update weights?
@@ -90,12 +88,15 @@ public:
         #ifdef PRINT_EPOCH
         cout << "The total loss for this epoch is " << loss << endl;
         #endif
+		return loss;
     }
 
     double train(vector<vector<T>> *allInputVals, vector<vector<T>> *allExpectedVals, int numEpochs) {
+		double ans = 0;
         for (int i = 0; i < numEpochs; ++i) {
-            this->trainEpoch(allInputVals, allExpectedVals);
+            ans += this->trainEpoch(allInputVals, allExpectedVals);
         }
+		return ans;
     }
 
 

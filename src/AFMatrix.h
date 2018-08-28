@@ -14,8 +14,7 @@ using namespace std;
 
 
 
-
-
+// TODO: All 
 template <typename T>
 /**
  * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
@@ -26,14 +25,14 @@ template <typename T>
  */
 T vectorInnerProductBounded(vector<T> *vec1, vector<T> *vec2, size_t start1, size_t start2, size_t len) {
     // TODO: Add bound checking?
-    T ans;
+    T ans = 0;
     for (int offset = 0; offset < len ; ++offset) {
         ans += (*vec1)[start1 + offset] * (*vec2)[start2 + offset];
     }
     return ans;
 }
 
-// TODO: integer matrices multiplied by double matrices though?
+// TODO: integer matrices multiplied by double matrices?
 template <typename T>
 /**
  * @tparam T The type of data in the vectors being multiplies. Probably a `double`.
@@ -46,7 +45,7 @@ T vectorInnerProduct(vector<T> *vec1, vector<T> *vec2) {
     return vectorInnerProductBounded(vec1, vec2, 0ul, 0ul, vec1->size());
 }
 
-
+// TODO: Improve method name: "doubleVectorEqual"
 bool doubleVectorEqual(vector<double> *vec1, vector<double> *vec2) {
     for (int i = 0; i < vec1->size(); ++i) {
         if ((*vec1)[i] - (*vec2)[i] >= ACCEPTABLE_DOUBLE_DIFF) {

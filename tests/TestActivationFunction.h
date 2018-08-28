@@ -5,11 +5,11 @@
 #ifndef CNET_TESTACTIVATIONFUNCTION_H
 #define CNET_TESTACTIVATIONFUNCTION_H
 
-
 #include "../lib/googletest/googletest/include/gtest/gtest.h"
 #include "../src/AFFunctions.h"
 #include "../src/AFMatrix.h"
 
+#define GTEST_TUPLE_NAMESPACE_ 0
 TEST (TestActivationFunction, ReLU) {
     /**
      * Create matrix and make sure it's the right dimensions
@@ -36,7 +36,6 @@ TEST (TestActivationFunction, ReLU) {
 
     delete(reluFn);
 }
-
 
 TEST (TestActivationFunction, IdentityFunction) {
     /**
@@ -65,8 +64,6 @@ TEST (TestActivationFunction, IdentityFunction) {
 
     delete(identityFn);
 }
-
-
 
 TEST (TestLossFunction, SquaredLoss) {
     /**
