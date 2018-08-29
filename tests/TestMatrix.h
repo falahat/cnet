@@ -33,7 +33,8 @@ TEST (TestMatrix, CreateMatrixFromValues) {
      * Try to get values
      */
     vector<double> *ogVals = new vector<double>();
-    ogVals->reserve(6);
+	ogVals->reserve(6);
+	ogVals->assign(6, 0);
 
     (*ogVals)[0] = 1.0;
     (*ogVals)[1] = 2.0;

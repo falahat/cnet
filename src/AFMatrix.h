@@ -75,13 +75,12 @@ public:
 
 
     AFMatrix(int numRows, int numCols) {
-        this->numRows = numRows;
+		this->numRows = numRows;
         this->numCols = numCols;
         this->vals = new vector<T>();
-        this->vals->reserve(numRows*numCols);
-        this->vals->assign(numRows*numCols,0);
+        this->vals->reservegetSize());
+        this->vals->assign(getSize(), 0);
     }
-
 
     /**
      * Creates a new copy and copies data.
@@ -92,8 +91,8 @@ public:
         this->numRows = copyFrom->numRows;
         this->numCols = copyFrom->numCols;
         this->vals = new vector<T>();
-        this->vals->reserve(numRows*numCols);
-        this->vals->assign(numRows*numCols,0);
+        this->vals->reserve(getSize());
+        this->vals->assign(getSize());
         this->copyValues(this, copyFrom); // Copies the values from `copyFrom` to itself
     }
 
@@ -106,13 +105,12 @@ public:
         this->numRows = numRows;
         this->numCols = numCols;
         this->vals = new vector<T>();
-        this->vals->reserve(numRows*numCols);
-        this->vals->assign(numRows*numCols,0);
+        this->vals->reserve(getSize());
+        this->vals->assign(getSize(), 0);
         this->copyValues(this->vals, copyFromArray); // Copies the values from `copyFrom` to itself
     }
 
     ~AFMatrix() {
-        // TODO: Delete stuff
         delete this->vals;
     }
 
@@ -122,6 +120,7 @@ public:
      * @return the index `i` such that `this->vals[i] = (row, col)`.
      */
     inline int getIndex(int row, int col) {
+		// TODO: Assumes row major? Allow flexibility?
         return row * this->numCols + col;
     }
 
@@ -133,6 +132,10 @@ public:
     inline T getValue(int row, int col) {
         return (*this->vals)[this->getIndex(row, col)];
     }
+
+	inline size_t getSize() {
+		return (this->numCols * this->numRows);
+	}
 
     /**
      *
@@ -157,15 +160,15 @@ public:
      * @warning Delete the new array to free memory
      */
     vector<T> *getRow(int row) {
+		// TODO: Improve this for performance. Perhaps return a view instead? 
         vector<T> *ans = new vector<T>();
         ans->reserve(this->numCols);
-        ans->assign(this->numCols,0);
+        ans->assign(this->numCols,0); // TODO: Why assign?
         for (int col = 0; col < this->numCols; ++col) {
             (*ans)[col] = this->getValue(row, col);
         }
         return ans;
     };
-
 
     /**
      * @param row
@@ -251,6 +254,7 @@ public:
      * @param out
      */
     void scale(double factor, AFMatrix* out) {
+		// TODO: Slowest version but we will improve it
         for (int col = 0; col < this->numCols; ++col) {
             for (int row = 0; row < this->numRows; ++row) {
                 out->setValue(row, col, factor * this->getValue(row, col));
